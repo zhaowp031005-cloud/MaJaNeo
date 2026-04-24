@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "MaJaNeo",
+    "tagline": "Neo 的成长游戏化记录"
+  },
+  "nav": {
+    "dashboard": "主页",
+    "timeline": "时间线",
+    "stats": "数值",
+    "newPost": "发帖"
+  },
+  "home": {
+    "title": "MaJaNeo",
+    "subtitle": "给 manting 与 jano 的家人一起记录 neo 的成长。",
+    "ctaNewPost": "新增记录",
+    "ctaTimeline": "查看时间线"
+  },
+  "locale": {
+    "label": "语言"
+  }
+}

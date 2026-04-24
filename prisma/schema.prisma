@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Author {
+  MANTING
+  JANO
+  FAMILY
+}
+
+enum MediaKind {
+  IMAGE
+  VIDEO
+  AUDIO
+}
+
+enum StatDimension {
+  LANGUAGE
+  MOTOR
+  COGNITION
+  SOCIAL
+  EMOTION
+  SELFCARE
+}
+
+enum WishStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Post {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  occurredAt DateTime
+  author     Author
+  content    String
+  media      Media[]
+  statEvents StatEvent[]
+}
+
+model Media {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  kind      MediaKind
+  mime      String
+  bucket    String
+  objectKey String
+  width     Int?
+  height    Int?
+  duration  Int?
+  postId    String
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([bucket, objectKey])
+}
+
+model StatEvent {
+  id        String        @id @default(cuid())
+  createdAt DateTime      @default(now())
+  dimension StatDimension
+  delta     Int
+  reason    String
+  postId    String
+  post      Post          @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
+  @@index([dimension, createdAt])
+}
+
+model Wish {
+  id         String     @id @default(cuid())
+  createdAt  DateTime   @default(now())
+  nickname   String?
+  content    String
+  emoji      String
+  status     WishStatus @default(PENDING)
+  approvedAt DateTime?
+  rejectedAt DateTime?
+  reviewedAt DateTime?
+
+  @@index([status, createdAt])
+}

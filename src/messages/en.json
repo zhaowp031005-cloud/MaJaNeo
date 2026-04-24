@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "MaJaNeo",
+    "tagline": "Gamified growth journal for Neo"
+  },
+  "nav": {
+    "dashboard": "Home",
+    "timeline": "Timeline",
+    "stats": "Stats",
+    "newPost": "New post"
+  },
+  "home": {
+    "title": "MaJaNeo",
+    "subtitle": "A family-only space to record Neo's growth for manting & jano's family.",
+    "ctaNewPost": "Create a post",
+    "ctaTimeline": "View timeline"
+  },
+  "locale": {
+    "label": "Language"
+  }
+}

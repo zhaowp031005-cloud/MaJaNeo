@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "MaJaNeo",
+    "tagline": "Gamifiziertes Wachstumstagebuch für Neo"
+  },
+  "nav": {
+    "dashboard": "Start",
+    "timeline": "Timeline",
+    "stats": "Werte",
+    "newPost": "Neuer Post"
+  },
+  "home": {
+    "title": "MaJaNeo",
+    "subtitle": "Ein privater Familienbereich, um Neos Entwicklung für mantings & janos Familie festzuhalten.",
+    "ctaNewPost": "Post erstellen",
+    "ctaTimeline": "Timeline ansehen"
+  },
+  "locale": {
+    "label": "Sprache"
+  }
+}

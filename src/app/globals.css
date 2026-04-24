@@ -24,3 +24,42 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes mjFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.mj-float {
+  animation: mjFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes mjBarrage {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.42;
+  }
+  90% {
+    opacity: 0.42;
+  }
+  100% {
+    transform: translateX(125%);
+    opacity: 0;
+  }
+}
+
+.mj-barrage-item {
+  animation-name: mjBarrage;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
