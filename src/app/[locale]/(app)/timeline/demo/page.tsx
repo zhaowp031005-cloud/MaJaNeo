@@ -1,14 +1,15 @@
+import { getTranslations } from "next-intl/server";
 import { TimelineAceternity } from "@/components/TimelineAceternity";
 import type { TimelinePost } from "@/components/Timeline3D";
 
-function buildMockPosts(): TimelinePost[] {
+function buildMockPosts(t: Awaited<ReturnType<typeof getTranslations<"timelineDemo">>>): TimelinePost[] {
   return [
     {
       id: "demo-1",
       occurredAt: "2024-02-18T09:15:00.000Z",
       author: "Maya",
-      content:
-        "2024 的第一张小纸条：我们决定用时间轴记录每一个普通但重要的瞬间。",
+      title: t("title1"),
+      content: t("item1"),
       media: [
         {
           id: "demo-m-1",
@@ -22,8 +23,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-2",
       occurredAt: "2024-09-03T18:40:00.000Z",
       author: "Jason",
-      content:
-        "把家里的一个角落空出来，打算未来做成 Neo 的小小阅读区。",
+      title: t("title2"),
+      content: t("item2"),
       media: [
         {
           id: "demo-m-2",
@@ -37,8 +38,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-3",
       occurredAt: "2025-01-27T07:55:00.000Z",
       author: "Maya",
-      content:
-        "2025 的第一条：开始规律散步。每天 10 分钟，像给未来攒一点耐心。",
+      title: t("title3"),
+      content: t("item3"),
       media: [
         {
           id: "demo-m-3",
@@ -52,8 +53,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-4",
       occurredAt: "2025-07-06T20:10:00.000Z",
       author: "Jason",
-      content:
-        "整理照片备份：想把每次旅行、每次笑都留在 Neo 将来能看到的地方。",
+      title: t("title4"),
+      content: t("item4"),
       media: [
         {
           id: "demo-m-4",
@@ -67,8 +68,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-5",
       occurredAt: "2026-02-12T10:20:00.000Z",
       author: "Maya",
-      content:
-        "今天第一次认真整理了 Neo 的小衣柜。每一件都好小，像在给未来写一封慢慢展开的信。",
+      title: t("title5"),
+      content: t("item5"),
       media: [
         {
           id: "demo-m-5",
@@ -82,8 +83,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-6",
       occurredAt: "2026-03-29T11:05:00.000Z",
       author: "Jason",
-      content:
-        "下午去复查，医生说一切都很稳。回家路上买了蓝莓蛋糕，庆祝这个普通但闪光的小日子。",
+      title: t("title6"),
+      content: t("item6"),
       media: [
         {
           id: "demo-m-6",
@@ -97,8 +98,8 @@ function buildMockPosts(): TimelinePost[] {
       id: "demo-7",
       occurredAt: "2026-04-21T13:10:00.000Z",
       author: "MaJaNeo",
-      content:
-        "Demo 卡片效果检查：滚动渐动线、轴线穿过圆心、点开后背景虚化 + 3D Card。",
+      title: t("title7"),
+      content: t("item7"),
       media: [
         {
           id: "demo-m-7",
@@ -117,6 +118,7 @@ export default async function TimelineDemoPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const posts = buildMockPosts();
+  const t = await getTranslations({ locale, namespace: "timelineDemo" });
+  const posts = buildMockPosts(t);
   return <TimelineAceternity locale={locale} posts={posts} enableDelete={false} />;
 }

@@ -44,6 +44,7 @@ model Post {
   createdAt  DateTime    @default(now())
   occurredAt DateTime
   author     Author
+  title      String      @default("")
   content    String
   media      Media[]
   statEvents StatEvent[]

@@ -43,6 +43,7 @@ export async function POST(req: Request) {
     : new Date();
 
   const author = toAuthor(form.get("author")?.toString() ?? null);
+  const title = (form.get("title")?.toString() ?? "").trim();
   const content = (form.get("content")?.toString() ?? "").trim();
 
   const rawEvents = form.get("statEventsJson")?.toString();
@@ -72,6 +73,7 @@ export async function POST(req: Request) {
     const post = await createPost({
       occurredAt,
       author,
+        title,
       content,
       media,
       statEvents: events,

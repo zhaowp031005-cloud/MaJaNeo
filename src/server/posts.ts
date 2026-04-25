@@ -5,6 +5,7 @@ import { deleteStoredObject } from "@/server/storage";
 export type CreatePostInput = {
   occurredAt: Date;
   author: Author;
+  title: string;
   content: string;
   media: Array<{
     kind: MediaKind;
@@ -42,6 +43,7 @@ export async function createPost(input: CreatePostInput) {
       data: {
         occurredAt: input.occurredAt,
         author: input.author,
+        title: input.title,
         content: input.content,
         media: {
           create: input.media.map((m) => ({

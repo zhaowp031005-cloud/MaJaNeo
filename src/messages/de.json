@@ -96,6 +96,8 @@
     "authorJano": "Jano",
     "authorFamily": "Familie",
     "timeLabel": "Zeit",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Gib diesem Eintrag einen Titel",
     "yearLabel": "Jahr",
     "monthLabel": "Monat",
     "dayLabel": "Tag",
@@ -130,6 +132,13 @@
     "emptyContent": "Noch keine Einträge. Tippe oben rechts auf Neu, um den ersten zu erstellen."
   },
   "timelineDemo": {
+    "title1": "Auftakt der Timeline",
+    "title2": "Eine Ecke fuer Neo",
+    "title3": "Spaziergaenge beginnen leise",
+    "title4": "Erinnerungen sichern",
+    "title5": "Der erste kleine Kleiderschrank-Tag",
+    "title6": "Kleine Feier nach der Kontrolle",
+    "title7": "3D-Timeline-Pruefung",
     "item1": "Der erste kleine Zettel von 2024: Wir haben beschlossen, mit einer Timeline jeden gewöhnlichen, aber wichtigen Moment festzuhalten.",
     "item2": "Wir haben zu Hause eine Ecke freigeräumt und wollen daraus später eine kleine Leseecke für Neo machen.",
     "item3": "Der erste Eintrag von 2025: Wir haben mit regelmäßigen Spaziergängen begonnen. Zehn Minuten am Tag, wie ein kleines Sparschwein für Geduld in der Zukunft.",

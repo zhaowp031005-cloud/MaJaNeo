@@ -24,6 +24,7 @@ export default async function TimelinePage({
     id: p.id,
     occurredAt: p.occurredAt.toISOString(),
     author: p.author,
+    title: p.title,
     content: p.content,
     media: p.media.map((m) => ({
       id: m.id,

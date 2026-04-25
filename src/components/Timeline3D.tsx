@@ -13,6 +13,7 @@ export type TimelinePost = {
   id: string;
   occurredAt: string;
   author: string;
+  title: string;
   content: string;
   media: TimelineMedia[];
 };
@@ -153,6 +154,7 @@ export function Timeline3D({ locale, posts }: { locale: string; posts: TimelineP
         id: "__empty__",
         occurredAt: new Date().toISOString(),
         author: "MaJaNeo",
+        title: "",
         content: "还没有记录。点击右上角 New 开始第一条。",
         media: [],
       } satisfies TimelinePost,
@@ -257,7 +259,7 @@ export function Timeline3D({ locale, posts }: { locale: string; posts: TimelineP
                   {formatDateTime(locale, openPost.occurredAt)}
                 </div>
                 <div className="mt-1 text-base font-semibold text-white/90">
-                  {openPost.author}
+                  {openPost.title || openPost.author}
                 </div>
               </div>
               <button

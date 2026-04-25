@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
 import type { TimelinePost } from "@/components/Timeline3D";
@@ -42,6 +43,7 @@ export function TimelineAceternity({
   posts: TimelinePost[];
   enableDelete?: boolean;
 }) {
+  const t = useTranslations("timeline");
   const [openId, setOpenId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [lineProgress, setLineProgress] = useState<string>("0%");
@@ -60,8 +62,9 @@ export function TimelineAceternity({
       {
         id: "__empty__",
         occurredAt: new Date().toISOString(),
-        author: "MaJaNeo",
-        content: "还没有记录。点击右上角 New 开始第一条。",
+        author: t("emptyAuthor"),
+        title: "",
+        content: t("emptyContent"),
         media: [],
       } satisfies TimelinePost,
     ];
@@ -129,17 +132,17 @@ export function TimelineAceternity({
     <div className="mx-auto w-full max-w-5xl px-6 py-10">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <div className="text-sm font-medium text-white/70">Timeline</div>
-          <div className="mt-2 text-2xl font-semibold tracking-tight">Neo</div>
+          <div className="text-sm font-medium text-white/70">{t("eyebrow")}</div>
+          <div className="mt-2 text-2xl font-semibold tracking-tight">{t("title")}</div>
         </div>
-        <div className="text-xs text-white/40">{posts.length} posts</div>
+        <div className="text-xs text-white/40">{t("count", { count: posts.length })}</div>
       </div>
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6">
         <div ref={scrollRef} className="relative h-[70vh] overflow-auto rounded-xl bg-black/20">
           <div className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-[#07080a]/70 px-4 py-3 backdrop-blur">
-            <div className="text-xs text-white/50">Timeline</div>
-            <div className="text-xs text-white/40">Years</div>
+            <div className="text-xs text-white/50">{t("stickyTitle")}</div>
+            <div className="text-xs text-white/40">{t("stickyYears")}</div>
           </div>
 
           <div
@@ -173,7 +176,7 @@ export function TimelineAceternity({
                     translateZ="50"
                     className="text-xl font-bold text-neutral-600 dark:text-white"
                   >
-                    {openPost.author}
+                    {openPost.title || openPost.author}
                   </CardItem>
                   <CardItem
                     as="div"
@@ -182,22 +185,29 @@ export function TimelineAceternity({
                   >
                     {formatDateTime(locale, openPost.occurredAt)}
                   </CardItem>
+                  <CardItem
+                    as="div"
+                    translateZ="35"
+                    className="mt-2 text-xs uppercase tracking-[0.22em] text-neutral-400 dark:text-neutral-500"
+                  >
+                    {openPost.author}
+                  </CardItem>
                 </div>
                 <button
                   type="button"
                   onClick={() => setOpenId(null)}
                   className="rounded-full border border-black/[0.1] bg-white/80 px-3 py-1.5 text-sm text-neutral-700 hover:bg-white dark:border-white/[0.15] dark:bg-white/10 dark:text-white/80 dark:hover:bg-white/15"
                 >
-                  Close
+                  {t("close")}
                 </button>
               </div>
 
               <CardItem
                 as="p"
                 translateZ="60"
-                className="mt-3 whitespace-pre-wrap text-neutral-600 text-sm leading-7 dark:text-neutral-300"
+                className="mx-auto mt-5 w-full max-w-[88%] whitespace-pre-wrap text-neutral-600 text-sm leading-8 dark:text-neutral-300"
               >
-                {openPost.content || "（无文字）"}
+                {openPost.content || t("noText")}
               </CardItem>
 
               {openCover ? (
@@ -220,7 +230,7 @@ export function TimelineAceternity({
                     disabled={isDeleting}
                     onClick={async () => {
                       if (isDeleting) return;
-                      const ok = window.confirm("确定要删除这条记录吗？删除后不可恢复。");
+                      const ok = window.confirm(t("deleteConfirm"));
                       if (!ok) return;
                       setIsDeleting(true);
                       try {
@@ -233,8 +243,8 @@ export function TimelineAceternity({
                             | null;
                           const msg =
                             payload?.error === "db_unavailable"
-                              ? "数据库暂不可用，稍后再试。"
-                              : "删除失败，请稍后再试。";
+                              ? t("deleteDbError")
+                              : t("deleteError");
                           window.alert(msg);
                           return;
                         }
@@ -246,7 +256,7 @@ export function TimelineAceternity({
                     }}
                     className="px-4 py-2 rounded-xl border border-red-500/30 bg-red-500/10 text-red-600 text-xs font-bold hover:bg-red-500/15 disabled:opacity-50 dark:text-red-300"
                   >
-                    {isDeleting ? "Deleting..." : "Delete"}
+                    {isDeleting ? t("deleting") : t("delete")}
                   </CardItem>
                 ) : (
                   <div />
@@ -257,7 +267,7 @@ export function TimelineAceternity({
                   onClick={() => setOpenId(null)}
                   className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
                 >
-                  Done
+                  {t("done")}
                 </CardItem>
               </div>
             </CardBody>

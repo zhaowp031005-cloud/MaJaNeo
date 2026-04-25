@@ -96,6 +96,8 @@
     "authorJano": "Jano",
     "authorFamily": "Family",
     "timeLabel": "Time",
+    "titleLabel": "标题",
+    "titlePlaceholder": "给这条成长记录起个标题",
     "yearLabel": "年",
     "monthLabel": "月",
     "dayLabel": "日",
@@ -130,6 +132,13 @@
     "emptyContent": "还没有记录。点击右上角 New 开始第一条。"
   },
   "timelineDemo": {
+    "title1": "时间线开场",
+    "title2": "给 Neo 留一个角落",
+    "title3": "慢慢开始的散步",
+    "title4": "把记忆备份起来",
+    "title5": "第一次整理小衣柜",
+    "title6": "复查日的小庆祝",
+    "title7": "3D 时间线检查",
     "item1": "2024 的第一张小纸条：我们决定用时间轴记录每一个普通但重要的瞬间。",
     "item2": "把家里的一个角落空出来，打算未来做成 Neo 的小小阅读区。",
     "item3": "2025 的第一条：开始规律散步。每天 10 分钟，像给未来攒一点耐心。",

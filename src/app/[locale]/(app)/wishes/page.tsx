@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { listWishesByStatus } from "@/server/wishes";
 import { approveWishAction, deleteWishAction, rejectWishAction } from "./actions";
 
@@ -6,6 +7,7 @@ function WishSection({
   locale,
   wishes,
   mode,
+  labels,
 }: {
   title: string;
   locale: string;
@@ -16,6 +18,14 @@ function WishSection({
     emoji: string;
   }>;
   mode: "pending" | "reviewed";
+  labels: {
+    fromNamed: string;
+    fromAnonymous: string;
+    approve: string;
+    reject: string;
+    delete: string;
+    empty: string;
+  };
 }) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
@@ -28,7 +38,9 @@ function WishSection({
                 {wish.emoji} <span className="text-sm text-white/85">{wish.content}</span>
               </div>
               <div className="mt-2 text-xs text-white/40">
-                {wish.nickname ? `来自 ${wish.nickname}` : "来自一位朋友"}
+                {wish.nickname
+                  ? labels.fromNamed.replace("{name}", wish.nickname)
+                  : labels.fromAnonymous}
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {mode === "pending" ? (
@@ -40,7 +52,7 @@ function WishSection({
                         type="submit"
                         className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black"
                       >
-                        通过
+                        {labels.approve}
                       </button>
                     </form>
                     <form action={rejectWishAction}>
@@ -50,7 +62,7 @@ function WishSection({
                         type="submit"
                         className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80"
                       >
-                        拒绝
+                        {labels.reject}
                       </button>
                     </form>
                   </>
@@ -63,7 +75,7 @@ function WishSection({
                     type="submit"
                     className="rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm text-red-300"
                   >
-                    删除
+                    {labels.delete}
                   </button>
                 </form>
               </div>
@@ -71,7 +83,7 @@ function WishSection({
           ))
         ) : (
           <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-6 text-sm text-white/40">
-            暂无内容
+            {labels.empty}
           </div>
         )}
       </div>
@@ -88,31 +100,40 @@ export default async function WishesPage({
 }) {
   const { locale } = await params;
   const { error } = await searchParams;
+  const t = await getTranslations("wishes");
   const [pending, approved, rejected] = await Promise.all([
     listWishesByStatus("PENDING"),
     listWishesByStatus("APPROVED"),
     listWishesByStatus("REJECTED"),
   ]);
+  const labels = {
+    fromNamed: t("fromNamed"),
+    fromAnonymous: t("fromAnonymous"),
+    approve: t("approve"),
+    reject: t("reject"),
+    delete: t("delete"),
+    empty: t("empty"),
+  };
 
   return (
     <div className="mx-auto w-full max-w-6xl px-6 py-10">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <div className="text-sm font-medium text-white/70">Blessings</div>
-          <div className="mt-2 text-2xl font-semibold tracking-tight">游客祝福审核</div>
+          <div className="text-sm font-medium text-white/70">{t("eyebrow")}</div>
+          <div className="mt-2 text-2xl font-semibold tracking-tight">{t("title")}</div>
         </div>
-        <div className="text-xs text-white/45">后续即使通过，也可以删除</div>
+        <div className="text-xs text-white/45">{t("subtitle")}</div>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         {error ? (
           <div className="lg:col-span-3 rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-            操作失败，数据库可能暂时不可用，请稍后再试。
+            {t("error")}
           </div>
         ) : null}
-        <WishSection title="待审核" locale={locale} wishes={pending} mode="pending" />
-        <WishSection title="已通过" locale={locale} wishes={approved} mode="reviewed" />
-        <WishSection title="已拒绝" locale={locale} wishes={rejected} mode="reviewed" />
+        <WishSection title={t("pending")} locale={locale} wishes={pending} mode="pending" labels={labels} />
+        <WishSection title={t("approved")} locale={locale} wishes={approved} mode="reviewed" labels={labels} />
+        <WishSection title={t("rejected")} locale={locale} wishes={rejected} mode="reviewed" labels={labels} />
       </div>
     </div>
   );

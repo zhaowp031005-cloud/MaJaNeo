@@ -96,6 +96,8 @@
     "authorJano": "Jano",
     "authorFamily": "Family",
     "timeLabel": "Time",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Give this growth note a title",
     "yearLabel": "Year",
     "monthLabel": "Month",
     "dayLabel": "Day",
@@ -130,6 +132,13 @@
     "emptyContent": "No records yet. Tap New in the top-right to make the first one."
   },
   "timelineDemo": {
+    "title1": "Timeline opening",
+    "title2": "A corner for Neo",
+    "title3": "Walks begin softly",
+    "title4": "Backing up memories",
+    "title5": "First tiny wardrobe sort",
+    "title6": "A small checkup celebration",
+    "title7": "3D timeline check",
     "item1": "The first tiny note of 2024: we decided to use a timeline to keep every ordinary but important moment.",
     "item2": "We cleared a corner at home, hoping to turn it into Neo's little reading nook in the future.",
     "item3": "First note of 2025: we started regular walks. Ten minutes a day, like saving up a little patience for the future.",

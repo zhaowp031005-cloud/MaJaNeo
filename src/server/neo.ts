@@ -24,6 +24,15 @@ export type NeoMeta =
   | { kind: "expected"; dueDate: Date; daysLeft: number }
   | { kind: "unknown" };
 
+export type NeoBadgeLabels = {
+  name: string;
+  expectedTitle: string;
+  dobPrefix: string;
+  eddPrefix: string;
+  overdue: string;
+  formatDays: (days: number) => string;
+};
+
 function emojiForLevel(level: number) {
   const lv = Math.max(1, Math.min(100, Math.floor(level)));
   const decade = Math.min(9, Math.floor((lv - 1) / 10));
@@ -47,22 +56,24 @@ export function getNeoMeta(now = new Date()): NeoMeta {
   return { kind: "unknown" };
 }
 
-export function formatNeoBadge(meta: NeoMeta) {
+export function formatNeoBadge(meta: NeoMeta, labels: NeoBadgeLabels) {
   if (meta.kind === "born") {
     const lv = meta.level;
     return {
       title: `LV${lv} ${emojiForLevel(lv)}`,
-      subtitle: `DOB ${formatYmd(meta.dob)}`,
+      subtitle: `${labels.dobPrefix} ${formatYmd(meta.dob)}`,
     };
   }
 
   if (meta.kind === "expected") {
     const left = meta.daysLeft;
     return {
-      title: "Expected ⭐",
-      subtitle: `EDD ${formatYmd(meta.dueDate)} · ${left >= 0 ? `${left} days` : "overdue"}`,
+      title: labels.expectedTitle,
+      subtitle: `${labels.eddPrefix} ${formatYmd(meta.dueDate)} · ${
+        left >= 0 ? labels.formatDays(left) : labels.overdue
+      }`,
     };
   }
 
-  return { title: "Neo", subtitle: "" };
+  return { title: labels.name, subtitle: "" };
 }

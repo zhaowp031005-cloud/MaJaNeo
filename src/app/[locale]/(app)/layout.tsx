@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { authCookieName, isAuthed } from "@/server/auth";
 import { Link } from "@/i18n/navigation";
@@ -8,6 +9,7 @@ export default async function AppLayout({
   params,
 }: Readonly<{ children: React.ReactNode; params: Promise<{ locale: string }> }>) {
   const { locale } = await params;
+  const t = await getTranslations();
 
   const cookieStore = await cookies();
   const value = cookieStore.get(authCookieName)?.value;
@@ -22,22 +24,22 @@ export default async function AppLayout({
           </Link>
           <nav className="flex items-center gap-4 text-sm text-white/70">
             <Link href="/family" className="hover:text-white">
-              Home
+              {t("nav.dashboard")}
             </Link>
             <Link href="/timeline" className="hover:text-white">
-              Timeline
+              {t("nav.timeline")}
             </Link>
             <Link href="/stats" className="hover:text-white">
-              Stats
+              {t("nav.stats")}
             </Link>
             <Link href="/wishes" className="hover:text-white">
-              Blessings
+              {t("nav.wishes")}
             </Link>
             <Link
               href="/post/new"
               className="rounded-full bg-white px-4 py-1.5 text-black"
             >
-              New
+              {t("nav.new")}
             </Link>
           </nav>
         </div>
