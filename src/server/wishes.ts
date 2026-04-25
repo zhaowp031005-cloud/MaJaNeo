@@ -14,7 +14,8 @@ export async function listApprovedWishes() {
       orderBy: [{ approvedAt: "desc" }, { createdAt: "desc" }],
       take: 60,
     });
-  } catch {
+  } catch (error) {
+    console.error("listApprovedWishes failed", error);
     return [];
   }
 }
@@ -26,7 +27,8 @@ export async function listWishesByStatus(status: WishStatus) {
       orderBy: { createdAt: "desc" },
       take: 100,
     });
-  } catch {
+  } catch (error) {
+    console.error("listWishesByStatus failed", error);
     return [];
   }
 }
@@ -41,7 +43,8 @@ export async function createWish(input: CreateWishInput) {
         status: "PENDING",
       },
     });
-  } catch {
+  } catch (error) {
+    console.error("createWish failed", error);
     throw new Error("DB_UNAVAILABLE");
   }
 }
@@ -57,7 +60,8 @@ export async function reviewWish(id: string, status: "APPROVED" | "REJECTED") {
         rejectedAt: status === "REJECTED" ? new Date() : null,
       },
     });
-  } catch {
+  } catch (error) {
+    console.error("reviewWish failed", error);
     throw new Error("DB_UNAVAILABLE");
   }
 }
@@ -66,7 +70,8 @@ export async function deleteWish(id: string) {
   try {
     await prisma.wish.delete({ where: { id } });
     return { ok: true as const };
-  } catch {
+  } catch (error) {
+    console.error("deleteWish failed", error);
     throw new Error("DB_UNAVAILABLE");
   }
 }
