@@ -32,7 +32,7 @@ function emojiForLevel(level: number) {
 }
 
 export function getNeoMeta(now = new Date()): NeoMeta {
-  const dob = parseDate(process.env["NEO_DOB"] ?? "2026-04-24");
+  const dob = parseDate(process.env["NEO_DOB"] ?? "2026-04-23");
   if (dob && dob.getTime() <= now.getTime()) {
     return { kind: "born", dob, level: Math.min(100, fullYearsBetween(dob, now) + 1) };
   }
