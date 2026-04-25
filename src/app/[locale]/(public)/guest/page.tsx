@@ -50,13 +50,20 @@ export default async function GuestPage({
   const { sent, error } = await searchParams;
   const t = await getTranslations("guest");
   const wishes = await listApprovedWishes();
-  const barrageItems = wishes.length
+  const seedItems = wishes.length
     ? wishes.slice(0, 24)
     : [
         { id: "placeholder-1", emoji: "✨", content: t("barrage1") },
         { id: "placeholder-2", emoji: "🌙", content: t("barrage2") },
         { id: "placeholder-3", emoji: "💫", content: t("barrage3") },
       ];
+  const barrageItems = Array.from({ length: Math.max(18, seedItems.length * 4) }, (_, index) => {
+    const wish = seedItems[index % seedItems.length]!;
+    return {
+      ...wish,
+      id: `${wish.id}-lane-${index}`,
+    };
+  });
 
   return (
     <div className="relative flex flex-1 items-center justify-center overflow-hidden px-6 py-16">
@@ -64,12 +71,12 @@ export default async function GuestPage({
         {barrageItems.map((wish, index) => (
           <div
             key={wish.id}
-            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs text-white/35 backdrop-blur-sm"
+            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/45 backdrop-blur-sm"
             style={{
-              top: `${8 + (index % 10) * 8.5}%`,
-              left: `${-15 - (index % 5) * 8}%`,
-              animationDelay: `${(index % 8) * 1.1}s`,
-              animationDuration: `${18 + (index % 6) * 2.5}s`,
+              top: `${6 + (index % 12) * 7.2}%`,
+              left: `${-30 - (index % 6) * 18}%`,
+              animationDelay: `${(index % 12) * 1.15}s`,
+              animationDuration: `${16 + (index % 7) * 2.4}s`,
             }}
           >
             {wish.emoji} {wish.content}

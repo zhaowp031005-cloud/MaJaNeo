@@ -6,15 +6,29 @@ import { listApprovedWishes } from "@/server/wishes";
 
 export default async function FamilyHomePage() {
   const t = await getTranslations();
-  const badge = formatNeoBadge(getNeoMeta());
+  const badge = formatNeoBadge(getNeoMeta(), {
+    name: t("neo.name"),
+    expectedTitle: t("neo.expectedTitle"),
+    dobPrefix: t("neo.dobPrefix"),
+    eddPrefix: t("neo.eddPrefix"),
+    overdue: t("neo.overdue"),
+    formatDays: (days) => t("neo.days", { count: days }),
+  });
   const wishes = await listApprovedWishes();
-  const barrageItems = wishes.length
+  const seedItems = wishes.length
     ? wishes.slice(0, 24)
     : [
-        { id: "placeholder-1", emoji: "✨", content: "等一句温柔的话飞来" },
-        { id: "placeholder-2", emoji: "🌙", content: "小宇宙静静亮着" },
-        { id: "placeholder-3", emoji: "💫", content: "祝福会慢慢落下" },
+        { id: "placeholder-1", emoji: "✨", content: t("family.barrage1") },
+        { id: "placeholder-2", emoji: "🌙", content: t("family.barrage2") },
+        { id: "placeholder-3", emoji: "💫", content: t("family.barrage3") },
       ];
+  const barrageItems = Array.from({ length: Math.max(18, seedItems.length * 4) }, (_, index) => {
+    const wish = seedItems[index % seedItems.length]!;
+    return {
+      ...wish,
+      id: `${wish.id}-lane-${index}`,
+    };
+  });
   const latestWishes = wishes.slice(0, 3);
 
   return (
@@ -23,12 +37,12 @@ export default async function FamilyHomePage() {
         {barrageItems.map((wish, index) => (
           <div
             key={wish.id}
-            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs text-white/35 backdrop-blur-sm"
+            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/45 backdrop-blur-sm"
             style={{
-              top: `${8 + (index % 10) * 8.5}%`,
-              left: `${-15 - (index % 5) * 8}%`,
-              animationDelay: `${(index % 8) * 1.1}s`,
-              animationDuration: `${18 + (index % 6) * 2.5}s`,
+              top: `${6 + (index % 12) * 7.2}%`,
+              left: `${-30 - (index % 6) * 18}%`,
+              animationDelay: `${(index % 12) * 1.15}s`,
+              animationDuration: `${16 + (index % 7) * 2.4}s`,
             }}
           >
             {wish.emoji} {wish.content}
@@ -65,17 +79,17 @@ export default async function FamilyHomePage() {
                 href="/wishes"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-5 py-2 text-sm font-medium text-white hover:bg-white/5"
               >
-                审核祝福
+                {t("family.reviewCta")}
               </Link>
             </div>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6">
-            <div className="text-sm font-medium text-white/80">Neo</div>
+            <div className="text-sm font-medium text-white/80">{t("family.neoLabel")}</div>
             <div className="mt-3 text-5xl font-semibold tracking-tight">{badge.title}</div>
             <div className="mt-2 text-sm text-white/60">{badge.subtitle}</div>
             <div className="mt-6 rounded-xl border border-white/10 bg-black/20 p-4">
-              <div className="text-sm font-medium text-white/75">最近被点亮的 3 句话</div>
+              <div className="text-sm font-medium text-white/75">{t("family.latestTitle")}</div>
               <div className="mt-4 space-y-3">
                 {latestWishes.length ? (
                   latestWishes.map((wish) => (
@@ -87,13 +101,15 @@ export default async function FamilyHomePage() {
                         {wish.emoji} {wish.content}
                       </div>
                       <div className="mt-2 text-xs text-white/35">
-                        {wish.nickname ? `来自 ${wish.nickname}` : "来自一位朋友"}
+                        {wish.nickname
+                          ? t("family.fromNamed", { name: wish.nickname })
+                          : t("family.fromAnonymous")}
                       </div>
                     </div>
                   ))
                 ) : (
                   <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-6 text-sm text-white/35">
-                    等第一句被点亮，再把它放进这里。
+                    {t("family.empty")}
                   </div>
                 )}
               </div>
