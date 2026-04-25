@@ -17,10 +17,11 @@ export async function approveWishAction(formData: FormData) {
   await ensureFamily(locale);
   try {
     if (id) await reviewWish(id, "APPROVED");
-    redirect(`/${locale}/wishes`);
   } catch {
     redirect(`/${locale}/wishes?error=db`);
   }
+
+  redirect(`/${locale}/wishes`);
 }
 
 export async function rejectWishAction(formData: FormData) {
@@ -29,10 +30,11 @@ export async function rejectWishAction(formData: FormData) {
   await ensureFamily(locale);
   try {
     if (id) await reviewWish(id, "REJECTED");
-    redirect(`/${locale}/wishes`);
   } catch {
     redirect(`/${locale}/wishes?error=db`);
   }
+
+  redirect(`/${locale}/wishes`);
 }
 
 export async function deleteWishAction(formData: FormData) {
@@ -41,8 +43,9 @@ export async function deleteWishAction(formData: FormData) {
   await ensureFamily(locale);
   try {
     if (id) await deleteWish(id);
-    redirect(`/${locale}/wishes`);
   } catch {
     redirect(`/${locale}/wishes?error=db`);
   }
+
+  redirect(`/${locale}/wishes`);
 }

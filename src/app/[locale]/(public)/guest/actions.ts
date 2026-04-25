@@ -50,8 +50,9 @@ export async function submitWishAction(formData: FormData) {
 
   try {
     await createWish({ nickname, content, emoji });
-    redirect(`/${locale}/guest?sent=1`);
   } catch {
     redirect(`/${locale}/guest?error=db`);
   }
+
+  redirect(`/${locale}/guest?sent=1`);
 }
