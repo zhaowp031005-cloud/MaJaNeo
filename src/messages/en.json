@@ -7,7 +7,9 @@
     "dashboard": "Home",
     "timeline": "Timeline",
     "stats": "Stats",
-    "newPost": "New post"
+    "newPost": "New post",
+    "wishes": "Blessings",
+    "new": "New"
   },
   "home": {
     "title": "MaJaNeo",
@@ -17,5 +19,140 @@
   },
   "locale": {
     "label": "Language"
+  },
+  "metadata": {
+    "title": "MaJaNeo",
+    "description": "A small site for manting & jano's family to record Neo's growth"
+  },
+  "entry": {
+    "title": "Visitor or family?",
+    "subtitle": "Pick a tiny entrance first.",
+    "guest": "Visitor",
+    "family": "Family"
+  },
+  "login": {
+    "subtitle": "This door opens only for family",
+    "placeholder": "Family passcode",
+    "error": "Wrong spell. Try again.",
+    "submit": "Enter"
+  },
+  "guest": {
+    "eyebrow": "Public Blessings",
+    "title": "What do you want to say to Neo?",
+    "subtitle": "Leave a short note and pick an emoji. Once approved, it will show up on the public wall and drift into the family home.",
+    "barrage1": "Blessings will drift through here",
+    "barrage2": "Little notes for Neo are on the way",
+    "barrage3": "Waiting for the next gentle line to land",
+    "back": "Back to entry",
+    "formTitle": "Drop a little star",
+    "nameLabel": "Your name (optional)",
+    "namePlaceholder": "For example: Maya / a passing friend",
+    "contentLabel": "Your message",
+    "contentPlaceholder": "Leave a gentle note for Neo",
+    "emojiLabel": "Mood emoji",
+    "success": "Got it. It will light up after approval.",
+    "error": "It didn't fly out this time. Try again.",
+    "submit": "Send",
+    "listTitle": "Words already glowing",
+    "fromNamed": "From {name}",
+    "fromAnonymous": "From a passing friend",
+    "empty": "Still empty here, waiting for the first little note."
+  },
+  "family": {
+    "reviewCta": "Review blessings",
+    "neoLabel": "Neo",
+    "latestTitle": "Latest 3 glowing lines",
+    "fromNamed": "From {name}",
+    "fromAnonymous": "From a friend",
+    "empty": "Waiting for the first approved line to land here.",
+    "barrage1": "Waiting for a gentle line to drift by",
+    "barrage2": "A tiny universe is glowing quietly",
+    "barrage3": "Blessings will fall in softly"
+  },
+  "wishes": {
+    "eyebrow": "Blessings",
+    "title": "Visitor blessing review",
+    "subtitle": "Even approved ones can still be deleted later",
+    "error": "Action failed. The database may be unavailable for the moment. Please try again later.",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "fromNamed": "From {name}",
+    "fromAnonymous": "From a friend",
+    "approve": "Approve",
+    "reject": "Reject",
+    "delete": "Delete",
+    "empty": "Nothing here yet"
+  },
+  "stats": {
+    "eyebrow": "Stats",
+    "title": "Neo",
+    "level": "Level"
+  },
+  "newPost": {
+    "eyebrow": "New Post",
+    "authorLabel": "Author",
+    "authorManting": "Manting",
+    "authorJano": "Jano",
+    "authorFamily": "Family",
+    "timeLabel": "Time",
+    "yearLabel": "Year",
+    "monthLabel": "Month",
+    "dayLabel": "Day",
+    "contentLabel": "Content",
+    "contentPlaceholder": "Write today's growth note here (Chinese / English / German supported)",
+    "mediaLabel": "Media",
+    "filesCount": "{count} files",
+    "filesEmpty": "You can upload photos / videos / voice notes",
+    "generate": "Generate summary",
+    "submit": "Publish",
+    "summaryTitle": "Summary (editable)",
+    "summaryEmpty": "No summary yet",
+    "errorAnalyze": "Failed to generate summary. Please try again.",
+    "errorSubmit": "Publish failed. Please check the content or try again later.",
+    "manualReason": "Manual adjustment"
+  },
+  "timeline": {
+    "eyebrow": "Timeline",
+    "title": "Neo",
+    "count": "{count} posts",
+    "stickyTitle": "Timeline",
+    "stickyYears": "Years",
+    "close": "Close",
+    "noText": "(No text)",
+    "deleteConfirm": "Delete this record? This cannot be undone.",
+    "deleteDbError": "The database is temporarily unavailable. Please try again later.",
+    "deleteError": "Delete failed. Please try again later.",
+    "deleting": "Deleting...",
+    "delete": "Delete",
+    "done": "Done",
+    "emptyAuthor": "MaJaNeo",
+    "emptyContent": "No records yet. Tap New in the top-right to make the first one."
+  },
+  "timelineDemo": {
+    "item1": "The first tiny note of 2024: we decided to use a timeline to keep every ordinary but important moment.",
+    "item2": "We cleared a corner at home, hoping to turn it into Neo's little reading nook in the future.",
+    "item3": "First note of 2025: we started regular walks. Ten minutes a day, like saving up a little patience for the future.",
+    "item4": "Sorted and backed up photos, hoping every trip and every laugh will stay somewhere Neo can see one day.",
+    "item5": "Today we seriously arranged Neo's little wardrobe for the first time. Every piece is so tiny, like a slow letter to the future.",
+    "item6": "We went for a follow-up this afternoon, and the doctor said everything looked steady. On the way home we bought blueberry cake to celebrate this ordinary glowing little day.",
+    "item7": "Demo card check: gradient scroll line, axis through the center point, blurred background on open, plus the 3D card."
+  },
+  "neo": {
+    "name": "Neo",
+    "expectedTitle": "Expected ⭐",
+    "dobPrefix": "DOB",
+    "eddPrefix": "EDD",
+    "overdue": "overdue",
+    "days": "{count} days"
+  },
+  "analyzeReasons": {
+    "language": "Language-related activity",
+    "motor": "Motor-related activity",
+    "cognition": "Cognition and exploration activity",
+    "social": "Social and cooperation activity",
+    "emotion": "Emotion management activity",
+    "selfcare": "Self-care activity",
+    "fallback": "Default: record one growth moment"
   }
 }

@@ -7,7 +7,9 @@
     "dashboard": "Start",
     "timeline": "Timeline",
     "stats": "Werte",
-    "newPost": "Neuer Post"
+    "newPost": "Neuer Eintrag",
+    "wishes": "Segensgrüße",
+    "new": "Neu"
   },
   "home": {
     "title": "MaJaNeo",
@@ -17,5 +19,140 @@
   },
   "locale": {
     "label": "Sprache"
+  },
+  "metadata": {
+    "title": "MaJaNeo",
+    "description": "Eine kleine Seite, auf der mantings und janos Familie Neos Entwicklung festhalten kann"
+  },
+  "entry": {
+    "title": "Besucher oder Familie?",
+    "subtitle": "Such dir zuerst einen kleinen Eingang aus.",
+    "guest": "Besucher",
+    "family": "Familie"
+  },
+  "login": {
+    "subtitle": "Diese Tür geht nur für die Familie auf",
+    "placeholder": "Familien-Passwort",
+    "error": "Der Zauberspruch stimmt nicht. Noch mal.",
+    "submit": "Reingehen"
+  },
+  "guest": {
+    "eyebrow": "Öffentliche Grüße",
+    "title": "Was möchtest du Neo sagen?",
+    "subtitle": "Lass einen kurzen Satz da und wähle ein Emoji. Nach der Freigabe erscheint er an der öffentlichen Wand und schwebt leise zur Familien-Startseite.",
+    "barrage1": "Segensgrüße ziehen hier leise vorbei",
+    "barrage2": "Kleine Worte für Neo sind unterwegs",
+    "barrage3": "Wartet auf die nächste sanfte Zeile",
+    "back": "Zurück zum Eingang",
+    "formTitle": "Wirf einen kleinen Stern",
+    "nameLabel": "Dein Name (optional)",
+    "namePlaceholder": "Zum Beispiel: Maya / ein vorbeikommender Freund",
+    "contentLabel": "Was möchtest du sagen?",
+    "contentPlaceholder": "Lass Neo einen sanften Satz da",
+    "emojiLabel": "Stimmungs-Emoji",
+    "success": "Angenommen. Nach der Freigabe leuchtet es auf.",
+    "error": "Diesmal ist es nicht losgeflogen. Versuch es noch mal.",
+    "submit": "Absenden",
+    "listTitle": "Schon leuchtende Worte",
+    "fromNamed": "Von {name}",
+    "fromAnonymous": "Von einem vorbeikommenden Freund",
+    "empty": "Hier ist es noch leer und wartet auf den ersten kleinen Satz."
+  },
+  "family": {
+    "reviewCta": "Grüße prüfen",
+    "neoLabel": "Neo",
+    "latestTitle": "Die letzten 3 leuchtenden Zeilen",
+    "fromNamed": "Von {name}",
+    "fromAnonymous": "Von einem Freund",
+    "empty": "Hier wartet alles auf die erste freigegebene Zeile.",
+    "barrage1": "Wartet auf eine sanfte Zeile, die vorbeischwebt",
+    "barrage2": "Ein kleines Universum glüht ganz leise",
+    "barrage3": "Segensgrüße fallen langsam herab"
+  },
+  "wishes": {
+    "eyebrow": "Segensgrüße",
+    "title": "Prüfung der Besuchergrüße",
+    "subtitle": "Auch freigegebene Einträge können später noch gelöscht werden",
+    "error": "Aktion fehlgeschlagen. Die Datenbank ist möglicherweise gerade nicht verfügbar. Bitte später erneut versuchen.",
+    "pending": "Ausstehend",
+    "approved": "Freigegeben",
+    "rejected": "Abgelehnt",
+    "fromNamed": "Von {name}",
+    "fromAnonymous": "Von einem Freund",
+    "approve": "Freigeben",
+    "reject": "Ablehnen",
+    "delete": "Löschen",
+    "empty": "Noch nichts hier"
+  },
+  "stats": {
+    "eyebrow": "Werte",
+    "title": "Neo",
+    "level": "Level"
+  },
+  "newPost": {
+    "eyebrow": "Neuer Eintrag",
+    "authorLabel": "Autor",
+    "authorManting": "Manting",
+    "authorJano": "Jano",
+    "authorFamily": "Familie",
+    "timeLabel": "Zeit",
+    "yearLabel": "Jahr",
+    "monthLabel": "Monat",
+    "dayLabel": "Tag",
+    "contentLabel": "Inhalt",
+    "contentPlaceholder": "Schreibe hier den Wachstumseintrag von heute (Chinesisch / Englisch / Deutsch unterstützt)",
+    "mediaLabel": "Medien",
+    "filesCount": "{count} Dateien",
+    "filesEmpty": "Du kannst Fotos / Videos / Sprachaufnahmen hochladen",
+    "generate": "Auswertung erzeugen",
+    "submit": "Veröffentlichen",
+    "summaryTitle": "Auswertung (anpassbar)",
+    "summaryEmpty": "Noch keine Auswertung",
+    "errorAnalyze": "Die Auswertung konnte nicht erzeugt werden. Bitte erneut versuchen.",
+    "errorSubmit": "Veröffentlichen fehlgeschlagen. Bitte Inhalt prüfen oder später erneut versuchen.",
+    "manualReason": "Manuell angepasst"
+  },
+  "timeline": {
+    "eyebrow": "Timeline",
+    "title": "Neo",
+    "count": "{count} Einträge",
+    "stickyTitle": "Timeline",
+    "stickyYears": "Jahre",
+    "close": "Schließen",
+    "noText": "(Kein Text)",
+    "deleteConfirm": "Diesen Eintrag löschen? Das kann nicht rückgängig gemacht werden.",
+    "deleteDbError": "Die Datenbank ist vorübergehend nicht verfügbar. Bitte später erneut versuchen.",
+    "deleteError": "Löschen fehlgeschlagen. Bitte später erneut versuchen.",
+    "deleting": "Wird gelöscht...",
+    "delete": "Löschen",
+    "done": "Fertig",
+    "emptyAuthor": "MaJaNeo",
+    "emptyContent": "Noch keine Einträge. Tippe oben rechts auf Neu, um den ersten zu erstellen."
+  },
+  "timelineDemo": {
+    "item1": "Der erste kleine Zettel von 2024: Wir haben beschlossen, mit einer Timeline jeden gewöhnlichen, aber wichtigen Moment festzuhalten.",
+    "item2": "Wir haben zu Hause eine Ecke freigeräumt und wollen daraus später eine kleine Leseecke für Neo machen.",
+    "item3": "Der erste Eintrag von 2025: Wir haben mit regelmäßigen Spaziergängen begonnen. Zehn Minuten am Tag, wie ein kleines Sparschwein für Geduld in der Zukunft.",
+    "item4": "Fotos sortiert und gesichert, damit jede Reise und jedes Lachen an einem Ort bleibt, den Neo später sehen kann.",
+    "item5": "Heute haben wir Neos kleinen Kleiderschrank zum ersten Mal richtig sortiert. Jedes Stück ist so winzig, wie ein langsam entfalteter Brief an die Zukunft.",
+    "item6": "Am Nachmittag waren wir zur Kontrolle, und der Arzt meinte, alles sei stabil. Auf dem Heimweg haben wir Blaubeerkuchen gekauft und diesen gewöhnlichen, leuchtenden kleinen Tag gefeiert.",
+    "item7": "Demo-Kartencheck: Verlaufslinie beim Scrollen, Achse durch den Mittelpunkt, unscharfer Hintergrund beim Öffnen plus 3D-Karte."
+  },
+  "neo": {
+    "name": "Neo",
+    "expectedTitle": "Erwartet ⭐",
+    "dobPrefix": "Geb.",
+    "eddPrefix": "ET",
+    "overdue": "überfällig",
+    "days": "{count} Tage"
+  },
+  "analyzeReasons": {
+    "language": "Sprachbezogene Aktivität",
+    "motor": "Motorische Aktivität",
+    "cognition": "Aktivität zu Kognition und Entdeckung",
+    "social": "Soziale und kooperative Aktivität",
+    "emotion": "Aktivität zur Emotionsregulation",
+    "selfcare": "Aktivität zur Selbstständigkeit",
+    "fallback": "Standard: ein Wachstumsmoment wird festgehalten"
   }
 }

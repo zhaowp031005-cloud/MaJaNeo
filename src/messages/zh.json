@@ -7,7 +7,9 @@
     "dashboard": "主页",
     "timeline": "时间线",
     "stats": "数值",
-    "newPost": "发帖"
+    "newPost": "发帖",
+    "wishes": "祝福审核",
+    "new": "New"
   },
   "home": {
     "title": "MaJaNeo",
@@ -17,5 +19,140 @@
   },
   "locale": {
     "label": "语言"
+  },
+  "metadata": {
+    "title": "MaJaNeo",
+    "description": "给 manting 与 jano 家人记录 Neo 成长的小站"
+  },
+  "entry": {
+    "title": "游客，还是家人？",
+    "subtitle": "先选一个小入口。",
+    "guest": "游客",
+    "family": "家人"
+  },
+  "login": {
+    "subtitle": "这扇门只给家人开",
+    "placeholder": "家庭口令",
+    "error": "咒语不对，再试一次",
+    "submit": "进屋"
+  },
+  "guest": {
+    "eyebrow": "Public Blessings",
+    "title": "你想对 Neo 说什么？",
+    "subtitle": "留一句小话，再挑个 emoji。过审后，它会出现在公开墙，也会悄悄飘进家人首页。",
+    "barrage1": "祝福会在这里慢慢飘过去",
+    "barrage2": "给 Neo 的小话正在路上",
+    "barrage3": "等下一句温柔的话落下来",
+    "back": "返回入口",
+    "formTitle": "丢一颗小星星",
+    "nameLabel": "你的名字（可空着）",
+    "namePlaceholder": "比如：Maya / 路过的朋友",
+    "contentLabel": "想说什么",
+    "contentPlaceholder": "给 Neo 留一句温柔的话",
+    "emojiLabel": "心情 emoji",
+    "success": "收到啦。过审后它就会冒出来。",
+    "error": "这次没飞出去，再试一下。",
+    "submit": "发射",
+    "listTitle": "已经亮起来的话",
+    "fromNamed": "来自 {name}",
+    "fromAnonymous": "来自一位路过的朋友",
+    "empty": "这里还空空的，等第一句小话落下来。"
+  },
+  "family": {
+    "reviewCta": "审核祝福",
+    "neoLabel": "Neo",
+    "latestTitle": "最近被点亮的 3 句话",
+    "fromNamed": "来自 {name}",
+    "fromAnonymous": "来自一位朋友",
+    "empty": "等第一句被点亮，再把它放进这里。",
+    "barrage1": "等一句温柔的话飞来",
+    "barrage2": "小宇宙静静亮着",
+    "barrage3": "祝福会慢慢落下"
+  },
+  "wishes": {
+    "eyebrow": "Blessings",
+    "title": "游客祝福审核",
+    "subtitle": "后续即使通过，也可以删除",
+    "error": "操作失败，数据库可能暂时不可用，请稍后再试。",
+    "pending": "待审核",
+    "approved": "已通过",
+    "rejected": "已拒绝",
+    "fromNamed": "来自 {name}",
+    "fromAnonymous": "来自一位朋友",
+    "approve": "通过",
+    "reject": "拒绝",
+    "delete": "删除",
+    "empty": "暂无内容"
+  },
+  "stats": {
+    "eyebrow": "数值",
+    "title": "Neo",
+    "level": "Level"
+  },
+  "newPost": {
+    "eyebrow": "New Post",
+    "authorLabel": "Author",
+    "authorManting": "Manting",
+    "authorJano": "Jano",
+    "authorFamily": "Family",
+    "timeLabel": "Time",
+    "yearLabel": "年",
+    "monthLabel": "月",
+    "dayLabel": "日",
+    "contentLabel": "Content",
+    "contentPlaceholder": "写下今天的成长记录（支持中/英/德）",
+    "mediaLabel": "Media",
+    "filesCount": "{count} 个文件",
+    "filesEmpty": "可上传照片/视频/语音",
+    "generate": "生成结算",
+    "submit": "发布",
+    "summaryTitle": "结算（可调整）",
+    "summaryEmpty": "未结算",
+    "errorAnalyze": "结算生成失败，请重试",
+    "errorSubmit": "发布失败，请检查内容或稍后再试",
+    "manualReason": "手动调整"
+  },
+  "timeline": {
+    "eyebrow": "Timeline",
+    "title": "Neo",
+    "count": "{count} 条记录",
+    "stickyTitle": "Timeline",
+    "stickyYears": "Years",
+    "close": "关闭",
+    "noText": "（无文字）",
+    "deleteConfirm": "确定要删除这条记录吗？删除后不可恢复。",
+    "deleteDbError": "数据库暂不可用，稍后再试。",
+    "deleteError": "删除失败，请稍后再试。",
+    "deleting": "删除中...",
+    "delete": "删除",
+    "done": "完成",
+    "emptyAuthor": "MaJaNeo",
+    "emptyContent": "还没有记录。点击右上角 New 开始第一条。"
+  },
+  "timelineDemo": {
+    "item1": "2024 的第一张小纸条：我们决定用时间轴记录每一个普通但重要的瞬间。",
+    "item2": "把家里的一个角落空出来，打算未来做成 Neo 的小小阅读区。",
+    "item3": "2025 的第一条：开始规律散步。每天 10 分钟，像给未来攒一点耐心。",
+    "item4": "整理照片备份：想把每次旅行、每次笑都留在 Neo 将来能看到的地方。",
+    "item5": "今天第一次认真整理了 Neo 的小衣柜。每一件都好小，像在给未来写一封慢慢展开的信。",
+    "item6": "下午去复查，医生说一切都很稳。回家路上买了蓝莓蛋糕，庆祝这个普通但闪光的小日子。",
+    "item7": "Demo 卡片效果检查：滚动渐动线、轴线穿过圆心、点开后背景虚化 + 3D Card。"
+  },
+  "neo": {
+    "name": "Neo",
+    "expectedTitle": "Expected ⭐",
+    "dobPrefix": "DOB",
+    "eddPrefix": "EDD",
+    "overdue": "overdue",
+    "days": "{count} 天"
+  },
+  "analyzeReasons": {
+    "language": "语言相关行为",
+    "motor": "运动相关行为",
+    "cognition": "认知探索相关行为",
+    "social": "社交合作相关行为",
+    "emotion": "情绪管理相关行为",
+    "selfcare": "自理能力相关行为",
+    "fallback": "默认：记录一次成长事件"
   }
 }
