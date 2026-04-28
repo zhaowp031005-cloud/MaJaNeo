@@ -53,9 +53,9 @@ export default async function GuestPage({
   const seedItems = wishes.length
     ? wishes.slice(0, 24)
     : [
-        { id: "placeholder-1", emoji: "✨", content: t("barrage1") },
-        { id: "placeholder-2", emoji: "🌙", content: t("barrage2") },
-        { id: "placeholder-3", emoji: "💫", content: t("barrage3") },
+        { id: "placeholder-1", emoji: "✨", content: t("barrage1"), nickname: null },
+        { id: "placeholder-2", emoji: "🌙", content: t("barrage2"), nickname: null },
+        { id: "placeholder-3", emoji: "💫", content: t("barrage3"), nickname: null },
       ];
   const barrageItems = Array.from({ length: Math.max(18, seedItems.length * 4) }, (_, index) => {
     const wish = seedItems[index % seedItems.length]!;
