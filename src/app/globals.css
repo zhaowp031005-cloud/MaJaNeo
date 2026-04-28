@@ -1,28 +1,246 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07080b;
+  --foreground: #f5efe6;
+  --mj-ink: #07080b;
+  --mj-ink-soft: #0e1118;
+  --mj-panel: rgba(13, 18, 28, 0.78);
+  --mj-panel-strong: rgba(10, 14, 22, 0.92);
+  --mj-panel-edge: rgba(255, 255, 255, 0.11);
+  --mj-line: rgba(255, 255, 255, 0.1);
+  --mj-text: #f4ede2;
+  --mj-text-muted: rgba(244, 237, 226, 0.7);
+  --mj-text-soft: rgba(244, 237, 226, 0.48);
+  --mj-accent: #d8b67a;
+  --mj-accent-strong: #f1d39d;
+  --mj-accent-cool: #91b9ff;
+  --mj-danger: #ff8f8f;
+  --mj-shadow: 0 32px 90px -42px rgba(0, 0, 0, 0.95);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-mono: "Cascadia Code", "SFMono-Regular", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--mj-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  background:
+    radial-gradient(circle at top left, rgba(145, 185, 255, 0.17), transparent 30%),
+    radial-gradient(circle at top right, rgba(216, 182, 122, 0.12), transparent 28%),
+    radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.06), transparent 34%),
+    linear-gradient(180deg, #05060a 0%, #090b11 32%, #0b1018 100%);
+  color: var(--mj-text);
+  font-family:
+    var(--font-body),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  letter-spacing: 0.01em;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  opacity: 0.55;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.55) 0.7px, transparent 0.7px);
+  background-size: 10px 10px;
+  mix-blend-mode: soft-light;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+::selection {
+  background: rgba(216, 182, 122, 0.28);
+  color: #fff9ef;
+}
+
+.mj-page {
+  position: relative;
+  flex: 1;
+}
+
+.mj-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--mj-panel-edge);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
+    var(--mj-panel);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.015),
+    var(--mj-shadow);
+  backdrop-filter: blur(22px);
+}
+
+.mj-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top right, rgba(145, 185, 255, 0.16), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(216, 182, 122, 0.1), transparent 26%);
+}
+
+.mj-panel {
+  border: 1px solid var(--mj-line);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+}
+
+.mj-panel-strong {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--mj-panel-strong);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 60px -32px rgba(0, 0, 0, 0.85);
+}
+
+.mj-hero-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(14px);
+  opacity: 0.7;
+}
+
+.mj-title {
+  font-family:
+    var(--font-display),
+    "Times New Roman",
+    serif;
+  letter-spacing: -0.03em;
+}
+
+.mj-eyebrow {
+  color: var(--mj-accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.mj-kicker {
+  color: var(--mj-text-soft);
+  font-size: 0.84rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mj-button-primary {
+  border: 1px solid rgba(241, 211, 157, 0.16);
+  background: linear-gradient(135deg, #f3dcac 0%, #d4aa6a 100%);
+  color: #120f0b;
+  box-shadow:
+    0 14px 32px -18px rgba(243, 220, 172, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.mj-button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 36px -18px rgba(243, 220, 172, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+}
+
+.mj-button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--mj-text);
+}
+
+.mj-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.mj-button-ghost {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mj-text-muted);
+}
+
+.mj-button-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--mj-text);
+}
+
+.mj-input,
+.mj-select,
+.mj-textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(4, 8, 14, 0.56);
+  color: var(--mj-text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.mj-input::placeholder,
+.mj-textarea::placeholder {
+  color: rgba(244, 237, 226, 0.3);
+}
+
+.mj-input:focus,
+.mj-select:focus,
+.mj-textarea:focus {
+  border-color: rgba(216, 182, 122, 0.42);
+  box-shadow:
+    0 0 0 4px rgba(216, 182, 122, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  outline: none;
+}
+
+.mj-stat-chip {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--mj-text-soft);
+}
+
+.mj-soft-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
 }
 
 @keyframes mjFloat {
@@ -39,6 +257,22 @@ body {
 
 .mj-float {
   animation: mjFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes mjSlowPulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.mj-slow-pulse {
+  animation: mjSlowPulse 5.2s ease-in-out infinite;
 }
 
 @keyframes mjBarrage {

@@ -155,16 +155,17 @@ export default function NewPostPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-10">
-      <div className="text-sm font-medium text-white/70">{t("eyebrow")}</div>
+    <div className="mx-auto w-full max-w-6xl px-6 py-10">
+      <div className="mj-eyebrow">{t("eyebrow")}</div>
+      <div className="mj-title mt-3 text-5xl">{t("heroTitle")}</div>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <div className="mj-shell rounded-[2rem] p-6">
           <div className="grid gap-3">
             <label className="grid gap-1 text-sm text-white/70">
               {t("authorLabel")}
               <select
-                className="rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none"
+                className="mj-select rounded-2xl px-3 py-3 text-sm"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value as typeof author)}
               >
@@ -191,7 +192,7 @@ export default function NewPostPage() {
                     }
                     setTimePickerOpen((v) => !v);
                   }}
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none"
+                  className="mj-input flex items-center justify-between rounded-2xl px-3 py-3 text-sm"
                 >
                   <span>
                     {String(occurredParts.y).padStart(4, "0")}/
@@ -204,12 +205,12 @@ export default function NewPostPage() {
                 </button>
 
                 {timePickerOpen ? (
-                  <div className="rounded-xl border border-white/10 bg-black/40 p-3">
+                  <div className="rounded-2xl border border-white/10 bg-black/40 p-3">
                     <div className="grid gap-3 md:grid-cols-3">
                       <label className="grid gap-1 text-xs text-white/60">
                         {t("yearLabel")}
                         <select
-                          className="rounded-lg border border-white/10 bg-black/30 px-2 py-1.5 text-sm text-white outline-none"
+                          className="mj-select rounded-xl px-2 py-2 text-sm"
                           value={occurredParts.y}
                           onChange={(e) => updateOccurredDate({ y: Number(e.target.value) })}
                         >
@@ -224,7 +225,7 @@ export default function NewPostPage() {
                       <label className="grid gap-1 text-xs text-white/60">
                         {t("monthLabel")}
                         <select
-                          className="rounded-lg border border-white/10 bg-black/30 px-2 py-1.5 text-sm text-white outline-none"
+                          className="mj-select rounded-xl px-2 py-2 text-sm"
                           value={occurredParts.mo}
                           onChange={(e) => updateOccurredDate({ mo: Number(e.target.value) })}
                         >
@@ -239,7 +240,7 @@ export default function NewPostPage() {
                       <label className="grid gap-1 text-xs text-white/60">
                         {t("dayLabel")}
                         <select
-                          className="rounded-lg border border-white/10 bg-black/30 px-2 py-1.5 text-sm text-white outline-none"
+                          className="mj-select rounded-xl px-2 py-2 text-sm"
                           value={occurredParts.da}
                           onChange={(e) => updateOccurredDate({ da: Number(e.target.value) })}
                         >
@@ -259,7 +260,7 @@ export default function NewPostPage() {
             <label className="grid gap-1 text-sm text-white/70">
               {t("titleLabel")}
               <input
-                className="rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none placeholder:text-white/30"
+                className="mj-input rounded-2xl px-3 py-3 text-sm"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 maxLength={80}
@@ -270,7 +271,7 @@ export default function NewPostPage() {
             <label className="grid gap-1 text-sm text-white/70">
               {t("contentLabel")}
               <textarea
-                className="min-h-32 rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white outline-none"
+                className="mj-textarea min-h-36 rounded-2xl px-3 py-3 text-sm"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder={t("contentPlaceholder")}
@@ -283,7 +284,7 @@ export default function NewPostPage() {
                 type="file"
                 multiple
                 accept="image/*,video/*,audio/*"
-                className="block w-full text-sm text-white/70 file:mr-3 file:rounded-full file:border-0 file:bg-white file:px-4 file:py-2 file:text-sm file:font-medium file:text-black"
+                className="block w-full text-sm text-white/70 file:mr-3 file:rounded-full file:border-0 file:bg-[linear-gradient(135deg,#f3dcac_0%,#d4aa6a_100%)] file:px-4 file:py-2 file:text-sm file:font-medium file:text-black"
                 onChange={(e) => setFiles(Array.from(e.target.files ?? []))}
               />
               <div className="text-xs text-white/40">
@@ -298,7 +299,7 @@ export default function NewPostPage() {
                 type="button"
                 onClick={generateSuggestions}
                 disabled={busy || !content.trim()}
-                className="rounded-full border border-white/15 bg-transparent px-5 py-2 text-sm font-medium text-white disabled:opacity-50"
+                className="mj-button-secondary rounded-full px-5 py-2.5 text-sm font-medium disabled:opacity-50"
               >
                 {t("generate")}
               </button>
@@ -306,7 +307,7 @@ export default function NewPostPage() {
                 type="button"
                 onClick={submit}
                 disabled={busy || !content.trim()}
-                className="rounded-full bg-white px-5 py-2 text-sm font-medium text-black disabled:opacity-50"
+                className="mj-button-primary rounded-full px-5 py-2.5 text-sm font-semibold disabled:opacity-50"
               >
                 {t("submit")}
               </button>
@@ -314,14 +315,14 @@ export default function NewPostPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <div className="text-sm font-medium text-white/70">{t("summaryTitle")}</div>
+        <div className="mj-panel rounded-[2rem] p-6">
+          <div className="mj-kicker text-[10px]">{t("summaryTitle")}</div>
           <div className="mt-4 space-y-4">
             {statDimensions.map((d) => {
               const draft = draftMap.get(d.key);
               const delta = draft?.delta ?? 0;
               return (
-                <div key={d.key} className="grid gap-2">
+                <div key={d.key} className="grid gap-2 rounded-[1.35rem] border border-white/8 bg-[rgba(4,8,14,0.34)] p-4">
                   <div className="flex items-center justify-between text-sm">
                     <div className="text-white/80">
                       {labelForLocale(d, locale)}

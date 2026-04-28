@@ -32,30 +32,33 @@ export default async function StatsPage({
   }));
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-10">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <div className="text-sm font-medium text-white/70">{t("eyebrow")}</div>
-          <div className="mt-2 text-2xl font-semibold tracking-tight">{t("title")}</div>
+    <div className="mx-auto w-full max-w-6xl px-6 py-10">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="max-w-2xl">
+          <div className="mj-eyebrow">{t("eyebrow")}</div>
+          <div className="mj-title mt-3 text-5xl">{t("title")}</div>
+          <p className="mt-4 text-sm leading-7 text-[var(--mj-text-muted)]">{t("description")}</p>
         </div>
-        <div className="text-right">
-          <div className="text-xs text-white/50">{t("level")}</div>
-          <div className="text-3xl font-semibold">{badge.title}</div>
+        <div className="mj-shell rounded-[1.6rem] px-5 py-4 text-right">
+          <div className="mj-kicker text-[10px]">{t("level")}</div>
+          <div className="mj-title mt-2 text-3xl">{badge.title}</div>
+          <div className="mt-1 text-sm text-[var(--mj-text-soft)]">{badge.subtitle}</div>
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6">
+      <div className="mj-shell mt-8 rounded-[2rem] p-6">
         <RadarStats data={data} />
       </div>
 
-      <div className="mt-6 grid gap-3 md:grid-cols-3">
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
         {data.map((d) => (
           <div
             key={d.key}
-            className="rounded-2xl border border-white/10 bg-white/5 p-4"
+            className="mj-panel rounded-[1.5rem] p-5"
           >
-            <div className="text-sm text-white/70">{d.label}</div>
-            <div className="mt-2 text-2xl font-semibold">{d.value}</div>
+            <div className="mj-kicker text-[10px]">{d.label}</div>
+            <div className="mt-3 text-3xl font-semibold text-[var(--mj-text)]">{d.value}</div>
+            <div className="mt-2 text-sm text-[var(--mj-text-soft)]">Full mark {d.fullMark}</div>
           </div>
         ))}
       </div>

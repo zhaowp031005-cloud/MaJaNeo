@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { authCookieName, isAuthed } from "@/server/auth";
 import { Link } from "@/i18n/navigation";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
 export default async function AppLayout({
   children,
@@ -17,12 +18,18 @@ export default async function AppLayout({
 
   return (
     <div className="min-h-full flex flex-col">
-      <header className="sticky top-0 z-10 border-b border-white/10 bg-[#07080a]/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-4">
-          <Link href="/family" className="text-sm font-semibold tracking-tight">
-            MaJaNeo
+      <header className="sticky top-0 z-20 border-b border-white/8 bg-[rgba(7,8,11,0.66)] backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+          <Link href="/family" className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm text-[var(--mj-accent-strong)]">
+              N
+            </span>
+            <span>
+              <span className="mj-kicker block text-[10px]">Family Archive</span>
+              <span className="mj-title text-2xl leading-none">MaJaNeo</span>
+            </span>
           </Link>
-          <nav className="flex items-center gap-4 text-sm text-white/70">
+          <nav className="flex flex-wrap items-center gap-2 text-sm text-white/70">
             <Link href="/family" className="hover:text-white">
               {t("nav.dashboard")}
             </Link>
@@ -37,10 +44,11 @@ export default async function AppLayout({
             </Link>
             <Link
               href="/post/new"
-              className="rounded-full bg-white px-4 py-1.5 text-black"
+              className="mj-button-primary rounded-full px-4 py-2 text-xs font-semibold tracking-[0.14em]"
             >
               {t("nav.new")}
             </Link>
+            <LocaleSwitcher />
           </nav>
         </div>
       </header>

@@ -28,19 +28,29 @@ function WishSection({
   };
 }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <div className="text-lg font-semibold">{title}</div>
+    <div className="mj-panel rounded-[1.8rem] p-5">
+      <div className="flex items-center justify-between gap-3">
+        <div className="mj-title text-2xl">{title}</div>
+        <div className="mj-stat-chip rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.18em]">
+          {wishes.length}
+        </div>
+      </div>
       <div className="mt-4 space-y-3">
         {wishes.length ? (
           wishes.map((wish) => (
-            <div key={wish.id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <div className="text-lg">
-                {wish.emoji} <span className="text-sm text-white/85">{wish.content}</span>
-              </div>
-              <div className="mt-2 text-xs text-white/40">
-                {wish.nickname
-                  ? labels.fromNamed.replace("{name}", wish.nickname)
-                  : labels.fromAnonymous}
+            <div key={wish.id} className="rounded-[1.4rem] border border-white/10 bg-[rgba(4,8,14,0.46)] p-4">
+              <div className="flex items-start gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-lg">
+                  {wish.emoji}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm leading-7 text-[var(--mj-text)]">{wish.content}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.16em] text-[var(--mj-text-soft)]">
+                    {wish.nickname
+                      ? labels.fromNamed.replace("{name}", wish.nickname)
+                      : labels.fromAnonymous}
+                  </div>
+                </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {mode === "pending" ? (
@@ -50,7 +60,7 @@ function WishSection({
                       <input type="hidden" name="id" value={wish.id} />
                       <button
                         type="submit"
-                        className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black"
+                        className="mj-button-primary rounded-full px-4 py-2 text-sm font-medium"
                       >
                         {labels.approve}
                       </button>
@@ -60,7 +70,7 @@ function WishSection({
                       <input type="hidden" name="id" value={wish.id} />
                       <button
                         type="submit"
-                        className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/80"
+                        className="mj-button-secondary rounded-full px-4 py-2 text-sm"
                       >
                         {labels.reject}
                       </button>
@@ -82,7 +92,7 @@ function WishSection({
             </div>
           ))
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-6 text-sm text-white/40">
+          <div className="rounded-[1.4rem] border border-white/10 bg-[rgba(4,8,14,0.46)] px-4 py-6 text-sm text-[var(--mj-text-soft)]">
             {labels.empty}
           </div>
         )}
@@ -116,18 +126,21 @@ export default async function WishesPage({
   };
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 py-10">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <div className="text-sm font-medium text-white/70">{t("eyebrow")}</div>
-          <div className="mt-2 text-2xl font-semibold tracking-tight">{t("title")}</div>
+    <div className="mx-auto w-full max-w-7xl px-6 py-10">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="max-w-2xl">
+          <div className="mj-eyebrow">{t("eyebrow")}</div>
+          <div className="mj-title mt-3 text-5xl">{t("title")}</div>
+          <div className="mt-4 text-sm leading-7 text-[var(--mj-text-muted)]">{t("subtitle")}</div>
         </div>
-        <div className="text-xs text-white/45">{t("subtitle")}</div>
+        <div className="mj-stat-chip rounded-full px-4 py-2 text-xs uppercase tracking-[0.18em]">
+          {t("queueLabel")}
+        </div>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-3">
+      <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {error ? (
-          <div className="lg:col-span-3 rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          <div className="lg:col-span-3 rounded-[1.4rem] border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
             {t("error")}
           </div>
         ) : null}

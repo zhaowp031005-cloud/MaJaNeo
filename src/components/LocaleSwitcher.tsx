@@ -11,15 +11,15 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white">
-      <span className="opacity-70">{t("label")}</span>
+    <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm text-[var(--mj-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
+      <span className="mj-kicker text-[10px] text-[var(--mj-text-soft)]">{t("label")}</span>
       <select
-        className="bg-transparent outline-none"
+        className="bg-transparent text-sm font-semibold tracking-[0.16em] text-[var(--mj-text)] outline-none"
         value={locale}
         onChange={(e) => router.replace(pathname, { locale: e.target.value as Locale })}
       >
         {locales.map((l) => (
-          <option key={l} value={l} className="text-black">
+          <option key={l} value={l} className="bg-slate-900 text-white">
             {l.toUpperCase()}
           </option>
         ))}

@@ -25,13 +25,22 @@
     "description": "A small site for manting & jano's family to record Neo's growth"
   },
   "entry": {
+    "eyebrow": "Moonlit Entry",
     "title": "Visitor or family?",
     "subtitle": "Pick a tiny entrance first.",
     "guest": "Visitor",
-    "family": "Family"
+    "family": "Family",
+    "guestLabel": "Public Space",
+    "guestDesc": "Enter the blessing wall, leave a small note, and let it drift into Neo's night sky after review.",
+    "guestEnter": "Enter",
+    "familyLabel": "Family Gate",
+    "familyDesc": "Open the private archive to write growth notes, review blessings, and follow Neo's timeline together.",
+    "familyEnter": "Unlock"
   },
   "login": {
+    "eyebrow": "Private Entry",
     "subtitle": "This door opens only for family",
+    "passcodeLabel": "Family passcode",
     "placeholder": "Family passcode",
     "error": "Wrong spell. Try again.",
     "submit": "Enter"
@@ -59,9 +68,12 @@
     "empty": "Still empty here, waiting for the first little note."
   },
   "family": {
+    "eyebrow": "Family Home",
     "reviewCta": "Review blessings",
     "neoLabel": "Neo",
     "latestTitle": "Latest 3 glowing lines",
+    "briefLabel": "Tonight's Brief",
+    "highlighted": "{count} highlighted blessings",
     "fromNamed": "From {name}",
     "fromAnonymous": "From a friend",
     "empty": "Waiting for the first approved line to land here.",
@@ -73,6 +85,7 @@
     "eyebrow": "Blessings",
     "title": "Visitor blessing review",
     "subtitle": "Even approved ones can still be deleted later",
+    "queueLabel": "Review Queue",
     "error": "Action failed. The database may be unavailable for the moment. Please try again later.",
     "pending": "Pending",
     "approved": "Approved",
@@ -87,10 +100,12 @@
   "stats": {
     "eyebrow": "Stats",
     "title": "Neo",
-    "level": "Level"
+    "level": "Level",
+    "description": "A quiet moonlit snapshot of Neo's current development dimensions."
   },
   "newPost": {
     "eyebrow": "New Post",
+    "heroTitle": "Capture A Memory",
     "authorLabel": "Author",
     "authorManting": "Manting",
     "authorJano": "Jano",
@@ -120,6 +135,25 @@
     "count": "{count} posts",
     "stickyTitle": "Timeline",
     "stickyYears": "Years",
+    "description": "Follow the quiet but important milestones, then open any node to read that memory again.",
+    "mediaLabel": "Media",
+    "yearLabel": "Year",
+    "typeLabel": "Type",
+    "typeText": "Text",
+    "typeImage": "Image",
+    "typeVideo": "Video",
+    "typeAudio": "Audio",
+    "featuredLabel": "Featured Media",
+    "featuredVideoTitle": "Video Memory",
+    "featuredVideoDesc": "This entry contains a video attachment.",
+    "featuredAudioTitle": "Audio Memory",
+    "featuredAudioDesc": "This entry contains an audio attachment.",
+    "featuredTextTitle": "Quiet Note",
+    "featuredTextDesc": "This is a text-only record, preserved like a midnight note.",
+    "detailTitle": "Detail",
+    "detailAuthor": "Author",
+    "detailDate": "Date",
+    "detailAssets": "Assets",
     "close": "Close",
     "noText": "(No text)",
     "deleteConfirm": "Delete this record? This cannot be undone.",

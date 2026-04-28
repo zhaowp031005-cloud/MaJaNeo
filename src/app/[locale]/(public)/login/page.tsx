@@ -14,30 +14,41 @@ export default async function LoginPage({
   const t = await getTranslations("login");
 
   return (
-    <div className="flex flex-1 items-center justify-center px-6 py-16">
-      <main className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6">
-        <div className="flex items-center justify-between">
-          <div className="text-lg font-semibold tracking-tight">MaJaNeo</div>
+    <div className="mj-page flex flex-1 items-center justify-center px-6 py-16">
+      <div className="mj-hero-orb left-[12%] top-[18%] h-48 w-48 bg-[rgba(145,185,255,0.14)]" />
+      <div className="mj-hero-orb right-[10%] top-[28%] h-60 w-60 bg-[rgba(216,182,122,0.12)]" />
+
+      <main className="mj-shell w-full max-w-xl rounded-[2rem] p-6 sm:p-8">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div className="mj-eyebrow">{t("eyebrow")}</div>
+            <div className="mj-title mt-3 text-4xl">MaJaNeo</div>
+          </div>
           <LocaleSwitcher />
         </div>
 
-        <div className="mt-2 text-sm text-white/70">{t("subtitle")}</div>
+        <div className="mt-5 max-w-md text-sm leading-7 text-[var(--mj-text-muted)]">{t("subtitle")}</div>
 
-        <form action={loginAction} className="mt-6 space-y-3">
+        <form action={loginAction} className="mt-8 space-y-4">
           <input type="hidden" name="locale" value={locale} />
-          <input
-            name="passcode"
-            type="password"
-            className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none placeholder:text-white/30"
-            placeholder={t("placeholder")}
-            required
-          />
+          <label className="grid gap-2 text-sm text-[var(--mj-text-soft)]">
+            {t("passcodeLabel")}
+            <input
+              name="passcode"
+              type="password"
+              className="mj-input rounded-2xl px-4 py-3.5 text-sm"
+              placeholder={t("placeholder")}
+              required
+            />
+          </label>
           {error ? (
-            <div className="text-sm text-red-300">{t("error")}</div>
+            <div className="rounded-2xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">
+              {t("error")}
+            </div>
           ) : null}
           <button
             type="submit"
-            className="w-full rounded-xl bg-white px-4 py-3 text-sm font-medium text-black"
+            className="mj-button-primary w-full rounded-2xl px-4 py-3.5 text-sm font-semibold"
           >
             {t("submit")}
           </button>

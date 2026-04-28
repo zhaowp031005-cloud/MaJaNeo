@@ -66,12 +66,12 @@ export default async function GuestPage({
   });
 
   return (
-    <div className="relative flex flex-1 items-center justify-center overflow-hidden px-6 py-16">
-      <div className="pointer-events-none absolute inset-0">
+    <div className="mj-page relative flex flex-1 items-center justify-center overflow-hidden px-6 py-16">
+      <div className="pointer-events-none absolute inset-0 z-0">
         {barrageItems.map((wish, index) => (
           <div
             key={wish.id}
-            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/45 backdrop-blur-sm"
+            className="mj-barrage-item absolute whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-[var(--mj-text-soft)] backdrop-blur-sm"
             style={{
               top: `${6 + (index % 12) * 7.2}%`,
               left: `${-30 - (index % 6) * 18}%`,
@@ -79,115 +79,133 @@ export default async function GuestPage({
               animationDuration: `${16 + (index % 7) * 2.4}s`,
             }}
           >
-            {wish.emoji} {wish.content}
+            {wish.emoji} {wish.content} · {wish.nickname || t("fromAnonymous")}
           </div>
         ))}
       </div>
 
-      <main className="relative z-10 w-full max-w-5xl">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-sm font-medium text-white/60">{t("eyebrow")}</div>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight">{t("title")}</h1>
-            <p className="mt-3 max-w-2xl text-white/65">{t("subtitle")}</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-lg text-white/75 hover:bg-white/5"
-              aria-label={t("back")}
-              title={t("back")}
-            >
-              ←
-            </Link>
-            <LocaleSwitcher />
-          </div>
-        </div>
-
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <div className="text-sm font-medium text-white/75">{t("formTitle")}</div>
-            <form action={submitWishAction} className="mt-5 space-y-4">
-              <input type="hidden" name="locale" value={locale} />
-              <label className="grid gap-1 text-sm text-white/70">
-                {t("nameLabel")}
-                <input
-                  name="nickname"
-                  maxLength={24}
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none placeholder:text-white/30"
-                  placeholder={t("namePlaceholder")}
-                />
-              </label>
-
-              <label className="grid gap-1 text-sm text-white/70">
-                {t("contentLabel")}
-                <textarea
-                  name="content"
-                  maxLength={120}
-                  required
-                  className="min-h-32 rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm outline-none placeholder:text-white/30"
-                  placeholder={t("contentPlaceholder")}
-                />
-              </label>
-
-              <div className="grid gap-2 text-sm text-white/70">
-                <div>{t("emojiLabel")}</div>
-                <select
-                  name="emoji"
-                  defaultValue="✨"
-                  className="rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none"
-                >
-                  {emojiOptions.map((emoji) => (
-                    <option key={emoji} value={emoji}>
-                      {emoji}
-                    </option>
-                  ))}
-                </select>
+      <main className="mj-shell relative z-10 w-full max-w-6xl rounded-[2.2rem] px-5 py-5 sm:px-7 sm:py-7">
+        <div className="relative">
+          <div className="flex flex-wrap items-start justify-between gap-5">
+            <div className="max-w-2xl">
+              <div className="mj-eyebrow">{t("eyebrow")}</div>
+              <h1 className="mj-title mt-4 text-5xl leading-none sm:text-6xl">{t("title")}</h1>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--mj-text-muted)]">{t("subtitle")}</p>
+              <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.18em] text-[var(--mj-text-soft)]">
+                <span className="mj-stat-chip rounded-full px-4 py-2">{t("eyebrow")}</span>
+                <span className="mj-stat-chip rounded-full px-4 py-2">{wishes.length}</span>
+                <span className="mj-stat-chip rounded-full px-4 py-2">{t("listTitle")}</span>
               </div>
-
-              {sent ? (
-                <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-                  {t("success")}
-                </div>
-              ) : null}
-              {error ? (
-                <div className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-                  {t("error")}
-                </div>
-              ) : null}
-
-              <button
-                type="submit"
-                className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black"
+            </div>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-[var(--mj-text-muted)] hover:bg-white/10 hover:text-[var(--mj-text)]"
+                aria-label={t("back")}
+                title={t("back")}
               >
-                {t("submit")}
-              </button>
-            </form>
+                ←
+              </Link>
+              <LocaleSwitcher />
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6">
-            <div className="text-sm font-medium text-white/75">{t("listTitle")}</div>
-            <div className="mt-5 space-y-3">
-              {wishes.length ? (
-                wishes.map((wish) => (
-                  <div
-                    key={wish.id}
-                    className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3"
+          <div className="mt-10 grid gap-6 lg:grid-cols-[0.98fr_1.02fr]">
+            <div className="mj-panel-strong rounded-[2rem] p-6 sm:p-7">
+              <div className="mj-kicker text-[10px]">{t("formTitle")}</div>
+              <form action={submitWishAction} className="mt-5 space-y-4">
+                <input type="hidden" name="locale" value={locale} />
+                <label className="grid gap-1 text-sm text-white/70">
+                  {t("nameLabel")}
+                  <input
+                    name="nickname"
+                    maxLength={24}
+                    className="mj-input rounded-2xl px-4 py-3"
+                    placeholder={t("namePlaceholder")}
+                  />
+                </label>
+
+                <label className="grid gap-1 text-sm text-white/70">
+                  {t("contentLabel")}
+                  <textarea
+                    name="content"
+                    maxLength={120}
+                    required
+                    className="mj-textarea min-h-36 rounded-2xl px-4 py-3"
+                    placeholder={t("contentPlaceholder")}
+                  />
+                </label>
+
+                <div className="grid gap-2 text-sm text-white/70">
+                  <div>{t("emojiLabel")}</div>
+                  <select
+                    name="emoji"
+                    defaultValue="✨"
+                    className="mj-select rounded-2xl px-4 py-3 text-sm"
                   >
-                    <div className="text-lg">
-                      {wish.emoji}{" "}
-                      <span className="text-sm text-white/85">{wish.content}</span>
-                    </div>
-                    <div className="mt-2 text-xs text-white/40">
-                      {wish.nickname ? t("fromNamed", { name: wish.nickname }) : t("fromAnonymous")}
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-6 text-sm text-white/40">
-                  {t("empty")}
+                    {emojiOptions.map((emoji) => (
+                      <option key={emoji} value={emoji}>
+                        {emoji}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-              )}
+
+                {sent ? (
+                  <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+                    {t("success")}
+                  </div>
+                ) : null}
+                {error ? (
+                  <div className="rounded-2xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                    {t("error")}
+                  </div>
+                ) : null}
+
+                <button
+                  type="submit"
+                  className="mj-button-primary rounded-full px-5 py-2.5 text-sm font-semibold"
+                >
+                  {t("submit")}
+                </button>
+              </form>
+            </div>
+
+            <div className="mj-panel rounded-[2rem] p-6 sm:p-7">
+              <div className="flex items-center justify-between gap-3">
+                <div className="mj-kicker text-[10px]">{t("listTitle")}</div>
+                <div className="text-xs uppercase tracking-[0.18em] text-[var(--mj-text-soft)]">
+                  {wishes.length} items
+                </div>
+              </div>
+              <div className="mt-5 space-y-3">
+                {wishes.length ? (
+                  wishes.map((wish) => (
+                    <div
+                      key={wish.id}
+                      className="rounded-[1.35rem] border border-white/10 bg-[rgba(4,8,14,0.46)] px-4 py-4"
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-lg">
+                          {wish.emoji}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="text-sm leading-7 text-[var(--mj-text)]">{wish.content}</div>
+                          <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[var(--mj-text-soft)]">
+                            {wish.nickname
+                              ? t("fromNamed", { name: wish.nickname })
+                              : t("fromAnonymous")}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="rounded-[1.35rem] border border-white/10 bg-[rgba(4,8,14,0.46)] px-4 py-6 text-sm text-[var(--mj-text-soft)]">
+                    {t("empty")}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

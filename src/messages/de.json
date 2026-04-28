@@ -25,13 +25,22 @@
     "description": "Eine kleine Seite, auf der mantings und janos Familie Neos Entwicklung festhalten kann"
   },
   "entry": {
+    "eyebrow": "Einstieg im Mondlicht",
     "title": "Besucher oder Familie?",
     "subtitle": "Such dir zuerst einen kleinen Eingang aus.",
     "guest": "Besucher",
-    "family": "Familie"
+    "family": "Familie",
+    "guestLabel": "Öffentlicher Bereich",
+    "guestDesc": "Betritt die Segenswand, hinterlasse eine kleine Nachricht und lass sie nach der Freigabe in Neos Nachthimmel treiben.",
+    "guestEnter": "Betreten",
+    "familyLabel": "Familienzugang",
+    "familyDesc": "Öffne das private Archiv, um Wachstumsmomente festzuhalten, Grüße zu prüfen und Neos Timeline gemeinsam zu verfolgen.",
+    "familyEnter": "Öffnen"
   },
   "login": {
+    "eyebrow": "Privater Zugang",
     "subtitle": "Diese Tür geht nur für die Familie auf",
+    "passcodeLabel": "Familien-Passwort",
     "placeholder": "Familien-Passwort",
     "error": "Der Zauberspruch stimmt nicht. Noch mal.",
     "submit": "Reingehen"
@@ -59,9 +68,12 @@
     "empty": "Hier ist es noch leer und wartet auf den ersten kleinen Satz."
   },
   "family": {
+    "eyebrow": "Familien-Start",
     "reviewCta": "Grüße prüfen",
     "neoLabel": "Neo",
     "latestTitle": "Die letzten 3 leuchtenden Zeilen",
+    "briefLabel": "Heutige Kurzfassung",
+    "highlighted": "{count} hervorgehobene Grüße",
     "fromNamed": "Von {name}",
     "fromAnonymous": "Von einem Freund",
     "empty": "Hier wartet alles auf die erste freigegebene Zeile.",
@@ -73,6 +85,7 @@
     "eyebrow": "Segensgrüße",
     "title": "Prüfung der Besuchergrüße",
     "subtitle": "Auch freigegebene Einträge können später noch gelöscht werden",
+    "queueLabel": "Prüfwarteschlange",
     "error": "Aktion fehlgeschlagen. Die Datenbank ist möglicherweise gerade nicht verfügbar. Bitte später erneut versuchen.",
     "pending": "Ausstehend",
     "approved": "Freigegeben",
@@ -87,10 +100,12 @@
   "stats": {
     "eyebrow": "Werte",
     "title": "Neo",
-    "level": "Level"
+    "level": "Level",
+    "description": "Eine ruhige Momentaufnahme im Mondlicht von Neos aktuellen Entwicklungsdimensionen."
   },
   "newPost": {
     "eyebrow": "Neuer Eintrag",
+    "heroTitle": "Erinnerung festhalten",
     "authorLabel": "Autor",
     "authorManting": "Manting",
     "authorJano": "Jano",
@@ -120,6 +135,25 @@
     "count": "{count} Einträge",
     "stickyTitle": "Timeline",
     "stickyYears": "Jahre",
+    "description": "Folge den stillen, aber wichtigen Momenten und öffne jeden Knoten, um die Erinnerung erneut zu lesen.",
+    "mediaLabel": "Medien",
+    "yearLabel": "Jahr",
+    "typeLabel": "Typ",
+    "typeText": "Text",
+    "typeImage": "Bild",
+    "typeVideo": "Video",
+    "typeAudio": "Audio",
+    "featuredLabel": "Hervorgehobene Medien",
+    "featuredVideoTitle": "Video-Erinnerung",
+    "featuredVideoDesc": "Dieser Eintrag enthält einen Video-Anhang.",
+    "featuredAudioTitle": "Audio-Erinnerung",
+    "featuredAudioDesc": "Dieser Eintrag enthält einen Audio-Anhang.",
+    "featuredTextTitle": "Leise Notiz",
+    "featuredTextDesc": "Dies ist ein reiner Texteitrag, wie eine kleine Mitternachtsnotiz.",
+    "detailTitle": "Details",
+    "detailAuthor": "Autor",
+    "detailDate": "Datum",
+    "detailAssets": "Anhänge",
     "close": "Schließen",
     "noText": "(Kein Text)",
     "deleteConfirm": "Diesen Eintrag löschen? Das kann nicht rückgängig gemacht werden.",

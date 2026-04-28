@@ -25,13 +25,22 @@
     "description": "给 manting 与 jano 家人记录 Neo 成长的小站"
   },
   "entry": {
+    "eyebrow": "月光入口",
     "title": "游客，还是家人？",
     "subtitle": "先选一个小入口。",
     "guest": "游客",
-    "family": "家人"
+    "family": "家人",
+    "guestLabel": "公开空间",
+    "guestDesc": "进入祝福墙，留下一句小话，等审核后它会飘进 Neo 的夜空。",
+    "guestEnter": "进入",
+    "familyLabel": "家人入口",
+    "familyDesc": "进入私密档案区，写成长记录、审核祝福，也一起看 Neo 的成长时间线。",
+    "familyEnter": "解锁"
   },
   "login": {
+    "eyebrow": "私密入口",
     "subtitle": "这扇门只给家人开",
+    "passcodeLabel": "家庭口令",
     "placeholder": "家庭口令",
     "error": "咒语不对，再试一次",
     "submit": "进屋"
@@ -59,9 +68,12 @@
     "empty": "这里还空空的，等第一句小话落下来。"
   },
   "family": {
+    "eyebrow": "家人主页",
     "reviewCta": "审核祝福",
     "neoLabel": "Neo",
     "latestTitle": "最近被点亮的 3 句话",
+    "briefLabel": "今晚摘要",
+    "highlighted": "{count} 条高亮祝福",
     "fromNamed": "来自 {name}",
     "fromAnonymous": "来自一位朋友",
     "empty": "等第一句被点亮，再把它放进这里。",
@@ -73,6 +85,7 @@
     "eyebrow": "Blessings",
     "title": "游客祝福审核",
     "subtitle": "后续即使通过，也可以删除",
+    "queueLabel": "审核队列",
     "error": "操作失败，数据库可能暂时不可用，请稍后再试。",
     "pending": "待审核",
     "approved": "已通过",
@@ -87,10 +100,12 @@
   "stats": {
     "eyebrow": "数值",
     "title": "Neo",
-    "level": "Level"
+    "level": "Level",
+    "description": "用一张安静的夜色快照，看看 Neo 现在的成长维度。"
   },
   "newPost": {
     "eyebrow": "New Post",
+    "heroTitle": "记录这一刻",
     "authorLabel": "Author",
     "authorManting": "Manting",
     "authorJano": "Jano",
@@ -120,6 +135,25 @@
     "count": "{count} 条记录",
     "stickyTitle": "Timeline",
     "stickyYears": "Years",
+    "description": "沿着这些安静又重要的小节点往下看，点开任意一条，就能重读那天的记忆。",
+    "mediaLabel": "媒体",
+    "yearLabel": "年份",
+    "typeLabel": "类型",
+    "typeText": "文字",
+    "typeImage": "图片",
+    "typeVideo": "视频",
+    "typeAudio": "音频",
+    "featuredLabel": "重点内容",
+    "featuredVideoTitle": "视频记忆",
+    "featuredVideoDesc": "这条记录带有视频附件。",
+    "featuredAudioTitle": "音频记忆",
+    "featuredAudioDesc": "这条记录带有音频附件。",
+    "featuredTextTitle": "静静的小纸条",
+    "featuredTextDesc": "这是一条纯文字记录，像夜里留下的小纸条。",
+    "detailTitle": "细节",
+    "detailAuthor": "记录人",
+    "detailDate": "日期",
+    "detailAssets": "附件数",
     "close": "关闭",
     "noText": "（无文字）",
     "deleteConfirm": "确定要删除这条记录吗？删除后不可恢复。",
