@@ -241,7 +241,17 @@
     [/1,140 万|2026|30 美元|五十|四个|第[一二三四]步?/g, 'k-num'],
     [/Linux|HTML|API|AI|Agent team|Pro|tips|Login successful|操作总览|截图保存/g, 'k-tech'],
   ];
+  // 字幕标记：{重点} → 黄色荧光笔；[警示] → 红色；其余文字按关键词自动上色
   function markup(s) {
+    const re = /\{([^}]*)\}|\[([^\]]*)\]/g; let last = 0, m, html = '';
+    while ((m = re.exec(s))) {
+      if (m.index > last) html += autoColor(s.slice(last, m.index));
+      html += m[1] != null ? `<span class="k-key">${autoColor(m[1])}</span>` : `<span class="k-warn">${esc(m[2])}</span>`;
+      last = re.lastIndex;
+    }
+    return html + autoColor(s.slice(last));
+  }
+  function autoColor(s) {
     let tokens = [{ t: s }];
     KW.forEach(([re, cls]) => {
       const out = [];
@@ -272,6 +282,7 @@
     const txt = cur.text.replace(/[，。；：、]$/, '');
     if (el.dataset.k !== txt) { el.dataset.k = txt; tx.innerHTML = markup(txt); }
     const dt = t - cur.start;
+    el.style.setProperty('--sk', easeInOut(clamp((dt - .12) / .45)).toFixed(3));
     const p = prevCont ? easeBack(clamp(dt / .22)) : easeElastic(clamp(dt / .5));
     const sc = prevCont ? lerp(.94, 1, p) : lerp(.6, 1, p);
     el.style.opacity = (Math.min(1, prevCont ? .6 + dt / .15 : dt / .12) * fade).toFixed(3);
@@ -308,7 +319,7 @@
     else { box.textContent = txt.length > 46 ? '…' + txt.slice(-46) : txt; send.classList.toggle('on', on || txt.length > 0); }
     send.style.transform = sendP >= 0 ? `scale(${(1 + .35 * Math.sin(Math.PI * sendP)).toFixed(3)})` : (on ? `scale(${(1 + .06 * Math.sin(t * 12)).toFixed(3)})` : '');
   }
-  const CHAPS = [['ban', 'two', 'cons'], ['new', 'what', 'price', 'benefits'], ['principle'], ['overview', 'step1', 'step2', 'step3', 'step4'], ['daily', 'trouble', 'summary'], ['outro']];
+  const CHAPS = [['ban', 'two', 'cons'], ['new', 'what', 'price', 'benefits'], ['principle'], ['overview', 'step1', 'step2', 'step3', 'step4'], ['daily', 'trouble', 'summary'], ['outro', 'follow']];
   function updatePanel(t) {
     let cur = ORDER[0]; ORDER.forEach(s => { if (t >= s.start - .25) cur = s; });
     const ci = CHAPS.findIndex(c => c.includes(cur.id));
@@ -362,6 +373,7 @@
     let lastMood = null; (MKF || mascotState(0) && MKF).forEach(k => { if (k.p.mood && k.p.mood !== lastMood) { const m = k.p.mood; if (m === 'jump') push(k.t, 'boing'); if (m === 'worried') push(k.t, 'uhoh'); if (m === 'happy' || m === 'wave') push(k.t, 'twinkle'); if (m === 'cover') push(k.t, 'pop'); lastMood = m; } });
     if (SC.step4) push(at('step4', 's19') - .05, 'click');
     if (SC.summary) push(at('summary', 'x0+0.15'), 'shutter');
+    if (SC.follow) { push(at('follow', 's1+0.55'), 'click'); push(at('follow', 'c0+0.2'), 'boing'); }
     return ev.sort((a, b) => a.t - b.t);
   }
 

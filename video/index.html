@@ -541,6 +541,24 @@
   <div class="sm-flash" style="position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none"></div>
 </section>
 
+<!-- 求关注片尾 -->
+<section class="scene full" data-scene="follow" id="follow">
+  <div class="dots"></div>
+  <div class="fw-title" data-in="c0" data-anim="pop">点个关注，不迷路！<span class="emoji">💖</span></div>
+  <div class="fw-sub" data-in="s0+0.4" data-anim="up">下期：用 <span style="color:var(--bot)">Grok Bot</span> 搭建自己的 AI 团队 + 实用 tips</div>
+  <div class="bigbot" data-in="c0+0.1" data-anim="pop"><div class="shadow"></div><div class="sprout"><i></i><b></b><b></b></div><div class="body"></div><div class="shine"></div><div class="eye el"></div><div class="eye er"></div><div class="blush bl"></div><div class="blush br"></div><div class="hand hl"></div><div class="hand hr"></div></div>
+  <div class="abs" style="left:640px;top:420px" data-in="s2" data-anim="pop"><svg class="heart fh" style="position:static;width:54px;height:50px;display:block"><use href="#i-heart"/></svg></div>
+  <div class="abs" style="left:1230px;top:350px" data-in="s2+0.15" data-anim="pop"><svg class="heart fh" style="position:static;width:40px;height:36px;display:block"><use href="#i-heart"/></svg></div>
+  <div class="abs" style="left:1180px;top:500px" data-in="s2+0.3" data-anim="pop"><svg class="heart fh" style="position:static;width:30px;height:28px;display:block"><use href="#i-heart"/></svg></div>
+  <div class="abs" style="left:700px;top:520px" data-in="s2+0.45" data-anim="pop"><svg class="heart fh" style="position:static;width:26px;height:24px;display:block"><use href="#i-heart"/></svg></div>
+  <div class="fw-btns">
+    <div class="fw-btn" data-in="s1" data-anim="pop"><span class="emoji">👍</span>点赞</div>
+    <div class="fw-btn" data-in="s1+0.15" data-anim="pop"><span class="emoji">⭐</span>收藏</div>
+    <div class="fw-btn go" data-in="s1+0.3" data-anim="pop" data-on="s1+0.6" data-emph="s1+0.6" data-burst="s1+0.6" data-sfx="pop"><span data-swap="s1+0.6" data-to="✓ 已关注">＋ 关注</span></div>
+  </div>
+  <svg class="ic fcursor" style="position:absolute;width:56px;height:56px;left:1500px;top:1000px;opacity:0"><use href="#i-cursor"/></svg>
+</section>
+
 <div class="sub" id="sub"><div class="subbot"></div><span id="subtxt"></span></div>
 </div>
 <div id="preload"></div>
@@ -593,6 +611,28 @@ window.HOOKS = {
     const click = t > b - .15 && t < b + .1 ? .8 : 1;
     c.style.left = (262 - 108 * e) + 'px'; c.style.top = (200 - 50 * e) + 'px';
     c.style.transform = `scale(${click})`;
+  },
+  // 片尾：吉祥物挥手 + 光标点“关注”
+  follow(t, s) {
+    const bot = s.el.querySelector('.bigbot');
+    const ck = at('follow', 's1+0.55'), jumpP = Math.max(0, Math.min(1, (t - ck) / .6));
+    const hop = -Math.sin(Math.PI * jumpP) * 34;
+    bot.querySelector('.body').parentElement.style.translate = `0 ${(Math.sin(t * 2.6) * 8 + hop).toFixed(1)}px`;
+    bot.querySelector('.hr').style.transform = `translate(8px,${(-74 + Math.sin(t * 10) * 16).toFixed(1)}px)`;
+    bot.querySelector('.hl').style.transform = `translate(0px,${(Math.sin(t * 2.6 + 1) * 4).toFixed(1)}px)`;
+    bot.querySelector('.sprout').style.transform = `rotate(${(Math.sin(t * 3.4) * 14).toFixed(1)}deg)`;
+    const blink = (t % 3.3) > 3.18 ? .2 : 1;
+    bot.querySelectorAll('.eye').forEach(e => e.style.transform = `scaleY(${blink})`);
+    s.el.querySelectorAll('.fh').forEach((hh, i) => hh.style.transform = `translateY(${(Math.sin(t * 2 + i * 1.7) * 10).toFixed(1)}px) rotate(${(Math.sin(t * 1.5 + i) * 12).toFixed(1)}deg)`);
+    // 光标
+    const c = s.el.querySelector('.fcursor'), btn = s.el.querySelector('.fw-btn.go'), row = s.el.querySelector('.fw-btns');
+    const a0 = at('follow', 's1+0.1');
+    const p = Math.max(0, Math.min(1, (t - a0) / (ck - a0)));
+    const e2 = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    const tx = row.offsetLeft + btn.offsetLeft + btn.offsetWidth * .62, ty = row.offsetTop + btn.offsetTop + btn.offsetHeight * .55;
+    c.style.left = (1560 + (tx - 1560) * e2).toFixed(1) + 'px'; c.style.top = (1020 + (ty - 1020) * e2).toFixed(1) + 'px';
+    c.style.opacity = t < a0 ? 0 : Math.min(1, (t - a0) / .2) * (t > ck + 1.2 ? Math.max(0, 1 - (t - ck - 1.2) / .3) : 1);
+    c.style.transform = t > ck - .08 && t < ck + .12 ? 'scale(.8)' : 'scale(1)';
   },
   // 操作总览：旁白结束后闪一下“快门”
   summary(t, s) {

@@ -18,17 +18,22 @@ def trim(x, th=0.01):
 def weight(s):  # 用于按比例分配字幕时长
     s = re.sub(r"[，。、：；！？（）,.!?:;()\s]", "", s)
     return max(1, len(re.findall(r"[一-鿿\d]", s)) + 0.45*len(re.findall(r"[A-Za-z]", s)))
-LEAD, GAP, SCENE_GAP, TAIL = 0.6, 0.28, 0.55, 1.6
+def strip_marks(s):  # 去掉字幕强调标记 {…} / […]
+    return re.sub(r"[{}\[\]]", "", s)
+
+LEAD, GAP, SCENE_GAP, TAIL = 0.6, 0.28, 0.55, 2.2
 audio = [np.zeros(int(LEAD*SR), np.float32)]; t = LEAD
 scenes, subs = [], []
 for si, (sid_name, lines) in enumerate(SCENES):
     sc = dict(id=sid_name, start=t, cues=[])
     for li, line in enumerate(lines):
-        say = line.get("say", line["sub"].replace("|", ""))
+        say = line.get("say", strip_marks(line["sub"]).replace("|", ""))
         x = trim(np.array(tts.generate(say, sid=SID, speed=SPEED).samples, np.float32))
         dur = len(x)/SR
         sc["cues"].append(dict(start=t, end=t+dur))
         chunks = line["sub"].split("|"); ws = [weight(c) for c in chunks]; acc = t
+        for c in chunks:  # 强调标记不能跨字幕分段
+            assert c.count("{") == c.count("}") and c.count("[") == c.count("]"), f"unbalanced marks: {c}"
         for c, w in zip(chunks, ws):
             d = dur*w/sum(ws); subs.append(dict(text=c, start=acc, end=acc+d)); acc += d
         audio.append(x); t += dur

@@ -80,6 +80,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F3EEFF;font-fam
 /* subtitle: 卡通贴纸风 */
 .sub{position:absolute;left:960px;top:988px;transform:translate(-50%,-50%);background:#fff;border-radius:999px;padding:8px 46px 12px 50px;font-size:56px;letter-spacing:1px;white-space:nowrap;border:4px solid var(--ink);box-shadow:0 7px 0 var(--ink);color:var(--ink);z-index:50;font-family:var(--cute);font-synthesis:none}
 .sub .k-claude{color:var(--claude)} .sub .k-bot{color:var(--bot)} .sub .k-num{color:var(--red)} .sub .k-tech{color:var(--blue)}
+.sub .k-key{background:linear-gradient(transparent 56%,#FFE36E 56%,#FFE36E 94%,transparent 94%) no-repeat left;background-size:calc(var(--sk,1) * 100%) 100%;padding:0 6px;margin:0 2px;border-radius:6px}
+.sub .k-warn{color:#FF3D68;background:linear-gradient(transparent 56%,#FFD3DD 56%,#FFD3DD 94%,transparent 94%) no-repeat left;background-size:calc(var(--sk,1) * 100%) 100%;padding:0 6px;margin:0 2px;border-radius:6px}
 .subbot{position:absolute;left:-30px;top:-30px;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 36% 28%,#4a4752,#000 70%);border:3px solid #fff}
 .subbot::before,.subbot::after{content:"";position:absolute;top:17px;width:8px;height:16px;border-radius:5px;background:#fff;transform:rotate(-8deg)}
 .subbot::before{left:17px}.subbot::after{left:30px}
@@ -178,3 +180,28 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F3EEFF;font-fam
 .sm-box code{font-family:var(--mono);font-size:19px;background:#EFEAFF;padding:1px 8px;border-radius:8px;color:var(--bot)}
 #preload{position:absolute;left:-9999px;top:0;width:4000px}
 .sm-foot{position:absolute;left:0;right:0;top:972px;text-align:center;font-size:22px;font-weight:800;color:var(--mute)}
+
+/* 求关注片尾 */
+#follow{background:radial-gradient(900px 600px at 0% 0%,#FFE3EE 0,transparent 60%),radial-gradient(1100px 700px at 100% 100%,#E3DBFF 0,transparent 60%),#F7F3FF}
+#follow .dots{position:absolute;inset:0;background-image:radial-gradient(#E9E1FF 2px,transparent 2.2px);background-size:34px 34px}
+.fw-title{position:absolute;left:0;right:0;top:120px;text-align:center;font-family:var(--cute);font-synthesis:none;font-weight:600;font-size:84px;color:var(--ink)}
+.fw-sub{position:absolute;left:0;right:0;top:238px;text-align:center;font-size:30px;font-weight:800;color:var(--ink2)}
+.fw-btns{position:absolute;left:0;right:0;top:640px;display:flex;justify-content:center;gap:34px}
+.fw-btn{display:flex;align-items:center;gap:14px;padding:20px 40px;border-radius:999px;font-family:var(--cute);font-synthesis:none;font-size:40px;font-weight:600;background:#fff;color:var(--ink);border:4px solid var(--ink);box-shadow:0 8px 0 var(--ink);position:relative}
+.fw-btn.go{background:#FF4D6D;color:#fff;font-size:46px;padding:22px 48px}
+.fw-btn.go.on{background:var(--green)}
+.bigbot{position:absolute;left:860px;top:372px;width:200px;height:200px}
+.bigbot .body{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 28%,#4a4752 0,#121016 45%,#000 75%);box-shadow:0 18px 30px rgba(43,37,64,.22)}
+.bigbot .shine{position:absolute;left:38px;top:22px;width:46px;height:24px;border-radius:50%;background:rgba(255,255,255,.22);transform:rotate(-28deg)}
+.bigbot .eye{position:absolute;top:74px;width:34px;height:22px;border:8px solid #fff;border-bottom:none;border-radius:20px 20px 0 0}
+.bigbot .el{left:62px}.bigbot .er{left:106px}
+.bigbot .blush{position:absolute;top:116px;width:30px;height:13px;border-radius:50%;background:#FF7A9A;opacity:.85;filter:blur(2px)}
+.bigbot .bl{left:42px}.bigbot .br{right:42px}
+.bigbot .hand{position:absolute;width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#4a4752,#050505 70%);top:118px}
+.bigbot .hl{left:-30px}.bigbot .hr{right:-30px}
+.bigbot .sprout{position:absolute;left:92px;top:-34px;width:16px;height:40px;transform-origin:50% 100%}
+.bigbot .sprout i{position:absolute;bottom:0;left:6px;width:5px;height:26px;border-radius:3px;background:#5CC98E}
+.bigbot .sprout b{position:absolute;top:0;width:24px;height:15px;border-radius:15px 0;background:#7FD8A4}
+.bigbot .sprout b:first-of-type{left:-18px;transform:rotate(-20deg)}
+.bigbot .sprout b:last-of-type{left:8px;border-radius:0 15px;transform:rotate(20deg)}
+.bigbot .shadow{position:absolute;left:30px;top:192px;width:140px;height:26px;border-radius:50%;background:rgba(108,99,255,.16);filter:blur(4px)}
