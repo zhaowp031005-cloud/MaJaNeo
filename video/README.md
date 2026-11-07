@@ -6,7 +6,7 @@
 - `script.py`：分镜与旁白。每个 scene 一个画面；`sub` 里的 `|` 是字幕分段，`say` 是给 TTS 读的文本（处理数字、缩写读法）。
 - `tts.py`：离线中文 TTS（sherpa-onnx + Kokoro v1.1-zh，默认男声 `VOICE_SID=62`，语速 `VOICE_SPEED=1.08`），输出 `narration.wav` 与 `timeline.json`（每句/每条字幕时间 + 每帧音量包络，用来驱动吉祥物“说话”）。
 - `index.html` / `style.css` / `engine.js`：动画页面。元素用 `data-in="c2+0.3"`（第 2 句开始后 0.3 秒）或 `data-in="s5"`（本场第 5 条字幕）声明出场时间，`window.seek(t)` 逐帧确定性渲染。
-  - 镜头：`window.CAMS` 里按场景写 `[时间, 缩放, 焦点x, 焦点y]`，场景切换时自动回到全景。
+  - 镜头：`window.CAMS` 里按场景写 `[时间, 缩放, 焦点x, 焦点y]`，场景切换时自动回到全景。只在单一焦点时推镜，并列排布（多张卡片、步骤、对比）保持全景，保证整排完整可见。
   - 强调：`data-emph`（弹一下 + 光圈）、`data-mk`（荧光笔划线）、`data-burst`（星星彩屑）、`data-hl`（逐行高亮）。
   - 音效：`window.collectSfx()` 从时间轴自动生成音效事件，`data-sfx="ding|nope|none…"` 可覆盖。
 - `sfx.py`：用 numpy 合成全部音效（弹出、打字、发送、成功叮、否定、嗖、弹簧、闪光、快门…）和八音盒 BGM，说话时自动压低 BGM，输出 `mix.wav`。
