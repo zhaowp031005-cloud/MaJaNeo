@@ -2,7 +2,7 @@
 
 用法: python3 sfx.py <buildDir>
 输入: narration.wav, events.json（render.cjs --events 导出）, timeline.json
-输出: sfx.wav（仅音效）, bgm.wav, mix.wav（旁白 + 音效 + 闪避后的背景音乐）
+输出: sfx.wav（仅音效）, mix.wav（旁白 + 音效）；设置 BGM=1 时额外叠加闪避后的八音盒背景音乐并输出 bgm.wav
 所有声音都用 numpy 实时合成，不依赖外部素材。
 """
 import sys, os, json, subprocess, numpy as np, soundfile as sf
@@ -255,6 +255,12 @@ def main():
     voice, _ = sf.read(f"{B}/narration48.wav", dtype="float64")
     n = len(voice)
     sfx = limit(build_sfx(ev, dur)[:n])
+    sf.write(f"{B}/sfx.wav", sfx.astype(np.float32), SR)
+    if os.environ.get("BGM", "0") != "1":  # 默认不加背景音乐：只有旁白 + 音效（BGM=1 可开启）
+        mix = norm(voice + sfx * 0.85, 0.95)
+        sf.write(f"{B}/mix.wav", mix.astype(np.float32), SR)
+        print("mixed (no BGM)", round(n / SR, 2), "s, events:", len(ev))
+        return
     bgm = build_bgm(dur)[:n]
     bgm = np.pad(bgm, (0, n - len(bgm)))
     # 旁白闪避：说话时背景音乐压低
@@ -270,7 +276,6 @@ def main():
     bgm_level = norm(bgm, 1) * 10 ** (-21 / 20)
     mix = voice + sfx * 0.85 + bgm_level * duck
     mix = norm(mix, 0.95)
-    sf.write(f"{B}/sfx.wav", sfx.astype(np.float32), SR)
     sf.write(f"{B}/bgm.wav", (bgm_level * duck).astype(np.float32), SR)
     sf.write(f"{B}/mix.wav", mix.astype(np.float32), SR)
     print("mixed", round(n / SR, 2), "s, events:", len(ev))
