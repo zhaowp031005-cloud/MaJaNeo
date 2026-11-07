@@ -11,7 +11,7 @@ async function openPage(browser) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto(page_url);
-  if (FONTS) for (const f of ['noto-sans-sc/400', 'noto-sans-sc/500', 'noto-sans-sc/700', 'noto-sans-sc/900', 'inter/400', 'inter/600', 'inter/700', 'inter/800', 'inter/900', 'jetbrains-mono/400', 'jetbrains-mono/700'])
+  if (FONTS) for (const f of ['noto-sans-sc/400', 'noto-sans-sc/500', 'noto-sans-sc/700', 'noto-sans-sc/900', 'nunito/400', 'nunito/600', 'nunito/700', 'nunito/800', 'nunito/900', 'fredoka/500', 'fredoka/600', 'fredoka/700', 'zcool-kuaile/400', 'jetbrains-mono/400', 'jetbrains-mono/500', 'jetbrains-mono/700'])
     await page.addStyleTag({ url: 'file://' + path.join(FONTS, '@fontsource', f + '.css') });
   await page.evaluate(tl => window.initTimeline(tl), tl);
   await page.evaluate(() => document.fonts.ready);
@@ -22,6 +22,12 @@ async function openPage(browser) {
 
 (async () => {
   const browser = await chromium.launch();
+  if (process.argv.includes('--events')) {
+    const page = await openPage(browser);
+    const ev = await page.evaluate(() => window.collectSfx());
+    fs.writeFileSync(path.join(build, 'events.json'), JSON.stringify(ev));
+    console.log('events', ev.length); await browser.close(); return;
+  }
   const still = arg('--still');
   if (still) {
     const page = await openPage(browser);
@@ -42,9 +48,9 @@ async function openPage(browser) {
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-r', String(fps), path.join(build, `part${w}.mp4`)], { stdio: ['pipe', 'inherit', 'inherit'] });
     for (let i = a; i < b; i++) {
       await page.evaluate(t => window.seek(t), i / fps);
-      const buf = await page.screenshot({ type: 'jpeg', quality: 94 });
+      const buf = await page.screenshot({ type: 'jpeg', quality: 92 });
       if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
-      if ((i - a) % 300 === 0) console.log(`worker ${w}: ${i - a}/${b - a}`);
+      if ((i - a) % 600 === 0) console.log(`worker ${w}: ${i - a}/${b - a}`);
     }
     ff.stdin.end(); await new Promise(r => ff.on('close', r));
   }));

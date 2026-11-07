@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from script import SCENES
 MODELS, OUT = sys.argv[1], sys.argv[2]
 SID = int(os.environ.get("VOICE_SID", 62)); SPEED = float(os.environ.get("VOICE_SPEED", 1.08))
-FPS = 30
+FPS = int(os.environ.get("FPS", 60))
 k = f"{MODELS}/kokoro-multi-lang-v1_1"
 tts = sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(
   model=sherpa_onnx.OfflineTtsModelConfig(kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(
@@ -32,7 +32,7 @@ for si, (sid_name, lines) in enumerate(SCENES):
         for c, w in zip(chunks, ws):
             d = dur*w/sum(ws); subs.append(dict(text=c, start=acc, end=acc+d)); acc += d
         audio.append(x); t += dur
-        g = SCENE_GAP if li == len(lines)-1 else GAP
+        g = (SCENE_GAP if li == len(lines)-1 else GAP) + line.get("pause", 0)
         audio.append(np.zeros(int(g*SR), np.float32)); t += g
         print(f"[{sid_name}] {say} {dur:.2f}s", flush=True)
     sc["end"] = t; scenes.append(sc)
