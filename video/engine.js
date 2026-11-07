@@ -238,7 +238,7 @@
   const KW = [
     [/Claude Code|Claude|CC|claude/g, 'k-claude'],
     [/Grok Bot|Grok|Bot|Cursor|X(?=、)/g, 'k-bot'],
-    [/1,140 万|2026|30 美元|五十|四个|第[一二三四]步?/g, 'k-num'],
+    [/1,140 万|2026|30 美元|五十|四个|五个|第[一二三四五]步?/g, 'k-num'],
     [/Linux|HTML|API|AI|Agent team|Pro|tips|Login successful|操作总览|截图保存/g, 'k-tech'],
   ];
   // 字幕标记：{重点} → 黄色荧光笔；[警示] → 红色；其余文字按关键词自动上色
