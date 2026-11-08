@@ -11,7 +11,7 @@ async function openPage(browser) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on('pageerror', e => console.error('PAGE ERROR', e.message));
   await page.goto(page_url);
-  if (FONTS) for (const f of ['noto-sans-sc/400', 'noto-sans-sc/500', 'noto-sans-sc/700', 'noto-sans-sc/900', 'nunito/400', 'nunito/600', 'nunito/700', 'nunito/800', 'nunito/900', 'fredoka/500', 'fredoka/600', 'fredoka/700', 'zcool-kuaile/400', 'jetbrains-mono/400', 'jetbrains-mono/500', 'jetbrains-mono/700'])
+  if (FONTS) for (const f of ['noto-sans-sc/400', 'noto-sans-sc/500', 'noto-sans-sc/700', 'noto-sans-sc/900', 'nunito/400', 'nunito/600', 'nunito/700', 'nunito/800', 'nunito/900', 'fredoka/500', 'fredoka/600', 'fredoka/700', 'zcool-kuaile/400', 'inter/400', 'inter/500', 'inter/600', 'inter/700', 'inter/800', 'inter/900', 'jetbrains-mono/400', 'jetbrains-mono/500', 'jetbrains-mono/700'])
     await page.addStyleTag({ url: 'file://' + path.join(FONTS, '@fontsource', f + '.css') });
   await page.evaluate(tl => window.initTimeline(tl), tl);
   await page.evaluate(() => document.fonts.ready);

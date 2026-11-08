@@ -32,7 +32,7 @@
 
   // 伪随机（确定性）
   const rnd = i => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
-  const BURST_COLORS = ['#FF8FB1', '#FFD873', '#B9A7FF', '#7FD8BE', '#8EC5FF', '#FFB38A'];
+  const BURST_COLORS = ['#4F46E5', '#2563EB', '#06B6D4', '#A5B4FC', '#93C5FD', '#F59E0B'];
 
   function setup(tl) {
     TL = tl;
@@ -47,7 +47,7 @@
       s.items = q('[data-in],[data-out],[data-emph]').map(el => ({
         el, tin: el.dataset.in ? at(s.id, el.dataset.in) : -1, tout: el.dataset.out ? at(s.id, el.dataset.out) : 1e9,
         emph: el.dataset.emph ? at(s.id, el.dataset.emph) : null,
-        anim: el.dataset.anim || 'up', dur: +(el.dataset.dur || (el.dataset.anim === 'pop' ? .6 : .55)), base: el.style.transform || ''
+        anim: el.dataset.anim || 'up', dur: +(el.dataset.dur || (el.dataset.anim === 'pop' ? .6 : el.dataset.anim === 'slam' ? .3 : .55)), base: el.style.transform || ''
       }));
       s.types = q('[data-type]').map(el => ({ el, full: el.textContent, tin: at(s.id, el.dataset.type), cps: +(el.dataset.cps || 28), caret: el.dataset.caret !== 'no' }));
       s.counts = q('[data-count]').map(el => ({ el, tin: at(s.id, el.dataset.count), to: +el.dataset.to, dur: +(el.dataset.dur || 1.6) }));
@@ -113,6 +113,7 @@
     let o = 1, tr = '', sc = 1;
     if (it.anim === 'none') { o = pin > 0 ? 1 : 0; }
     else if (it.anim === 'fade') { o = easeOut(pin); }
+    else if (it.anim === 'slam') { const e = easeBack(pin); o = clamp(pin * 5); sc = lerp(2.6, 1, e); tr = `rotate(${((1 - e) * (rnd(it.tin * 7) - .5) * 14).toFixed(2)}deg)`; }
     else if (it.anim === 'pop') { const e = easeElastic(pin); o = clamp(pin * 3); sc = lerp(.4, 1, e); tr = `translateY(${lerp(18, 0, easeOut(pin))}px)`; }
     else if (it.anim === 'grow') { const e = easeOut(pin); tr = `scaleX(${e})`; o = pin > 0 ? 1 : 0; }
     else if (it.anim === 'left') { const e = easeBack(pin); o = clamp(pin * 2); tr = `translateX(${lerp(-46, 0, e)}px)`; }
@@ -276,6 +277,9 @@
   }
   function updateSub(t) {
     const el = document.getElementById('sub'), tx = document.getElementById('subtxt');
+    // 带 data-nosub 的场景（开场全屏大字）不显示底部字幕
+    let cs = null; ORDER.forEach(s => { if (t >= s.start - .3) cs = s; });
+    if (cs && cs.el && cs.el.dataset.nosub) { el.style.opacity = 0; return; }
     let cur = null, fade = 1, prevCont = false;
     const W = subWindows();
     for (let i = 0; i < W.length; i++) {
@@ -305,7 +309,7 @@
       const o = Math.min(pin, 1 - pout);
       s.el.style.opacity = o.toFixed(3);
       s.el.style.visibility = o <= .001 ? 'hidden' : 'visible';
-      if (full) s.el.style.transform = `scale(${(lerp(.88, 1, easeBack(clamp((t - a) / .7))) * lerp(1, 1.06, pout)).toFixed(4)})`;
+      if (full) s.el.style.transform = `scale(${((i === 0 ? 1 : lerp(.88, 1, easeBack(clamp((t - a) / .7)))) * lerp(1, 1.06, pout)).toFixed(4)})`;
       else s.el.style.transform = `translateY(${((1 - pin) * 20 - pout * 16).toFixed(2)}px) scale(${(lerp(.965, 1, pin) * lerp(1, 1.025, pout)).toFixed(4)})`;
       if (o > .001) updateScene(s, t);
     });

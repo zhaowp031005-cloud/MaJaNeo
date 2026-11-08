@@ -29,7 +29,7 @@ for si, (sid_name, lines) in enumerate(SCENES):
     sc = dict(id=sid_name, start=t, cues=[])
     for li, line in enumerate(lines):
         say = line.get("say", strip_marks(line["sub"]).replace("|", ""))
-        x = trim(np.array(tts.generate(say, sid=SID, speed=SPEED).samples, np.float32))
+        x = trim(np.array(tts.generate(say, sid=SID, speed=line.get("speed", SPEED)).samples, np.float32))
         dur = len(x)/SR
         sc["cues"].append(dict(start=t, end=t+dur))
         chunks = line["sub"].split("|"); ws = [weight(c) for c in chunks]; acc = t

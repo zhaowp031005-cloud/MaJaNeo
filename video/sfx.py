@@ -151,9 +151,23 @@ def rise(d):
     y = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.sin(np.pi * t / d) ** 0.6
     return y * 0.05
 
+def s_slam():  # 大字砸下：低频“咚”+ 冲击噪声
+    t = tt(0.35); f = 40 + 120 * np.exp(-t / 0.04)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(t), 0.001, 0.12)
+    hit = band(noise(0.35), 80, 3000) * env(len(t), 0.0005, 0.03)
+    return norm(body + 0.5 * hit, 0.55)
+
+def s_boom():  # 更重的冲击（配红色大字）
+    t = tt(0.7); f = 32 + 140 * np.exp(-t / 0.05)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(t), 0.001, 0.25)
+    rumble = band(noise(0.7), 40, 900) * env(len(t), 0.002, 0.18)
+    crack = band(noise(0.7), 1500, 8000) * env(len(t), 0.0005, 0.02)
+    return norm(body + 0.6 * rumble + 0.35 * crack, 0.6)
+
+
 LIB = dict(pop=s_pop, soft=s_soft, msg=s_msg, send=s_send, whoosh=s_whoosh, zoomin=s_zoomin, zoomout=s_zoomout,
            swish=s_swish, marker=s_marker, ding=s_ding, chime=s_chime, nope=s_nope, strike=s_strike, alert=s_alert,
-           uhoh=s_uhoh, boing=s_boing, twinkle=s_twinkle, sparkle=s_sparkle, shutter=s_shutter, click=s_click)
+           uhoh=s_uhoh, boing=s_boing, slam=s_slam, boom=s_boom, twinkle=s_twinkle, sparkle=s_sparkle, shutter=s_shutter, click=s_click)
 
 
 def build_sfx(events, dur):
@@ -238,7 +252,7 @@ def build_bgm(dur):
     return out
 
 
-def limit(x, thr=0.32, att_ms=1.5, rel_ms=90):
+def limit(x, thr=0.36, att_ms=1.5, rel_ms=90):
     """音效总线软限幅：多个音效叠在一起时不盖过旁白。"""
     a = np.abs(x); g = np.ones_like(x); s = 0.0
     att, rel = np.exp(-1 / (att_ms / 1000 * SR / 24)), np.exp(-1 / (rel_ms / 1000 * SR / 24))
