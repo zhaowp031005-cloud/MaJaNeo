@@ -342,3 +342,7 @@ html,body{background:#EEF2F7}
 .case{padding:10px;background:#fff;border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.55)}
 .case img{display:block;width:100%;border-radius:6px}
 .abot{left:870px;top:870px}
+.breaking.blue{background:#2563EB;box-shadow:0 0 60px rgba(37,99,235,.55)}
+.breaking.blue b{color:#2563EB}
+.nametag{position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);font-family:var(--sans);font-weight:900;font-size:56px;color:#fff;background:#4F46E5;padding:6px 30px;border-radius:16px;box-shadow:0 10px 30px rgba(79,70,229,.5);white-space:nowrap}
+.mvs .mv{font-size:64px;padding:12px 28px}.mvs .mv img{width:64px;height:64px;border-radius:16px}.mvs .mvsep{font-size:60px}

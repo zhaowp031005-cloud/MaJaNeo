@@ -7,8 +7,9 @@
 SCENES = [
  ("rant", [  # 开场“贴脸大字”吐槽：全屏大字代替底部字幕，语速稍快
    dict(sub="澡尔冯了个福的|OpenAI 和 Anthropic，|都[太不是人了]！", speed=1.15),
-   dict(sub="扔扔的猫女，|也[不是人类]！", speed=1.15),
-   dict(sub="就在今天，|刚从 Anthropic 跳槽到 OpenAI 的猫女，|就开始[大规模封号]！", speed=1.15),
+   dict(sub="扔扔的猫吴，|也[不是人类]！", speed=1.15),
+   dict(sub="就在最近，|猫吴从 Anthropic|跳槽去了 OpenAI；", say="就在最近，猫吴从 Anthropic 跳槽去了 OpenAI；", speed=1.12),
+   dict(sub="而 OpenAI|昨天就开始了[大规模封号]！", say="而 OpenAI，昨天就开始了大规模封号！", speed=1.12),
  ]),
  ("ban", [
    dict(sub="2026 年上半年，|Claude 更是全平台[封禁]了|约 1,140 万个账号。", say="二零二六年上半年，Claude 更是全平台封禁了约一千一百四十万个账号。"),
