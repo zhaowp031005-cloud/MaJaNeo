@@ -114,6 +114,7 @@
     if (it.anim === 'none') { o = pin > 0 ? 1 : 0; }
     else if (it.anim === 'fade') { o = easeOut(pin); }
     else if (it.anim === 'slam') { const e = easeBack(pin); o = clamp(pin * 5); sc = lerp(2.6, 1, e); tr = `rotate(${((1 - e) * (rnd(it.tin * 7) - .5) * 14).toFixed(2)}deg)`; }
+    else if (it.anim === 'rise') { const e = easeBack(pin); o = clamp(pin * 3); tr = `translateY(${lerp(420, 0, e).toFixed(1)}px)`; }
     else if (it.anim === 'pop') { const e = easeElastic(pin); o = clamp(pin * 3); sc = lerp(.4, 1, e); tr = `translateY(${lerp(18, 0, easeOut(pin))}px)`; }
     else if (it.anim === 'grow') { const e = easeOut(pin); tr = `scaleX(${e})`; o = pin > 0 ? 1 : 0; }
     else if (it.anim === 'left') { const e = easeBack(pin); o = clamp(pin * 2); tr = `translateX(${lerp(-46, 0, e)}px)`; }

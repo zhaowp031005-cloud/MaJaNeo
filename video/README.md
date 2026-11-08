@@ -28,3 +28,9 @@ npm i @fontsource/noto-sans-sc @fontsource/inter @fontsource/jetbrains-mono
 字体：`npm i @fontsource/noto-sans-sc @fontsource/nunito @fontsource/fredoka @fontsource/zcool-kuaile @fontsource/jetbrains-mono`
 
 换成自己的配音：直接用 `video_silent.mp4` 配音即可，或替换 `narration.wav` 后重新 mux（注意画面节奏按 TTS 时长生成）。
+
+## 素材（不入库）
+`video/assets/` 已加入 .gitignore（第三方 logo、人物照片、截图不提交到仓库）。渲染前放入：
+- `logo-claude.png` `logo-openai.png` `logo-grok.png` `logo-x.png` `logo-cursor.png`：256×256 圆角图标
+- `cutout-a.png` `cutout-b.png`：开场“太不是人了”时弹出的人物抠图（可用 rembg 的 u2net_human_seg 抠）
+- `case-claude.jpg` `case-tweets.jpg` `case-openai.jpg`：开场弹出的封号案例截图
