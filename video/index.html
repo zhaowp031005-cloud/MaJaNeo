@@ -62,26 +62,48 @@
     <svg class="d" data-f="8" style="left:820px;top:810px;width:18px;height:18px;color:#FFB38A"><use href="#i-star" fill="currentColor"/></svg>
   </div>
 
+  <!-- 0 开场吐槽 -->
+  <section class="scene" data-scene="rant">
+    <div class="glow" style="left:120px;top:220px;width:620px;height:480px;background:#FFC9C9"></div>
+    <div class="glow" style="left:560px;top:120px;width:460px;height:400px;background:#FFE0B8"></div>
+    <div class="abs" style="left:470px;top:100px" data-in="s0+0.3" data-anim="pop" data-sfx="nope">
+      <div class="card cute" style="padding:14px 30px;font-size:54px;border-radius:36px 36px 36px 8px;border:3px solid var(--ink);box-shadow:0 7px 0 var(--ink)">#@%&amp;!! <span class="emoji">😤</span></div>
+    </div>
+    <div class="abs" style="left:500px;top:262px" data-in="s1" data-anim="pop" data-emph="s1+0.4"><span class="chip red toon cute" style="font-size:40px"><span style="color:var(--claude)">anthropic</span>&nbsp;太不是人了！</span></div>
+    <div class="abs card" style="left:500px;top:400px;width:540px;padding:24px 30px;border:3px solid var(--ink);box-shadow:0 8px 0 var(--ink)" data-in="c1" data-anim="pop">
+      <div style="font-size:19px;color:var(--mute);font-weight:800">📰 今日快讯</div>
+      <div class="cute" style="font-size:42px;font-weight:600;margin-top:10px;line-height:1.35"><span style="color:var(--blue)">OpenAI</span> 那边也开始<br><span class="mk" data-mk="s3+0.3" style="--mkc:#FFD3DC">大规模封号</span>了</div>
+      <div class="stamp" style="transform:rotate(-14deg)" data-in="s3+0.7" data-anim="pop" data-sfx="strike">封</div>
+    </div>
+  </section>
+
   <!-- 1 封号 -->
   <section class="scene" data-scene="ban">
     <div class="glow" style="left:240px;top:60px;width:640px;height:420px;background:#FFD0DC"></div>
     <div class="glow" style="left:620px;top:300px;width:420px;height:360px;background:#DCD5FF"></div>
-    <div class="row" style="top:70px"><span class="chip red toon" data-in="s0" data-anim="pop" style="font-size:26px">📅 2026 年上半年</span></div>
-    <div class="row" style="top:140px" data-in="s1" data-anim="pop">
+    <div class="row" style="top:70px" data-out="c1-0.15"><span class="chip red toon" data-in="s0" data-anim="pop" style="font-size:26px">📅 2026 年上半年</span></div>
+    <div class="row" style="top:140px" data-in="s1" data-anim="pop" data-out="c1-0.15">
       <div class="col" data-emph="s1+2.3">
         <div class="cute" style="font-size:150px;font-weight:600;line-height:1.05">约 <span style="color:var(--red)" data-count="s1+0.1" data-to="1140" data-dur="2.2">0</span><span style="font-size:96px"> 万</span></div>
-        <div class="cute" style="font-size:40px;font-weight:600;margin-top:4px"><span style="color:var(--claude)">Claude</span> 全平台<span class="mk" data-mk="s2" style="--mkc:#FFC7D3">封禁账号</span></div>
+        <div class="cute" style="font-size:40px;font-weight:600;margin-top:4px"><span style="color:var(--claude)">Claude</span> 全平台<span class="mk" data-mk="s1+0.8" style="--mkc:#FFC7D3">封禁账号</span></div>
       </div>
     </div>
-    <div class="row" style="top:450px;gap:16px">
+    <div class="row" style="top:450px;gap:16px" data-out="c1-0.15">
       <div class="card acct" data-in="s2+0.0" data-anim="pop"></div><div class="card acct" data-in="s2+0.12" data-anim="pop"></div><div class="card acct" data-in="s2+0.24" data-anim="pop"></div>
       <div class="card acct" data-in="s2+0.36" data-anim="pop"></div><div class="card acct" data-in="s2+0.48" data-anim="pop"></div><div class="card acct" data-in="s2+0.6" data-anim="pop"></div>
       <div class="card acct" data-in="s2+0.72" data-anim="pop"></div><div class="card acct" data-in="s2+0.84" data-anim="pop"></div>
     </div>
-    <div class="abs" style="left:640px;top:620px" data-in="s4" data-anim="pop"><span class="chip claude toon" style="font-size:28px">Claude Code <span style="color:var(--ink2)">=</span> CC</span></div>
-    <div class="abs" style="left:440px;top:710px" data-in="s5" data-anim="pop">
-      <div class="card cute" style="padding:16px 28px;font-size:32px;border-radius:30px 30px 30px 8px">会不会被封号…？<span class="emoji">😰</span></div>
+    <div class="row" style="top:60px" data-in="c1" data-anim="pop"><div class="h2">需要一个这样的方式 <span class="emoji">👇</span></div></div>
+    <div class="row" style="top:160px;gap:18px">
+      <span class="chip green toon" style="font-size:30px" data-in="s3+0.2" data-anim="pop">✅ 稳定</span>
+      <span class="chip green toon" style="font-size:30px" data-in="s3+0.5" data-anim="pop">✅ 方便</span>
+      <span class="chip green toon" style="font-size:30px" data-in="s3+0.8" data-anim="pop">✅ 性价比高</span>
     </div>
+    <div class="row" style="top:270px;gap:90px;align-items:flex-start">
+      <div class="col" style="gap:12px" data-in="s4" data-anim="pop"><div class="tile codex">&gt;_</div><b style="font-size:26px">Codex</b></div>
+      <div class="col" style="gap:12px" data-in="s4+0.3" data-anim="pop"><div class="spark" style="width:110px;height:110px;border-radius:34px"><svg><use href="#i-spark"/></svg></div><b style="font-size:26px">Claude Code</b><span class="chip claude" style="font-size:19px;padding:3px 14px">下面简称 CC</span></div>
+    </div>
+    <div class="row" style="top:540px" data-in="s5" data-anim="pop" data-emph="s5+0.4"><span class="chip dark toon cute" style="font-size:30px">⭐ 尤为重要</span></div>
     <style>
       .acct{width:96px;height:120px;border-radius:24px;position:relative;display:flex;flex-direction:column;align-items:center;padding-top:18px;gap:10px}
       .acct::before{content:"";width:44px;height:44px;border-radius:50%;background:#EAE5F7}
@@ -123,140 +145,129 @@
       <div class="card" style="width:440px;padding:30px 32px" data-in="c2" data-anim="pop">
         <div style="display:flex;align-items:center;gap:16px"><svg class="ic" style="font-size:52px;color:var(--ink2)"><use href="#i-plug"/></svg><div class="h2" style="font-size:36px">接国内模型</div></div>
         <div style="margin-top:26px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-          <span class="chip" data-in="s4" data-anim="left">实际用的是：所选的国内模型</span>
-          <span class="chip claude x-over" data-in="s5" data-anim="left" data-on="s5+0.4" data-emph="s5+0.4">Claude 模型</span>
-          <span class="chip amber" data-in="s6" data-anim="left">能力取决于模型和任务</span>
+          <span class="chip claude x-over" data-in="s4" data-anim="left" data-on="s4+0.5" data-emph="s4+0.5">Opus / Astra 级模型</span>
+          <span class="chip" data-in="s5" data-anim="left">CC / Codex 架构再好…</span>
+          <span class="chip red toon" data-in="s6" data-anim="left" data-emph="s6+0.5" data-sfx="nope">😩 实际效果不如人意</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4 新方式 -->
+  <!-- 4 新方法 -->
   <section class="scene" data-scene="new">
     <div class="glow" style="left:380px;top:20px;width:560px;height:460px;background:#C9D6FF;opacity:.8"></div>
-    <div class="row" style="top:40px"><span class="chip bot toon" data-in="s0" data-anim="pop" style="font-size:30px">✨ 今天介绍：用 CC 的新方式</span></div>
-    <div class="abs" style="left:420px;top:130px" data-in="s1" data-anim="pop" data-burst="s1+0.4">
+    <div class="row" style="top:36px"><span class="chip bot toon" data-in="s0" data-anim="pop" style="font-size:30px">✨ 今天介绍一种新方法</span></div>
+    <div class="abs" style="left:420px;top:120px" data-in="s1" data-anim="pop" data-burst="s1+0.5">
       <div style="width:470px;height:300px;border-radius:34px;background:#2B2540;padding:14px;box-shadow:0 10px 0 #1a1528,0 30px 60px rgba(80,70,200,.25)">
-        <div style="width:100%;height:100%;border-radius:22px;background:linear-gradient(135deg,#7B8CFF,#6C63FF);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden">
+        <div style="width:100%;height:100%;border-radius:22px;background:linear-gradient(135deg,#7B8CFF,#6C63FF);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:18px;padding:0 54px;position:relative;overflow:hidden">
           <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 2px,transparent 2px 26px)"></div>
-          <div style="display:flex;align-items:center;gap:16px"><div class="spark" style="width:60px;height:60px"><svg><use href="#i-spark"/></svg></div><div class="cute" style="font-size:48px;font-weight:600;color:#fff">Claude Code</div></div>
-          <div style="font-size:24px;color:#E6E3FF;font-weight:700;font-family:var(--mono)">$ claude ▍</div>
+          <div style="display:flex;align-items:center;gap:16px"><div class="spark" style="width:58px;height:58px"><svg><use href="#i-spark"/></svg></div><div class="cute" style="font-size:44px;font-weight:600;color:#fff">Claude Code</div></div>
+          <div style="display:flex;align-items:center;gap:16px"><div class="tile codex" style="width:58px;height:58px;border-radius:18px;font-size:22px">&gt;_</div><div class="cute" style="font-size:44px;font-weight:600;color:#fff">Codex</div></div>
+          <div style="font-size:22px;color:#E6E3FF;font-weight:800">稳定调用 ✓</div>
         </div>
       </div>
       <div style="width:120px;height:40px;background:#5A5470;margin:0 auto;clip-path:polygon(25% 0,75% 0,85% 100%,15% 100%)"></div>
       <div style="width:220px;height:16px;border-radius:10px;background:#4A4560;margin:0 auto"></div>
     </div>
-    <div class="abs" style="left:780px;top:96px" data-in="s2" data-anim="pop"><span class="chip dark toon" style="font-size:24px">☁️ 电脑部署在云端</span></div>
-    <div class="abs" style="left:300px;top:520px;width:200px" data-in="s1+0.3" data-anim="grow"><div class="arrow solid" style="transform:rotate(-30deg);transform-origin:left"></div></div>
-    <div class="abs" style="left:300px;top:450px" data-in="s1+0.3" data-anim="pop"><span class="chip bot">调用</span></div>
+    <div class="abs" style="left:760px;top:92px" data-in="s2" data-anim="pop"><span class="chip dark toon" style="font-size:22px">🔥 最近很火的 agent tool</span></div>
+    <div class="abs" style="left:300px;top:520px;width:200px" data-in="s3" data-anim="grow"><div class="arrow solid" style="transform:rotate(-30deg);transform-origin:left"></div></div>
+    <div class="abs" style="left:100px;top:400px" data-in="s3" data-anim="pop" data-emph="s3+0.4"><span class="chip bot toon cute" style="font-size:36px">Grok Bot</span></div>
     <div class="row" style="top:560px;justify-content:flex-start;left:560px;gap:14px">
       <div class="ghost g1" data-in="s2+0.1" data-anim="pop"></div><div class="ghost g2" data-in="s2+0.2" data-anim="pop"></div><div class="ghost g3" data-in="s2+0.3" data-anim="pop"></div><div class="ghost g4" data-in="s2+0.4" data-anim="pop"></div><div class="ghost g5" data-in="s2+0.5" data-anim="pop"></div>
     </div>
   </section>
 
-  <!-- 5 Grok Bot 是什么 -->
+  <!-- 5 Grok Bot 是啥 -->
   <section class="scene" data-scene="what">
     <div class="glow" style="left:60px;top:60px;width:520px;height:520px;background:#DCE0FF"></div>
     <div class="glow" style="left:620px;top:120px;width:420px;height:380px;background:#DDF3FF"></div>
-    <div class="abs col" style="left:80px;top:50px;gap:10px" data-in="s0" data-anim="pop"><div class="tile" style="background:#2B2540;color:#fff">X</div><b style="font-size:24px">X</b></div>
-    <div class="abs col" style="left:245px;top:20px;gap:10px" data-in="s0+0.25" data-anim="pop"><div class="tile" style="background:#4A4560;color:#fff;font-size:42px">Cu</div><b style="font-size:24px">Cursor</b></div>
-    <div class="abs col" style="left:410px;top:50px;gap:10px" data-in="s0+0.5" data-anim="pop"><div class="tile" style="background:#fff;color:var(--ink);border:2.5px solid #EEE9FA">G</div><b style="font-size:24px">Grok</b></div>
-    <div class="abs" style="left:140px;top:230px" data-in="s1" data-anim="pop"><span class="chip bot toon" style="font-size:28px"><svg class="ic"><use href="#i-link"/></svg>绑定的 Agent team 工具</span></div>
+    <div class="abs" style="left:640px;top:40px" data-in="c0+0.3" data-anim="pop" data-emph="s1+0.6"><span class="chip bot toon cute" style="font-size:34px">❓ Grok Bot 是啥？</span></div>
+    <div class="abs col" style="left:80px;top:50px;gap:10px" data-in="s2" data-anim="pop"><div class="tile" style="background:#2B2540;color:#fff">X</div><b style="font-size:24px">X</b></div>
+    <div class="abs col" style="left:245px;top:20px;gap:10px" data-in="s2+0.25" data-anim="pop"><div class="tile" style="background:#4A4560;color:#fff;font-size:42px">Cu</div><b style="font-size:24px">Cursor</b></div>
+    <div class="abs col" style="left:410px;top:50px;gap:10px" data-in="s2+0.5" data-anim="pop"><div class="tile" style="background:#fff;color:var(--ink);border:2.5px solid #EEE9FA">G</div><b style="font-size:24px">Grok</b></div>
+    <div class="abs" style="left:140px;top:230px" data-in="s3" data-anim="pop"><span class="chip bot toon" style="font-size:28px"><svg class="ic"><use href="#i-link"/></svg>绑定的 Agent team 工具</span></div>
     <div class="abs" style="left:60px;top:620px;display:flex;gap:16px">
-      <div class="ghost g1" data-in="s1+0.1" data-anim="pop"></div><div class="ghost g2" data-in="s1+0.2" data-anim="pop"></div><div class="ghost g3" data-in="s1+0.3" data-anim="pop"></div><div class="ghost g4" data-in="s1+0.4" data-anim="pop"></div><div class="ghost g5" data-in="s1+0.5" data-anim="pop"></div><div class="ghost g6" data-in="s1+0.6" data-anim="pop"></div>
+      <div class="ghost g1" data-in="s3+0.1" data-anim="pop"></div><div class="ghost g2" data-in="s3+0.2" data-anim="pop"></div><div class="ghost g3" data-in="s3+0.3" data-anim="pop"></div><div class="ghost g4" data-in="s3+0.4" data-anim="pop"></div><div class="ghost g5" data-in="s3+0.5" data-anim="pop"></div><div class="ghost g6" data-in="s3+0.6" data-anim="pop"></div>
     </div>
-    <div class="abs card" style="left:640px;top:130px;width:420px;padding:22px" data-in="c1" data-anim="pop">
+    <div class="abs card" style="left:640px;top:140px;width:420px;padding:22px" data-in="c2" data-anim="pop">
       <div class="cute" style="font-size:28px;font-weight:600;display:flex;align-items:center;gap:10px"><svg class="ic" style="color:var(--bot)"><use href="#i-cloud"/></svg>自己的云端电脑</div>
       <div style="margin-top:16px;border-radius:20px;background:#1E1B2B;height:190px;padding:16px;display:flex;flex-direction:column;gap:12px">
-        <div style="display:flex;gap:10px" data-in="s3" data-anim="left"><span class="chip" style="background:#2E2A3E;color:#EDEAF5;font-size:21px"><svg class="ic"><use href="#i-gear"/></svg>操作软件</span></div>
-        <div style="display:flex;gap:10px" data-in="s3+0.5" data-anim="left"><span class="chip" style="background:#2E2A3E;color:#7EE7B0;font-size:21px"><svg class="ic"><use href="#i-term"/></svg>执行任务 ✓</span></div>
-        <div style="height:12px;border-radius:6px;background:#2E2A3E;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--bot),var(--pink));width:0" data-bar="s3:s3+2.4"></div></div>
+        <div style="display:flex;gap:10px" data-in="s5" data-anim="left"><span class="chip" style="background:#2E2A3E;color:#EDEAF5;font-size:21px"><svg class="ic"><use href="#i-gear"/></svg>操作软件</span></div>
+        <div style="display:flex;gap:10px" data-in="s5+0.5" data-anim="left"><span class="chip" style="background:#2E2A3E;color:#7EE7B0;font-size:21px"><svg class="ic"><use href="#i-term"/></svg>执行任务 ✓</span></div>
+        <div style="height:12px;border-radius:6px;background:#2E2A3E;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--bot),var(--pink));width:0" data-bar="s5:s5+2.4"></div></div>
       </div>
     </div>
   </section>
 
-  <!-- 6 价格 -->
-  <section class="scene" data-scene="price">
-    <div class="glow" style="left:200px;top:80px;width:700px;height:460px;background:#E3E6FF"></div>
-    <div class="row" style="top:70px;gap:26px">
-      <div class="card col" style="width:300px;padding:30px 20px;gap:12px" data-in="s0" data-anim="pop"><div class="minibot"></div><b style="font-size:28px">Grok Bot</b><div class="cute" style="font-size:56px;font-weight:600;color:var(--bot)">$30<span style="font-size:24px;color:var(--mute)"> / 月</span></div></div>
-      <div class="cute" style="font-size:64px;color:var(--mute)" data-in="s1" data-anim="pop">+</div>
-      <div class="card col" style="width:300px;padding:30px 20px;gap:12px" data-in="s1" data-anim="pop"><div class="spark"><svg><use href="#i-spark"/></svg></div><b style="font-size:28px">自己的 CC 费用</b><div style="font-size:28px;font-weight:900;color:var(--claude);height:62px;display:grid;place-items:center" data-in="s2" data-anim="pop">按 Pro 月付标价</div></div>
+  <!-- 6 为啥选它：① 稳定 -->
+  <section class="scene" data-scene="stable">
+    <div class="glow" style="left:200px;top:180px;width:760px;height:380px;background:#DCE3FF"></div>
+    <div class="row" style="top:26px" data-in="c0"><div class="h2" style="font-size:42px">为啥选 <span style="color:var(--bot)">Grok Bot</span>？<span class="emoji">🤔</span></div></div>
+    <div class="row" style="top:104px;gap:18px">
+      <span class="chip bot toon cute" style="font-size:28px" data-in="s1" data-anim="pop" data-emph="c1">① 稳定</span>
+      <span class="chip toon cute" style="font-size:28px" data-in="s1+0.3" data-anim="pop">② 高性价比</span>
     </div>
-    <div class="row" style="top:430px" data-in="s3" data-anim="pop" data-burst="s3+0.3">
-      <div class="card" style="padding:20px 46px;display:flex;align-items:center;gap:20px;background:var(--ink);color:#fff;border:3px solid var(--ink);box-shadow:0 8px 0 #15111f" data-emph="s3+0.6">
-        <span class="emoji" style="font-size:46px">💰</span>
-        <div style="font-size:30px;font-weight:800">两份订阅 ≈</div><div class="cute" style="font-size:70px;font-weight:600;color:#FFD873">50</div><div style="font-size:30px;font-weight:800">/ 月 量级</div>
-      </div>
-    </div>
-    <div class="row" style="top:600px" data-in="s4"><span class="chip amber" style="font-size:22px">* 实际币种、税费以结算为准</span></div>
-  </section>
-
-  <!-- 7 四个好处 -->
-  <section class="scene" data-scene="benefits">
-    <div class="glow" style="left:120px;top:150px;width:860px;height:440px;background:#E2E7FF"></div>
-    <div class="row" style="top:34px"><div class="h2" data-in="s0">不一定最便宜，但有 <span class="mk" data-mk="s1" style="color:var(--bot);font-size:56px;--mkc:#DCD6FF">5 个好处</span> <span class="emoji">🎁</span></div></div>
-    <div class="abs" style="left:56px;top:122px;display:grid;grid-template-columns:490px 490px;gap:20px">
-      <div class="card ben" data-in="c1" data-anim="pop" data-emph="c1+0.5"><i>1</i><svg class="ic" style="color:var(--blue)"><use href="#i-server"/></svg><div><b>不用自己租服务器</b><span>省掉部署和运维</span></div></div>
-      <div class="card ben" data-in="c2" data-anim="pop" data-emph="c2+0.5"><i>2</i><div class="spark" style="width:56px;height:56px"><svg><use href="#i-spark"/></svg></div><div><b>官方 CC + Claude 模型</b><span>模型和用量取决于账户权限</span></div></div>
-      <div class="card ben" data-in="c3" data-anim="pop" data-emph="c3+0.5"><i>3</i><svg class="ic" style="color:var(--bot)"><use href="#i-team"/></svg><div><b>方便搭建 AI 团队</b><span>Grok Bot 本身就很好用</span></div></div>
-      <div class="card ben" data-in="c4" data-anim="pop" data-emph="c4+0.5"><i>4</i><svg class="ic" style="color:#3CC2AC"><use href="#i-cloud"/></svg><div><b>请求从云端电脑发出</b><span>本机不必单独配置网络出口</span></div></div>
-      <div class="card ben pay" data-in="c5" data-anim="pop" data-emph="s15" data-burst="s13+0.3"><i>5</i><div class="paylogo"><svg class="ic"><use href="#i-wallet"/></svg></div><div><b>支持<span class="alipay">支付宝</span>付款订阅</b><span>没有海外支付方式，也能开通 Grok Bot</span></div><span class="newtag">NEW</span></div>
-    </div>
-    <style>
-      .ben{height:150px;padding:20px 28px;display:flex;align-items:center;gap:22px;position:relative}
-      .ben>.ic{font-size:56px}
-      .ben i{position:absolute;left:-12px;top:-12px;width:46px;height:46px;border-radius:50%;background:var(--bot);color:#fff;font-style:normal;font-size:24px;display:grid;place-items:center;border:3px solid var(--ink);font-family:var(--cute)}
-      .ben b{display:block;font-size:32px;font-family:var(--cute);font-synthesis:none;font-weight:600}
-      .ben span{display:block;font-size:21px;color:var(--mute);margin-top:8px;font-weight:700}
-      .ben.pay{grid-column:1 / span 2;background:linear-gradient(100deg,#EEF5FF,#fff 70%);border-color:#CFE2FF;box-shadow:0 8px 0 rgba(22,119,255,.18),0 18px 40px rgba(22,119,255,.12)}
-      .ben.pay i{background:#1677FF}
-      .ben .alipay{display:inline;color:#1677FF;font-size:inherit;margin:0 4px;font-weight:inherit}
-      .paylogo{width:64px;height:64px;border-radius:20px;background:#1677FF;color:#fff;display:grid;place-items:center;font-size:38px;flex:none;box-shadow:0 5px 0 #0f5bd0}
-      .ben .newtag{position:absolute;right:26px;top:50%;margin:-22px 0 0;display:block;padding:6px 18px;border-radius:999px;background:#FF4D6D;color:#fff;font-size:22px;font-family:var(--cute);border:3px solid var(--ink);transform:rotate(-6deg)}
-    </style>
-  </section>
-
-  <!-- 8 原理 -->
-  <section class="scene" data-scene="principle">
-    <div class="glow" style="left:300px;top:100px;width:760px;height:360px;background:#DCE3FF"></div>
-    <div class="abs" style="left:40px;top:30px;display:flex;align-items:center;gap:16px" data-in="c0"><span class="chip dark toon cute" style="font-size:26px">原理</span><div class="h2" style="font-size:38px">Grok Bot 怎么调用 Claude Code</div></div>
-    <div class="abs" style="left:300px;top:130px;width:770px;height:290px;border:3px dashed #C4BAF2;border-radius:34px;background:rgba(243,240,255,.7)" data-in="s1" data-anim="fade">
+    <div class="abs" style="left:90px;top:220px;width:930px;height:290px;border:3px dashed #C4BAF2;border-radius:34px;background:rgba(243,240,255,.7)" data-in="s4" data-anim="fade">
       <div style="position:absolute;left:24px;top:-22px;background:#fff;padding:4px 16px;border-radius:999px;font-size:21px;font-weight:900;color:var(--bot);display:flex;gap:8px;align-items:center;border:2px solid #E4DCFF"><svg class="ic"><use href="#i-cloud"/></svg>Grok Bot 的云端 Linux 电脑</div>
     </div>
-    <div class="abs col" style="left:340px;top:205px;gap:12px" data-in="s1+0.2" data-anim="pop"><div class="minibot" style="width:96px;height:96px"></div><b style="font-size:24px">Grok Bot</b></div>
-    <div class="abs" style="left:480px;top:258px;width:90px" data-in="s4+0.2" data-anim="grow"><div class="arrow solid"></div></div>
-    <div class="abs col" style="left:590px;top:205px;gap:12px" data-in="s4" data-anim="pop"><div class="tile" style="width:96px;height:96px;background:#1E1B2B;color:#7EE7B0;font-size:56px"><svg class="ic"><use href="#i-term"/></svg></div><b style="font-size:24px">终端</b></div>
-    <div class="abs" style="left:720px;top:258px;width:90px" data-in="s4+0.5" data-anim="grow"><div class="arrow solid"></div></div>
-    <div class="abs col" style="left:840px;top:205px;gap:12px" data-in="s2" data-anim="pop"><div class="spark" style="width:96px;height:96px;border-radius:28px"><svg><use href="#i-spark"/></svg></div><b style="font-size:24px">Claude Code</b></div>
-    <div class="abs col" style="left:60px;top:205px;gap:12px" data-in="s3" data-anim="pop"><div class="tile" style="width:96px;height:96px;background:#EEEBFF;color:var(--bot);font-size:52px"><svg class="ic"><use href="#i-chat"/></svg></div><b style="font-size:24px">你发需求</b></div>
-    <div class="abs" style="left:190px;top:258px;width:120px" data-in="s3+0.3" data-anim="grow"><div class="arrow solid"></div></div>
-    <div class="abs" style="left:60px;top:470px;display:flex;gap:18px;align-items:center">
-      <span class="chip red x-over" style="font-size:26px" data-in="s5" data-on="s5+0.5"><svg class="ic"><use href="#i-plug"/></svg>装插件</span>
-      <span class="chip red x-over" style="font-size:26px" data-in="s6" data-on="s7+0.3"><svg class="ic"><use href="#i-link"/></svg>交给不明中转商</span>
-      <span class="chip green toon" style="font-size:26px" data-in="c4" data-anim="pop" data-emph="c4+0.5" data-sfx="ding">🔑 仍用你自己的账户授权</span>
+    <div class="abs col" style="left:140px;top:300px;gap:12px" data-in="s4+0.2" data-anim="pop"><div class="minibot" style="width:96px;height:96px"></div><b style="font-size:24px">Grok Bot</b></div>
+    <div class="abs" style="left:275px;top:350px;width:80px" data-in="s4+0.4" data-anim="grow"><div class="arrow solid"></div></div>
+    <div class="abs col" style="left:385px;top:300px;gap:12px" data-in="s4+0.5" data-anim="pop"><div class="tile" style="width:96px;height:96px;background:#1E1B2B;color:#7EE7B0;font-size:56px"><svg class="ic"><use href="#i-term"/></svg></div><b style="font-size:24px">终端</b></div>
+    <div class="abs" style="left:515px;top:350px;width:80px" data-in="s5" data-anim="grow"><div class="arrow solid"></div></div>
+    <div class="abs col" style="left:620px;top:300px;gap:12px" data-in="s5+0.1" data-anim="pop"><div class="spark" style="width:96px;height:96px;border-radius:28px"><svg><use href="#i-spark"/></svg></div><b style="font-size:24px">Claude Code</b></div>
+    <div class="abs col" style="left:830px;top:300px;gap:12px" data-in="s5+0.4" data-anim="pop"><div class="tile codex" style="width:96px;height:96px;border-radius:28px;font-size:34px">&gt;_</div><b style="font-size:24px">Codex</b></div>
+    <div class="row" style="top:560px" data-in="s6+0.4" data-anim="pop" data-emph="s7" data-burst="s7+0.2"><span class="chip green toon cute" style="font-size:36px"><span class="emoji">🇺🇸</span>&nbsp;IP 在美国 · 非常纯净</span></div>
+    <div class="row" style="top:654px" data-in="s7+0.9" data-anim="fade"><span style="font-size:19px;color:var(--mute);font-weight:800">* 云端运行 ≠ 账号免封，账户与地区规则仍适用</span></div>
+  </section>
+
+  <!-- 7 为啥选它：② 高性价比 -->
+  <section class="scene" data-scene="value">
+    <div class="glow" style="left:160px;top:80px;width:800px;height:440px;background:#E3E6FF"></div>
+    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:var(--amber)">2</div><div class="t">高性价比</div></div>
+    <div class="row" style="top:100px;gap:16px">
+      <div class="card col pv" data-in="s1" data-anim="pop"><div class="minibot" style="width:60px;height:60px"></div><b>Grok Bot</b><div class="cute" style="font-size:46px;font-weight:600;color:var(--bot)">$30<span style="font-size:22px;color:var(--mute)"> / 月</span></div></div>
+      <div class="cute" style="font-size:54px;color:var(--mute)" data-in="s2" data-anim="pop">+</div>
+      <div class="card col pv" data-in="s2" data-anim="pop"><div class="spark" style="width:60px;height:60px"><svg><use href="#i-spark"/></svg></div><b>CC 费用</b><div style="font-size:20px;color:var(--mute);font-weight:800">自己的订阅</div></div>
+      <div class="cute" style="font-size:54px;color:var(--mute)" data-in="s2+0.3" data-anim="pop">+</div>
+      <div class="card col pv" data-in="s2+0.3" data-anim="pop"><div class="tile codex" style="width:60px;height:60px;border-radius:20px;font-size:22px">&gt;_</div><b>Codex 费用</b><div style="font-size:20px;color:var(--mute);font-weight:800">自己的订阅</div></div>
     </div>
-    <div class="abs card" style="left:60px;top:580px;width:820px;padding:22px 28px;display:flex;align-items:center;gap:18px;background:#FFF8E6;border:3px solid var(--ink);box-shadow:0 7px 0 var(--ink)" data-in="c5" data-anim="pop" data-emph="c5+0.8" data-sfx="alert">
-      <span class="emoji" style="font-size:48px">⚠️</span>
-      <div><div class="cute" style="font-size:36px;font-weight:600"><span class="mk" data-mk="s9+0.3" style="--mkc:#FFE07A">云端运行 ≠ 账号免封</span></div><div style="font-size:22px;color:#8a6a2a;margin-top:6px;font-weight:800">Claude 账户与地区规则仍适用</div></div>
+    <div class="row" style="top:350px" data-in="s4" data-anim="pop" data-burst="s4+0.4">
+      <div class="card" style="padding:16px 40px;display:flex;align-items:center;gap:18px;background:var(--ink);color:#fff;border:3px solid var(--ink);box-shadow:0 8px 0 #15111f" data-emph="s4+0.8">
+        <span class="emoji" style="font-size:42px">💰</span><div style="font-size:26px;font-weight:800">按 Pro 月付标价 ≈</div><div class="cute" style="font-size:64px;font-weight:600;color:#FFD873">50</div><div style="font-size:26px;font-weight:800">/ 月 量级</div>
+      </div>
     </div>
+    <div class="row" style="top:490px;gap:26px;align-items:flex-start">
+      <div class="cute" style="font-size:30px;font-weight:600;margin-top:28px" data-in="s6">🎁 套餐还附带会员：</div>
+      <div class="col" style="gap:8px" data-in="s7" data-anim="pop"><div class="tile" style="width:84px;height:84px;border-radius:26px;font-size:34px;background:#4A4560;color:#fff">Cu</div><b style="font-size:21px">Cursor</b></div>
+      <div class="col" style="gap:8px" data-in="s7+0.2" data-anim="pop"><div class="tile" style="width:84px;height:84px;border-radius:26px;font-size:34px;background:#fff;color:var(--ink);border:2.5px solid #EEE9FA">G</div><b style="font-size:21px">Grok</b></div>
+      <div class="col" style="gap:8px" data-in="s7+0.4" data-anim="pop"><div class="tile" style="width:84px;height:84px;border-radius:26px;font-size:34px;background:#2B2540;color:#fff">X</div><b style="font-size:21px">Twitter</b></div>
+    </div>
+    <div class="row" style="top:665px;gap:18px">
+      <span class="chip bot toon" style="font-size:26px" data-in="s8" data-anim="pop">🤖 构建自己的 AI team</span>
+      <span class="chip claude toon" style="font-size:26px" data-in="s9" data-anim="pop">📱 做自媒体</span>
+    </div>
+    <style>
+      .pv{width:250px;padding:22px 16px;gap:10px}
+      .pv b{font-size:26px}
+    </style>
   </section>
 
   <!-- 9 总览 -->
   <section class="scene" data-scene="overview">
     <div class="glow" style="left:120px;top:140px;width:860px;height:380px;background:#E4E1FF"></div>
-    <div class="row" style="top:50px"><div class="h1" data-in="s0"><span class="mk" data-mk="s2" style="--mkc:#FFE07A">完整走一遍</span></div></div>
+    <div class="row" style="top:50px"><div class="h1" data-in="s0"><span class="mk" data-mk="s3" style="--mkc:#FFE07A">完整走一遍</span></div></div>
     <div class="row" style="top:160px;gap:14px">
-      <span class="chip bot toon" style="font-size:28px" data-in="s1" data-anim="pop">安装</span><span class="mute cute" style="font-size:30px" data-in="s1+0.2">→</span>
-      <span class="chip bot toon" style="font-size:28px" data-in="s1+0.3" data-anim="pop">授权</span><span class="mute cute" style="font-size:30px" data-in="s1+0.5">→</span>
-      <span class="chip bot toon" style="font-size:28px" data-in="s1+0.6" data-anim="pop">调用</span>
+      <span class="chip bot toon" style="font-size:28px" data-in="s2" data-anim="pop">安装</span><span class="mute cute" style="font-size:30px" data-in="s2+0.2">→</span>
+      <span class="chip bot toon" style="font-size:28px" data-in="s2+0.3" data-anim="pop">授权</span><span class="mute cute" style="font-size:30px" data-in="s2+0.5">→</span>
+      <span class="chip bot toon" style="font-size:28px" data-in="s2+0.6" data-anim="pop">调用</span>
     </div>
     <div class="row" style="top:270px;gap:20px">
-      <div class="card ov" data-in="s2" data-anim="pop" style="--c:#4F8BFF"><i>1</i><svg class="ic"><use href="#i-down"/></svg><b>下载并登录<br>Grok Bot</b></div>
-      <div class="card ov" data-in="s2+0.15" data-anim="pop" style="--c:#6C63FF"><i>2</i><svg class="ic"><use href="#i-term"/></svg><b>让 Bot 安装<br>Claude Code</b></div>
-      <div class="card ov" data-in="s2+0.3" data-anim="pop" style="--c:#E8795A"><i>3</i><svg class="ic"><use href="#i-key"/></svg><b>登录并授权<br>Claude Code</b></div>
-      <div class="card ov" data-in="s2+0.45" data-anim="pop" style="--c:#22B884"><i>4</i><svg class="ic"><use href="#i-check"/></svg><b>第一次调用<br>跑通流程</b></div>
+      <div class="card ov" data-in="s3" data-anim="pop" style="--c:#4F8BFF"><i>1</i><svg class="ic"><use href="#i-down"/></svg><b>下载并登录<br>Grok Bot</b></div>
+      <div class="card ov" data-in="s3+0.15" data-anim="pop" style="--c:#6C63FF"><i>2</i><svg class="ic"><use href="#i-term"/></svg><b>让 Bot 安装<br>Claude Code</b></div>
+      <div class="card ov" data-in="s3+0.3" data-anim="pop" style="--c:#E8795A"><i>3</i><svg class="ic"><use href="#i-key"/></svg><b>登录并授权<br>Claude Code</b></div>
+      <div class="card ov" data-in="s3+0.45" data-anim="pop" style="--c:#22B884"><i>4</i><svg class="ic"><use href="#i-check"/></svg><b>第一次调用<br>跑通流程</b></div>
     </div>
+    <div class="row" style="top:548px" data-in="s4" data-anim="pop" data-emph="s4+0.4"><span class="chip claude toon" style="font-size:26px"><span class="spark" style="width:32px;height:32px;border-radius:10px;box-shadow:none"><svg><use href="#i-spark"/></svg></span>以 Claude Code 为例</span></div>
     <style>
       .ov{width:236px;height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;text-align:center}
       .ov .ic{font-size:60px;color:var(--c)}
@@ -467,27 +478,15 @@
         <span class="chip bot toon" style="font-size:28px" data-in="s3" data-anim="pop"><svg class="ic"><use href="#i-term"/></svg>少操作终端</span>
       </div>
     </div>
-    <div class="row" style="top:110px" data-in="c1" data-out="c2-0.1" data-anim="pop" data-burst="c1+0.3"><div class="h1" style="font-size:66px">稳定、方便地用上 <span style="color:var(--claude)">CC</span>！<span class="emoji">💖</span></div></div>
-    <svg class="heart" style="left:280px;top:330px" data-in="c1+0.3" data-out="c2-0.1" data-anim="pop"><use href="#i-heart"/></svg>
-    <svg class="heart" style="left:800px;top:300px;width:56px;height:50px" data-in="c1+0.5" data-out="c2-0.1" data-anim="pop"><use href="#i-heart"/></svg>
-    <svg class="heart" style="left:760px;top:520px;width:30px;height:28px" data-in="c1+0.7" data-out="c2-0.1" data-anim="pop"><use href="#i-heart"/></svg>
-    <div class="abs card" style="left:470px;top:150px;width:580px;padding:30px 34px;border:3px solid var(--ink);box-shadow:0 8px 0 var(--ink)" data-in="c2" data-anim="pop">
-      <span class="chip dark cute" style="font-size:24px">📺 下期预告</span>
-      <div class="cute" style="font-size:40px;font-weight:600;margin-top:20px;line-height:1.35">用 <span style="color:var(--bot)">Grok Bot</span><br>搭建自己的 AI 团队</div>
-      <div style="font-size:24px;color:var(--ink2);margin-top:12px;font-weight:800" data-in="s9">+ 一些实用 tips</div>
-      <div style="display:flex;gap:12px;margin-top:26px">
-        <div class="av" style="background:#6E9BFF;width:60px;height:60px;border-radius:20px" data-in="s8" data-anim="pop"></div>
-        <div class="av" style="background:#4FD19A;width:60px;height:60px;border-radius:20px" data-in="s8+0.1" data-anim="pop"></div>
-        <div class="av" style="background:#A18BFF;width:60px;height:60px;border-radius:20px" data-in="s8+0.2" data-anim="pop"></div>
-        <div class="av" style="background:#FFC24D;width:60px;height:60px;border-radius:20px" data-in="s8+0.3" data-anim="pop"></div>
-        <div class="av" style="background:#FF9472;width:60px;height:60px;border-radius:20px" data-in="s8+0.4" data-anim="pop"></div>
-        <div class="av" style="background:#4CC9BC;width:60px;height:60px;border-radius:20px" data-in="s8+0.5" data-anim="pop"></div>
-      </div>
-    </div>
+    <div class="row" style="top:110px" data-in="c1" data-anim="pop" data-burst="c1+0.3"><div class="h1" style="font-size:66px">稳定、方便地用上 <span style="color:var(--claude)">CC</span>！<span class="emoji">💖</span></div></div>
+    <svg class="heart" style="left:280px;top:330px" data-in="c1+0.3" data-anim="pop"><use href="#i-heart"/></svg>
+    <svg class="heart" style="left:800px;top:300px;width:56px;height:50px" data-in="c1+0.5" data-anim="pop"><use href="#i-heart"/></svg>
+    <svg class="heart" style="left:760px;top:520px;width:30px;height:28px" data-in="c1+0.7" data-anim="pop"><use href="#i-heart"/></svg>
   </section>
 
+
   <!-- 吉祥物 -->
-  <div id="mascot"><div class="shadow"></div><div class="sprout"><i></i><b></b><b></b></div><div class="body"></div><div class="shine"></div><div class="eye el"></div><div class="eye er"></div><div class="blush bl"></div><div class="blush br"></div><div class="sweat"></div><div class="hand hl"></div><div class="hand hr"></div></div>
+  <div id="mascot"><div class="shadow"></div><div class="sprout"><i></i><b></b><b></b></div><div class="body"></div><div class="shine"></div><div class="eye el"></div><div class="eye er"></div><div class="blush bl"></div><div class="blush br"></div><div class="sweat"></div><div class="steam st1"></div><div class="steam st2"></div><div class="brow bw1"></div><div class="brow bw2"></div><div class="vein emoji">💢</div><div class="hand hl"></div><div class="hand hr"></div></div>
   </div><!-- /cam -->
 
   <div class="inputbox"><div class="txt"></div><div class="plus">+</div><div class="mic"></div><div class="send"><svg class="ic" style="color:#fff;font-size:22px;stroke-width:2.8"><path d="M12 19V5M6 11l6-6 6 6"/></svg></div></div>
@@ -502,11 +501,11 @@
     <div class="pane" id="pane-detail">
       <div class="hd">本期内容</div>
       <div class="chap"><i>1</i>封号焦虑与两种方案</div>
-      <div class="chap"><i>2</i>新方式：Bot 调用 CC</div>
-      <div class="chap"><i>3</i>原理</div>
+      <div class="chap"><i>2</i>新方法：Grok Bot</div>
+      <div class="chap"><i>3</i>为啥选它</div>
       <div class="chap"><i>4</i>四步上手</div>
       <div class="chap"><i>5</i>日常使用与排错</div>
-      <div class="chap"><i>6</i>总结 &amp; 下期预告</div>
+      <div class="chap"><i>6</i>总结 &amp; 关注</div>
     </div>
     <div class="pane" id="pane-pc" style="display:none">
       <div class="pc">
@@ -555,8 +554,8 @@
 <!-- 求关注片尾 -->
 <section class="scene full" data-scene="follow" id="follow">
   <div class="dots"></div>
-  <div class="fw-title" data-in="c0" data-anim="pop">点个关注，不迷路！<span class="emoji">💖</span></div>
-  <div class="fw-sub" data-in="s0+0.4" data-anim="up">下期：用 <span style="color:var(--bot)">Grok Bot</span> 搭建自己的 AI 团队 + 实用 tips</div>
+  <div class="fw-title" data-in="c0" data-anim="pop">我是 <span class="mk" data-mk="s0+0.5" style="--mkc:#FFE07A">DaHa</span> <span class="emoji">👋</span></div>
+  <div class="fw-sub" data-in="s1" data-anim="up">点赞 · 收藏 · 关注，球球了 <span class="emoji">🥺</span></div>
   <div class="bigbot" data-in="c0+0.1" data-anim="pop"><div class="shadow"></div><div class="sprout"><i></i><b></b><b></b></div><div class="body"></div><div class="shine"></div><div class="eye el"></div><div class="eye er"></div><div class="blush bl"></div><div class="blush br"></div><div class="hand hl"></div><div class="hand hr"></div></div>
   <div class="abs" style="left:640px;top:420px" data-in="s2" data-anim="pop"><svg class="heart fh" style="position:static;width:54px;height:50px;display:block"><use href="#i-heart"/></svg></div>
   <div class="abs" style="left:1230px;top:350px" data-in="s2+0.15" data-anim="pop"><svg class="heart fh" style="position:static;width:40px;height:36px;display:block"><use href="#i-heart"/></svg></div>
@@ -565,10 +564,12 @@
   <div class="fw-btns">
     <div class="fw-btn" data-in="s1" data-anim="pop"><span class="emoji">👍</span>点赞</div>
     <div class="fw-btn" data-in="s1+0.15" data-anim="pop"><span class="emoji">⭐</span>收藏</div>
-    <div class="fw-btn go" data-in="s1+0.3" data-anim="pop" data-on="s1+0.6" data-emph="s1+0.6" data-burst="s1+0.6" data-sfx="pop"><span data-swap="s1+0.6" data-to="✓ 已关注">＋ 关注</span></div>
+    <div class="fw-btn go" data-in="s1+0.3" data-anim="pop" data-on="s2-0.25" data-emph="s2-0.25" data-burst="s2-0.25" data-sfx="pop"><span data-swap="s2-0.25" data-to="✓ 已关注">＋ 关注</span></div>
   </div>
+  <div class="row" style="top:800px" data-in="c1" data-anim="pop" data-emph="s5+0.2"><span class="chip dark toon cute" style="font-size:32px">📺 下期：用 Grok Bot 搭建自己的 AI 团队 + 实用 tips</span></div>
   <svg class="ic fcursor" style="position:absolute;width:56px;height:56px;left:1500px;top:1000px;opacity:0"><use href="#i-cursor"/></svg>
 </section>
+
 
 <div class="sub" id="sub"><div class="subbot"></div><span id="subtxt"></span></div>
 </div>
@@ -577,28 +578,28 @@
 <script>
 // 吉祥物关键帧：[时间, 状态]；x/y 为舞台坐标，s 为缩放
 window.POSES = {
-  ban: [['b', {x:556,y:690,s:.9,mood:'normal',look:[0,-1],o:1}], ['s3', {x:330,y:700,s:.85,mood:'worried',look:[1,0]}]],
+  rant: [['b', {x:260,y:500,s:1.25,mood:'angry',look:[1,-1],o:1}], ['c1', {mood:'worried',look:[1,0]}]],
+  ban: [['b', {x:556,y:700,s:.85,mood:'worried',look:[0,-1]}], ['c1', {x:556,y:745,s:.7,mood:'think'}], ['s5', {mood:'happy'}]],
   two: [['b', {x:556,y:690,s:.75,mood:'think',look:[0,-1]}]],
   cons: [['b', {x:556,y:700,s:.75,mood:'worried',look:[0,-1]}], ['c2', {mood:'shake'}]],
-  new: [['b', {x:210,y:600,s:1.05,mood:'happy',look:[1,-1]}], ['s2', {mood:'normal'}]],
-  what: [['b', {x:300,y:420,s:1,mood:'normal',look:[0,-1]}], ['c1', {look:[1,0]}]],
-  price: [['b', {x:556,y:730,s:.6,mood:'think',look:[0,-1]}], ['s3', {mood:'happy'}], ['s4', {mood:'normal'}]],
-  benefits: [['b', {x:556,y:760,s:.6,mood:'happy',look:[0,-1]}], ['c1', {mood:'normal'}], ['c5', {mood:'jump'}], ['x5', {mood:'happy'}]],
-  principle: [['b', {x:1000,y:780,s:.55,mood:'normal',look:[-1,-1]}], ['c5', {mood:'worried'}]],
-  overview: [['b', {x:556,y:690,s:.85,mood:'jump',look:[0,-1]}], ['s2', {mood:'happy'}]],
+  new: [['b', {x:210,y:600,s:1.05,mood:'normal',look:[1,-1]}], ['s3', {mood:'jump'}], ['x0', {mood:'happy'}]],
+  what: [['b', {x:300,y:420,s:1,mood:'think',look:[1,-1]}], ['c1', {mood:'normal',look:[0,-1]}], ['c2', {look:[1,0]}]],
+  stable: [['b', {x:1000,y:780,s:.5,mood:'normal',look:[-1,-1]}], ['s7', {mood:'happy'}]],
+  value: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s4', {mood:'happy'}], ['c3', {mood:'jump'}]],
+  overview: [['b', {x:556,y:735,s:.72,mood:'jump',look:[0,-1]}], ['s3', {mood:'happy'}]],
   step1: [['b', {x:1000,y:780,s:.5,mood:'normal',look:[-1,-1]}], ['s5+1', {mood:'happy'}]],
   step2: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['c5+2.6', {mood:'happy'}], ['c6', {mood:'normal'}], ['c8', {mood:'think'}]],
   step3: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['c2', {mood:'cover'}], ['c3', {mood:'normal'}], ['c4', {mood:'cover'}], ['c7', {mood:'jump'}], ['c8', {mood:'happy'}], ['c9', {mood:'normal'}]],
   step4: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s21', {mood:'jump'}]],
   daily: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}]],
   trouble: [['b', {x:556,y:760,s:.55,mood:'worried',look:[0,-1]}], ['c2', {mood:'normal'}]],
-  outro: [['b', {x:556,y:720,s:.7,mood:'normal',look:[0,-1]}], ['c1', {x:556,y:560,s:1.15,mood:'jump',look:[0,0]}], ['c2', {x:240,y:520,s:.95,mood:'wave',look:[1,0]}]],
+  outro: [['b', {x:556,y:720,s:.7,mood:'normal',look:[0,-1]}], ['c1', {x:556,y:560,s:1.15,mood:'jump',look:[0,0]}]],
 };
 // 镜头关键帧：[时间, 缩放, 焦点x, 焦点y]（舞台坐标）；每个场景开始时自动回到全景
 window.CAMS = {
   // 规则：只在“单一焦点”（一个数字 / 一个气泡 / 一个终端）时推镜；并列排布的卡片、步骤、对比一律保持全景，保证整排完整可见
   ban: [['s1',1.18,556,250], ['s2',1,556,440]],
-  new: [['s1',1.12,655,300], ['s2+0.6',1,556,440]],
+  new: [['s1',1.12,655,300], ['s2',1,556,440]],
   step2: [['c1+1.9',1.12,672,230], ['c2',1.3,672,150], ['c3',1.3,672,200], ['c4',1.3,672,270], ['c5',1.2,430,630], ['c7',1,556,440]],
   step3: [['c1+1.4',1.25,672,180], ['c3',1.18,350,450], ['c4-0.8',1,556,440], ['c7',1.15,350,480], ['s19-0.8',1,556,440]],
   step4: [['c0+2.2',1.1,622,230], ['c1',1.2,622,140], ['c2',1.2,622,195], ['c3',1.2,622,250], ['c4',1.2,622,290], ['c5',1.2,622,325], ['c6-0.6',1.08,480,600], ['s21',1,556,440]],
@@ -626,7 +627,7 @@ window.HOOKS = {
   // 片尾：吉祥物挥手 + 光标点“关注”
   follow(t, s) {
     const bot = s.el.querySelector('.bigbot');
-    const ck = at('follow', 's1+0.55'), jumpP = Math.max(0, Math.min(1, (t - ck) / .6));
+    const ck = at('follow', 's2-0.3'), jumpP = Math.max(0, Math.min(1, (t - ck) / .6));
     const hop = -Math.sin(Math.PI * jumpP) * 34;
     bot.querySelector('.body').parentElement.style.translate = `0 ${(Math.sin(t * 2.6) * 8 + hop).toFixed(1)}px`;
     bot.querySelector('.hr').style.transform = `translate(8px,${(-74 + Math.sin(t * 10) * 16).toFixed(1)}px)`;

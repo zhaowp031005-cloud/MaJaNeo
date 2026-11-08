@@ -6,11 +6,12 @@ MODELS, OUT = sys.argv[1], sys.argv[2]
 SID = int(os.environ.get("VOICE_SID", 62)); SPEED = float(os.environ.get("VOICE_SPEED", 1.08))
 FPS = int(os.environ.get("FPS", 60))
 k = f"{MODELS}/kokoro-multi-lang-v1_1"
+EXTRA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lexicon-extra.txt")  # 补充词典：OpenAI / Astra / IP 等
 tts = sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(
   model=sherpa_onnx.OfflineTtsModelConfig(kokoro=sherpa_onnx.OfflineTtsKokoroModelConfig(
     model=f"{k}/model.onnx", voices=f"{k}/voices.bin", tokens=f"{k}/tokens.txt",
     data_dir=f"{k}/espeak-ng-data", dict_dir=f"{k}/dict",
-    lexicon=f"{k}/lexicon-us-en.txt,{k}/lexicon-zh.txt"), num_threads=4)))
+    lexicon=f"{EXTRA},{k}/lexicon-us-en.txt,{k}/lexicon-zh.txt"), num_threads=4)))
 SR = tts.sample_rate
 def trim(x, th=0.01):
     idx = np.where(np.abs(x) > th)[0]

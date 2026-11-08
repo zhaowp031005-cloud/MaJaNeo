@@ -205,3 +205,12 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:#F3EEFF;font-fam
 .bigbot .sprout b:first-of-type{left:-18px;transform:rotate(-20deg)}
 .bigbot .sprout b:last-of-type{left:8px;border-radius:0 15px;transform:rotate(20deg)}
 .bigbot .shadow{position:absolute;left:30px;top:192px;width:140px;height:26px;border-radius:50%;background:rgba(108,99,255,.16);filter:blur(4px)}
+
+/* v3：Codex 图标、印章、生气冒烟 */
+.tile.codex{background:linear-gradient(135deg,#5B7CFF,#8A5CFF);color:#fff;font-family:var(--mono);font-size:40px;font-weight:700}
+.stamp{position:absolute;right:30px;top:36px;width:100px;height:100px;border:5px solid var(--red);color:var(--red);border-radius:50%;display:grid;place-items:center;font-size:50px;font-family:var(--cute);background:rgba(255,92,122,.06)}
+#mascot .steam{position:absolute;top:-24px;width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #E8E3F5;opacity:0}
+#mascot .st1{left:24px}#mascot .st2{right:24px}
+#mascot .brow{position:absolute;top:46px;width:38px;height:9px;border-radius:5px;background:#fff;opacity:0}
+#mascot .bw1{left:58px}#mascot .bw2{left:104px}
+#mascot .vein{position:absolute;right:-8px;top:-10px;font-size:44px;opacity:0}

@@ -4,9 +4,13 @@
 #   {重点}  黄色荧光笔划线      [警示]  红色（“不要…”“不是…”这类）
 # 人名/产品名/数字会自动上色（Claude 橙、Bot 紫、数字红、技术词蓝）。
 SCENES = [
+ ("rant", [
+   dict(sub="我澡尔冯了个福的 anthropic，|[太不是人了]！"),
+   dict(sub="就在今天，|OpenAI 那边也开始[大规模封号]了。"),
+ ]),
  ("ban", [
-   dict(sub="2026 年上半年，|Claude 全平台[封禁]了|约 1,140 万个账号。", say="二零二六年上半年，Claude 全平台封禁了约一千一百四十万个账号。"),
-   dict(sub="在大陆用 Claude Code|（下面简称 CC）的人，|确实普遍{担心封号}。", say="在大陆用 Claude Code，下面简称 C C 的人，确实普遍担心封号。"),
+   dict(sub="2026 年上半年，|Claude 更是全平台[封禁]了|约 1,140 万个账号。", say="二零二六年上半年，Claude 更是全平台封禁了约一千一百四十万个账号。"),
+   dict(sub="因此当下有个{稳定、方便且性价比高}的|调用 Codex 和 Claude Code 的方式|显得{尤为重要}。"),
  ]),
  ("two", [
    dict(sub="当前主流的方案有{两种}：|一是部署{海外服务器}，|二是用 CC 框架|接{国内模型的 API}。", say="当前主流的方案有两种：一是部署海外服务器，二是用 C C 框架，接国内模型的 A P I。"),
@@ -14,43 +18,35 @@ SCENES = [
  ("cons", [
    dict(sub="两种方案都有[弊端]。"),
    dict(sub="海外服务器[操作麻烦]，|对编程小白[很不友好]。"),
-   dict(sub="接国内模型的话，|接入后用的是{所选的国内模型}，|[不是 Claude]，|实际能力取决于{模型和任务}。"),
+   dict(sub="接国内模型的话，|由于[不是 Opus 或 Astra]，|CC 和 Codex 架构再好，|实际表现结果也[不如人意]。", say="接国内模型的话，由于不是 Opus 或 Astra，C C 和 Codex 架构再好，实际表现结果也不如人意。"),
  ]),
  ("new", [
-   dict(sub="今天介绍一种用 CC 的{新方式}：|用 Grok Bot 调用 Claude Code，|电脑部署{在云端}。", say="今天介绍一种用 C C 的新方式：用 Grok Bot 调用 Claude Code，电脑部署在云端。"),
+   dict(sub="因此！今天介绍一种|{稳定调用 Codex 和 Claude Code}的新方法，|也就是通过最近很火的 agent tool|——{Grok Bot}！", say="因此！今天介绍一种稳定调用 Codex 和 Claude Code 的新方法，也就是通过最近很火的 agent tool，Grok Bot！"),
  ]),
  ("what", [
+   dict(sub="在介绍方法之前，|我们先了解 {Grok Bot 是啥}？"),
    dict(sub="Grok Bot 是跟 X、Cursor、Grok|绑定的 {Agent team 工具}，"),
    dict(sub="它有{自己的云端电脑}，|能在上面{操作软件、执行任务}。"),
  ]),
- ("price", [
-   dict(sub="Grok Bot 是{每月 30 美元}的套餐，|再加上自己的 CC 费用。", say="Grok Bot 是每月三十美元的套餐，再加上自己的 C C 费用。"),
-   dict(sub="按 Pro 月付标价算，|两份订阅大约是{五十的月费量级}，|实际币种、税费以结算为准。"),
+ ("stable", [
+   dict(sub="其次了解一下，|为啥 Grok Bot 可以{稳定、高性价比}地|使用 Codex 和 Claude Code？"),
+   dict(sub="第一，{稳定}：|Grok Bot 有自己的{云端 Linux 电脑}，|Claude Code 和 Codex {就装在上面}。"),
+   dict(sub="因此 Claude Code 和 Codex 的 IP|本身就{在美国}，非常纯净。"),
  ]),
- ("benefits", [
-   dict(sub="它[不一定最便宜]，|但有{五个好处}。"),
-   dict(sub="第一，|{不用自己租服务器}。"),
-   dict(sub="第二，用的是{官方 CC 配 Claude 模型}，|具体模型和用量取决于账户权限。", say="第二，用的是官方 C C 配 Claude 模型，具体模型和用量取决于账户权限。"),
-   dict(sub="第三，Grok Bot 本身|就是{很好用的工具}，|方便搭建自己的 {AI 团队}。"),
-   dict(sub="第四，CC 请求{从云端电脑发出}，|不必在本机单独配置|CC 的{网络出口}。", say="第四，C C 请求从云端电脑发出，不必在本机单独配置 C C 的网络出口。"),
-   dict(sub="第五，Grok Bot|现在支持{支付宝}付款了，|很多大陆用户没有海外支付方式，|订阅{不再是难题}。"),
- ]),
- ("principle", [
-   dict(sub="做之前，先了解一下{原理}。"),
-   dict(sub="Grok Bot 有自己的{云端 Linux 电脑}，|Claude Code {就装在上面}。"),
-   dict(sub="你发需求，|Bot {通过终端}调用 CC，", say="你发需求，Bot 通过终端调用 C C，"),
-   dict(sub="[不是装一个插件]，|也不是把你的请求|交给[不明中转商]。"),
-   dict(sub="你仍然用{自己的账户}授权。"),
-   dict(sub="[云端运行不等于账号免封]，|Claude 账户与地区规则{仍适用}。"),
+ ("value", [
+   dict(sub="第二，{高性价比}：|Grok Bot 是{每月 30 美元}的套餐，|再加上自己的 CC 和 Codex 费用。", say="第二，高性价比：Grok Bot 是每月三十美元的套餐，再加上自己的 C C 和 Codex 费用。"),
+   dict(sub="按 Pro 月付标价算，|两份订阅大约是{五十的月费量级}。"),
+   dict(sub="这样既能稳定地用到 Codex 和 CC，|同时 Grok Bot 的套餐|也带上 {Cursor、Grok、Twitter 的会员}，", say="这样既能稳定地用到 Codex 和 C C，同时 Grok Bot 的套餐也带上 Cursor、Grok、Twitter 的会员，"),
+   dict(sub="对于构建自己的 {AI team}、|做{自媒体}都很有帮助。"),
  ]),
  ("overview", [
-   dict(sub="下面带着大家|把{安装、授权和调用}|完整走一遍。"),
+   dict(sub="如果到现在你觉得这个方案你能接受，|我们下面带着大家|把{安装、授权和调用}|完整走一遍，|下面以 {Claude Code} 为例。"),
  ]),
  ("step1", [
    dict(sub="第一步，|{下载并登录} Grok Bot。"),
    dict(sub="在网络能正常访问|官方下载页和登录页的{前提}下，"),
    dict(sub="从{官方下载页}下载桌面版，|安装后用 {Cursor 账户}登录，|确认套餐{包含 Grok Bot}。"),
-   dict(sub="还没订阅的话，|现在可以直接用{支付宝}付款开通。"),
+   dict(sub="同时补充一个信息：|现在 Grok Bot 也能用{支付宝}支付了！"),
  ]),
  ("step2", [
    dict(sub="第二步，|让 Grok Bot {安装 Claude Code}。"),
@@ -95,14 +91,14 @@ SCENES = [
    dict(sub="它们是{两套}，|重置时间以{各自提示}为准，|[不要一报错就重复安装]。"),
  ]),
  ("summary", [
-   dict(sub="最后给大家一页{操作总览}，|记得{截图保存}哦！", pause=3.9),
+   dict(sub="下面是操作方式的{一页总结}，|大家可以{截图保存}哦！", pause=3.9),
  ]),
  ("outro", [
    dict(sub="这套方式多花的钱，|主要换来的是|{不用自己维护服务器}，|以及{少操作终端}。"),
    dict(sub="祝大家都能{稳定、方便地}|用上 CC！", say="祝大家都能稳定、方便地用上 C C！"),
-   dict(sub="下一期再讲|怎么通过 Grok Bot|{搭建自己的 AI 团队}，|以及一些{实用 tips}。"),
  ]),
  ("follow", [
-   dict(sub="觉得有用的话，|记得{点赞、收藏、关注}哦，|我们下期见！"),
+   dict(sub="我是 {DaHa}，|球球大家的{点赞、收藏、关注}，|球球了！", say="我是大哈，球球大家的点赞、收藏、关注，球球了！"),
+   dict(sub="下一期我们再讲|怎么通过 Grok Bot|{搭建自己的 AI 团队}，|以及一些{实用 tips}。", say="下一期我们再讲怎么通过 Grok Bot 搭建自己的 AI 团队，以及一些实用 tips。"),
  ]),
 ]

@@ -190,6 +190,7 @@
     const envS = (TL.env[Math.max(0, fi - 3)] || 0) * .5 + env * .5;
     let bob = Math.sin(t * 2.3) * 7, rot = Math.sin(t * 1.3) * 2.5, jump = 0, shakeX = 0, land = 0;
     if (st.mood === 'worried') shakeX = Math.sin(t * 38) * 1.6;
+    if (st.mood === 'angry') { shakeX = Math.sin(t * 46) * 3.2; rot += Math.sin(t * 23) * 2; }
     if (st.mood === 'jump') { const ph = (t * 1.6) % 1; jump = -Math.sin(Math.PI * ph) * 46; land = ph < .12 ? (1 - ph / .12) : 0; }
     if (st.mood === 'shake') rot += Math.sin(t * 9) * 8;
     const sq = 1 + envS * .08 - land * .12;
@@ -199,14 +200,18 @@
     const happy = ['happy', 'jump', 'wave'].includes(st.mood);
     m.querySelectorAll('.eye').forEach((e, i) => {
       e.classList.toggle('arc', happy);
-      const sy = happy ? 1 : blink, h = st.mood === 'worried' ? .78 : 1;
-      let rr = st.mood === 'worried' ? (i ? 14 : -14) : -8; if (happy) rr = 0;
+      const sy = happy ? 1 : blink, h = st.mood === 'worried' ? .78 : st.mood === 'angry' ? .7 : 1;
+      let rr = st.mood === 'worried' ? (i ? 14 : -14) : st.mood === 'angry' ? (i ? -26 : 26) : -8; if (happy) rr = 0;
       const lx = st.lx * 10, ly = st.ly * 10 + (st.mood === 'think' ? -10 : 0);
       e.style.transform = `translate(${lx.toFixed(2)}px,${ly.toFixed(2)}px) rotate(${rr}deg) scaleY(${(sy * h).toFixed(3)})`;
     });
     m.querySelector('.sweat').style.opacity = st.mood === 'worried' ? clamp(st.since * 2) : 0;
     m.querySelector('.sweat').style.transform = `translateY(${(t * 18) % 14}px)`;
-    m.querySelectorAll('.blush').forEach(b => b.style.opacity = happy ? .85 : .4);
+    m.querySelectorAll('.blush').forEach(b => b.style.opacity = happy ? .85 : st.mood === 'angry' ? 1 : .4);
+    const ang = st.mood === 'angry' ? 1 : 0;
+    m.querySelectorAll('.brow').forEach((b, i) => { b.style.opacity = ang; b.style.transform = `translate(${(st.lx * 10).toFixed(2)}px,${(st.ly * 10 + 6).toFixed(2)}px) rotate(${i ? -24 : 24}deg)`; });
+    const vein = m.querySelector('.vein'); vein.style.opacity = ang; vein.style.transform = `scale(${(1 + .18 * Math.abs(Math.sin(t * 6))).toFixed(3)})`;
+    m.querySelectorAll('.steam').forEach((s, i) => { const ph = (t * 1.4 + i * .5) % 1; s.style.opacity = st.mood === 'angry' ? (Math.sin(Math.PI * ph) * .95).toFixed(3) : 0; s.style.transform = `translate(${(i ? 1 : -1) * ph * 26}px,${-ph * 60}px) scale(${(.6 + ph * .8).toFixed(3)})`; });
     m.querySelector('.sprout').style.transform = `rotate(${(Math.sin(t * 3.1) * 10 + (st.mood === 'jump' ? Math.sin(t * 12) * 12 : 0)).toFixed(2)}deg)`;
     const hl = m.querySelector('.hl'), hr = m.querySelector('.hr');
     const hb = envS * 10;
@@ -236,10 +241,10 @@
 
   // ---------- 字幕 ----------
   const KW = [
-    [/Claude Code|Claude|CC|claude/g, 'k-claude'],
+    [/Claude Code|Claude|CC|claude|[Aa]nthropic/g, 'k-claude'],
     [/Grok Bot|Grok|Bot|Cursor|X(?=、)/g, 'k-bot'],
     [/1,140 万|2026|30 美元|五十|四个|五个|第[一二三四五]步?/g, 'k-num'],
-    [/Linux|HTML|API|AI|Agent team|Pro|tips|Login successful|操作总览|截图保存/g, 'k-tech'],
+    [/Linux|HTML|API|AI team|AI|Agent team|agent tool|Pro|tips|Login successful|Codex|OpenAI|Opus|Astra|Twitter|IP/g, 'k-tech'],
   ];
   // 字幕标记：{重点} → 黄色荧光笔；[警示] → 红色；其余文字按关键词自动上色
   function markup(s) {
@@ -319,7 +324,7 @@
     else { box.textContent = txt.length > 46 ? '…' + txt.slice(-46) : txt; send.classList.toggle('on', on || txt.length > 0); }
     send.style.transform = sendP >= 0 ? `scale(${(1 + .35 * Math.sin(Math.PI * sendP)).toFixed(3)})` : (on ? `scale(${(1 + .06 * Math.sin(t * 12)).toFixed(3)})` : '');
   }
-  const CHAPS = [['ban', 'two', 'cons'], ['new', 'what', 'price', 'benefits'], ['principle'], ['overview', 'step1', 'step2', 'step3', 'step4'], ['daily', 'trouble', 'summary'], ['outro', 'follow']];
+  const CHAPS = [['rant', 'ban', 'two', 'cons'], ['new', 'what'], ['stable', 'value'], ['overview', 'step1', 'step2', 'step3', 'step4'], ['daily', 'trouble', 'summary'], ['outro', 'follow']];
   function updatePanel(t) {
     let cur = ORDER[0]; ORDER.forEach(s => { if (t >= s.start - .25) cur = s; });
     const ci = CHAPS.findIndex(c => c.includes(cur.id));
@@ -373,7 +378,7 @@
     let lastMood = null; (MKF || mascotState(0) && MKF).forEach(k => { if (k.p.mood && k.p.mood !== lastMood) { const m = k.p.mood; if (m === 'jump') push(k.t, 'boing'); if (m === 'worried') push(k.t, 'uhoh'); if (m === 'happy' || m === 'wave') push(k.t, 'twinkle'); if (m === 'cover') push(k.t, 'pop'); lastMood = m; } });
     if (SC.step4) push(at('step4', 's19') - .05, 'click');
     if (SC.summary) push(at('summary', 'x0+0.15'), 'shutter');
-    if (SC.follow) { push(at('follow', 's1+0.55'), 'click'); push(at('follow', 'c0+0.2'), 'boing'); }
+    if (SC.follow) { push(at('follow', 's2-0.3'), 'click'); push(at('follow', 'c0+0.2'), 'boing'); }
     return ev.sort((a, b) => a.t - b.t);
   }
 
