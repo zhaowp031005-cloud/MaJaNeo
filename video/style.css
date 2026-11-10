@@ -346,3 +346,44 @@ html,body{background:#EEF2F7}
 .breaking.blue b{color:#2563EB}
 .nametag{position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);font-family:var(--sans);font-weight:900;font-size:56px;color:#fff;background:#4F46E5;padding:6px 30px;border-radius:16px;box-shadow:0 10px 30px rgba(79,70,229,.5);white-space:nowrap}
 .mvs .mv{font-size:64px;padding:12px 28px}.mvs .mv img{width:64px;height:64px;border-radius:16px}.mvs .mvsep{font-size:60px}
+
+/* ================= v6：悬停展示 / 套餐 / 子 agent ================= */
+#hold{position:absolute;inset:0;z-index:45;display:grid;place-items:center;opacity:0;visibility:hidden;background:rgba(15,23,42,.38);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.hold-card{background:#fff;border-radius:28px;padding:40px 56px 46px;width:1480px;box-shadow:0 40px 120px rgba(0,0,0,.35)}
+.hold-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:900;font-size:26px;color:#4338CA;background:#EEF2FF;border-radius:12px;padding:8px 18px;margin-bottom:22px}
+.hold-body{font-family:var(--sans);font-size:33px;line-height:1.7;color:#0F172A;font-weight:600}
+.hold-body .hl-ln{padding:2px 0}
+.hold-body code{font-family:var(--mono);font-size:.9em;background:#E2E8F0;padding:2px 10px;border-radius:8px}
+#hold.link .hold-card{width:1300px;text-align:center}
+.hold-sub{font-size:30px;color:var(--ink2);font-weight:800;margin-bottom:14px}
+.hold-link{font-family:var(--mono);font-size:88px;font-weight:700;color:#2563EB;letter-spacing:1px;background:#EFF6FF;border:2px dashed #93C5FD;border-radius:22px;padding:26px 40px}
+.urlbar{margin-left:10px;flex:1;background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:4px 12px;font-family:var(--mono);font-size:17px;color:#2563EB;font-weight:700}
+.plan{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(15,23,42,.18)}
+.plan img{display:block;width:500px}
+.plan.no img{filter:grayscale(1) brightness(.5)}
+.pbadge{position:absolute;right:14px;bottom:14px;font-family:var(--sans);font-weight:900;font-size:24px;padding:8px 16px;border-radius:12px;color:#fff}
+.pbadge.ok{background:#10B981}.pbadge.no{background:#EF4444}
+.chip.alipay{background:#1677FF;color:#fff}
+.sa-btn{margin-top:22px;height:54px;border-radius:14px;background:#E2E8F0;color:#64748B;display:grid;place-items:center;font-size:22px;font-weight:800}
+.sa-btn.pressed{background:#4F46E5;color:#fff}
+.pressed{filter:brightness(.92)}
+.gbtn{margin-top:24px;height:58px;border-radius:14px;border:1px solid #CBD5E1;display:flex;align-items:center;justify-content:center;gap:12px;font-size:22px;font-weight:800;color:#0F172A;background:#fff}
+.gbtn .ic{font-size:26px;color:#EA4335}
+.gfield{margin-top:14px;height:52px;border-radius:12px;background:#F8FAFC;border:1px solid #E2E8F0;display:flex;align-items:center;padding:0 16px;font-family:var(--mono);font-size:19px;color:var(--mute)}
+.av.ccav{background:url(assets/logo-claude.png) center/cover}
+.av.ccav::before,.av.ccav::after{display:none}
+.right .big.cc .minibot{display:none}
+.right .big.cc::after{content:"";display:block;width:120px;height:120px;border-radius:30px;background:url(assets/logo-claude.png) center/cover}
+/* 开场：Fable 5.2 */
+.newchip{font-family:var(--sans);font-weight:900;font-size:54px;color:#fff;background:#D97757;padding:10px 26px;border-radius:16px;box-shadow:0 0 40px rgba(217,119,87,.6)}
+.chart{padding:30px 40px;border-radius:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15)}
+.ch-t{font-family:var(--sans);font-weight:800;font-size:30px;color:#94A3B8;margin-bottom:18px}
+.ch-row{display:flex;align-items:center;gap:26px;margin:14px 0}
+.ch-l{width:220px;font-family:var(--sans);font-weight:900;font-size:44px;color:#fff;white-space:nowrap}
+.ch-bar{flex:1;height:56px;border-radius:14px;background:rgba(255,255,255,.08);overflow:hidden}
+.ch-bar i{display:block;height:100%;border-radius:14px}
+.ch-bar .f1{background:linear-gradient(90deg,#D97757,#FFB38A);box-shadow:0 0 40px rgba(217,119,87,.6)}
+.ch-bar .f2{background:#64748B}
+.gapstamp{position:absolute;right:120px;bottom:22px;font-family:var(--sans);font-weight:900;font-size:110px;color:#FF3B4E;border:10px solid #FF3B4E;border-radius:22px;padding:0 26px;background:rgba(255,59,78,.1)}
+.yearchip{font-family:var(--sans);font-weight:900;font-size:50px;color:#fff;background:rgba(239,68,68,.85);padding:10px 30px;border-radius:14px}
+#ccitem b{font-size:20px;white-space:nowrap}#ccitem span{font-size:15px}

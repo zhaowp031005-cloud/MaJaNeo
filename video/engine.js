@@ -9,7 +9,7 @@
   const easeElastic = p => p <= 0 ? 0 : p >= 1 ? 1 : Math.pow(2, -9 * p) * Math.sin((p * 10 - .75) * (2 * Math.PI) / 3.2) + 1;
 
   let TL, SC = {}, ORDER = [];
-  const POSES = window.POSES || {}, CAMS = window.CAMS || {}, INPUTS = window.INPUTS || [], HOOKS = window.HOOKS || {};
+  const POSES = window.POSES || {}, CAMS = window.CAMS || {}, INPUTS = window.INPUTS || [], HOOKS = window.HOOKS || {}, HOLDS = window.HOLDS || [];
 
   // 时间描述："c2+0.3" 第 2 句开始后 0.3s；"x2" 第 2 句结束；"s4" 本场第 4 条字幕；"e" 场景结束；"b+1" 场景开始后 1s
   function at(sceneId, spec) {
@@ -280,7 +280,7 @@
     const el = document.getElementById('sub'), tx = document.getElementById('subtxt');
     // 带 data-nosub 的场景（开场全屏大字）不显示底部字幕
     let cs = null; ORDER.forEach(s => { if (t >= s.start - .3) cs = s; });
-    if (cs && cs.el && cs.el.dataset.nosub) { el.style.opacity = 0; return; }
+    if ((cs && cs.el && cs.el.dataset.nosub) || holdAt(t)) { el.style.opacity = 0; return; }
     let cur = null, fade = 1, prevCont = false;
     const W = subWindows();
     for (let i = 0; i < W.length; i++) {
@@ -298,6 +298,24 @@
     el.style.opacity = (Math.min(1, prevCont ? .6 + dt / .15 : dt / .12) * fade).toFixed(3);
     el.style.transform = `translate(-50%,-50%) scale(${(sc * (fade < 1 ? lerp(.9, 1, fade) : 1)).toFixed(4)})`;
     el.querySelector('.subbot').style.transform = `translateY(${(Math.sin(t * 4) * 3).toFixed(1)}px) rotate(${(-12 + Math.sin(t * 2.2) * 8).toFixed(1)}deg)`;
+  }
+
+  // ---------- 悬停展示（放大 + 背景虚化，供观众复制/截图） ----------
+  function holdAt(t) {
+    for (const hd of HOLDS) { const a = at(hd.scene, hd.at); if (t >= a && t < a + hd.dur) return hd; }
+    return null;
+  }
+  function updateHold(t) {
+    const el = document.getElementById('hold'); let cur = null, p = 0;
+    for (const hd of HOLDS) {
+      const a = at(hd.scene, hd.at), b = a + hd.dur;
+      if (t >= a - .01 && t < b + .3) { cur = hd; p = Math.min(clamp((t - a) / .3), 1 - clamp((t - b) / .3)); break; }
+    }
+    if (!cur) { el.style.opacity = 0; el.style.visibility = 'hidden'; return; }
+    const key = cur.scene + cur.at;
+    if (el.dataset.k !== key) { el.dataset.k = key; el.querySelector('.hold-tag').innerHTML = cur.tag; el.querySelector('.hold-body').innerHTML = cur.html; el.classList.toggle('link', cur.kind === 'link'); }
+    el.style.visibility = 'visible'; el.style.opacity = easeOut(p).toFixed(3);
+    el.querySelector('.hold-card').style.transform = `scale(${lerp(.86, 1, easeBack(clamp((t - at(cur.scene, cur.at)) / .45))).toFixed(4)})`;
   }
 
   // ---------- 场景显隐 ----------
@@ -342,10 +360,20 @@
     const st = (id, spec) => t >= at(id, spec);
     const cc = document.getElementById('pc-cc'), au = document.getElementById('pc-auth'), wd = document.getElementById('pc-dir');
     const set = (el, txt, cls) => { if (el.textContent !== txt) el.textContent = txt; el.className = cls || ''; };
-    st('step2', 'c5+2.6') ? set(cc, '已安装', 'ok') : st('step2', 'c5') ? set(cc, '安装中…', 'go') : set(cc, '未安装');
-    st('step3', 'c7') ? set(au, '已登录', 'ok') : st('step3', 'c3') ? set(au, '授权中…', 'go') : set(au, '未登录');
-    st('step4', 'c6') ? set(wd, '已跑通', 'ok') : st('step4', 'c2') ? set(wd, '/workspace/cc-demo', 'go') : set(wd, '—');
-    const steps = [st('step1', 'c2'), st('step2', 'c8'), st('step3', 'c7'), st('step4', 'c6')];
+    st('step2', 'c5+1.6') ? set(cc, '已安装', 'ok') : st('step2', 'x3') ? set(cc, '安装中…', 'go') : set(cc, '未安装');
+    st('step3', 'c8') ? set(au, '已登录', 'ok') : st('step3', 'c4') ? set(au, '授权中…', 'go') : set(au, '未登录');
+    st('step4', 'c2') ? set(wd, '已跑通', 'ok') : st('step4', 'x1') ? set(wd, '/workspace/cc-demo', 'go') : set(wd, '—');
+    const steps = [st('step1', 'c4'), st('step2', 'c5+1.6'), st('step3', 'c8'), st('step4', 'c2')];
+    // 子 agent「Claude Code 助手」：第二步创建后出现在左栏，并在教程期间成为当前对话
+    const ci2 = document.getElementById('ccitem'), pa = clamp((t - at('step2', 's4+1.6')) / .5);
+    ci2.style.maxHeight = (pa * 80).toFixed(1) + 'px'; ci2.style.opacity = pa.toFixed(3);
+    ci2.style.paddingTop = ci2.style.paddingBottom = (pa * 13).toFixed(1) + 'px';
+    const onCC = t >= at('step2', 'c3') && t < at('summary', 'b');
+    ci2.classList.toggle('sel', onCC); document.getElementById('gbitem').classList.toggle('sel', !onCC);
+    document.querySelector('.right .big').classList.toggle('cc', onCC);
+    const h3 = document.querySelector('.right h3'), nm = onCC ? 'Claude Code 助手' : 'Grok Bot';
+    if (h3.textContent !== nm) h3.textContent = nm;
+    document.querySelector('.right .tag').textContent = onCC ? 'Grok Bot 的子 agent' : '添加标签';
     document.querySelectorAll('.steps4 div').forEach((d, i) => d.classList.toggle('on', steps[i]));
   }
 
@@ -381,13 +409,14 @@
     INPUTS.forEach(it => { const a = at(it.scene, it.at), b = at(it.scene, it.send); push(a, 'keys', { d: +(b - a - .25).toFixed(3), n: it.text.length }); push(b, 'send'); });
     CAMSEG.forEach(sg => { const dz = sg.to.z - sg.from.z; if (dz > .06) push(sg.t0, 'zoomin'); else if (dz < -.06) push(sg.t0, 'zoomout'); });
     let lastMood = null; (MKF || mascotState(0) && MKF).forEach(k => { if (k.p.mood && k.p.mood !== lastMood) { const m = k.p.mood; if (m === 'jump') push(k.t, 'boing'); if (m === 'worried') push(k.t, 'uhoh'); if (m === 'happy' || m === 'wave') push(k.t, 'twinkle'); if (m === 'cover') push(k.t, 'pop'); lastMood = m; } });
-    if (SC.step4) push(at('step4', 's19') - .05, 'click');
-    if (SC.summary) push(at('summary', 'x0+0.15'), 'shutter');
+    if (SC.step4) push(at('step4', 's4') - .05, 'click');
+    HOLDS.forEach(hd => { const a = at(hd.scene, hd.at); push(a, 'zoomin'); if (hd.kind === 'prompt') push(a + .35, 'shutter'); push(a + hd.dur - .1, 'zoomout'); });
+    if (SC.summary) push(at('summary', 'c0+1.4'), 'shutter');
     if (SC.follow) { push(at('follow', 's2-0.3'), 'click'); push(at('follow', 'c0+0.2'), 'boing'); }
     return ev.sort((a, b) => a.t - b.t);
   }
 
   window.initTimeline = tl => { setup(tl); };
   window.collectSfx = collectSfx;
-  window.seek = t => { updateCam(t); updateDeco(t); updateScenes(t); updateMascot(t); updateSub(t); updateInput(t); updatePanel(t); };
+  window.seek = t => { updateCam(t); updateDeco(t); updateScenes(t); updateMascot(t); updateSub(t); updateInput(t); updatePanel(t); updateHold(t); };
 })();

@@ -28,6 +28,10 @@ scenes, subs = [], []
 for si, (sid_name, lines) in enumerate(SCENES):
     sc = dict(id=sid_name, start=t, cues=[])
     for li, line in enumerate(lines):
+        if line.get("silent"):  # 无旁白静默段（如总结页悬停）
+            d = float(line["silent"]); sc["cues"].append(dict(start=t, end=t+d))
+            audio.append(np.zeros(int(d*SR), np.float32)); t += d
+            print(f"[{sid_name}] (silent {d}s)", flush=True); continue
         say = line.get("say", strip_marks(line["sub"]).replace("|", ""))
         x = trim(np.array(tts.generate(say, sid=SID, speed=line.get("speed", SPEED)).samples, np.float32))
         dur = len(x)/SR

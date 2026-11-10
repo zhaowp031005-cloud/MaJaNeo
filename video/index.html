@@ -25,6 +25,7 @@
   <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.5L10 19z" fill="#2B2540" stroke="#fff" stroke-width="1.5"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><g stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 2.5v19M2.5 12h19M5.3 5.3l13.4 13.4M18.7 5.3L5.3 18.7"/></g></symbol>
   <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11v3"/><path d="M16 13.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11.2A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="#FF7A9A" stroke="none"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.6 6.8L22 9.6l-5.6 4.8L18 22l-6-3.8L6 22l1.6-7.6L2 9.6l7.4-.8z" stroke="none"/></symbol>
   <symbol id="i-twinkle" viewBox="0 0 24 24"><path d="M12 1c1 6 5 10 11 11-6 1-10 5-11 11-1-6-5-10-11-11 6-1 10-5 11-11z" stroke="none"/></symbol>
@@ -38,7 +39,8 @@
     <div class="item"><div class="av" style="background:#6E9BFF"></div><div><b>写作助手</b><span>周报帮你润色好了，看看？</span></div></div>
     <div class="item"><div class="av" style="background:#4FD19A"></div><div><b>日程管家</b><span>明天 10:00 有个会议</span></div></div>
     <div class="group">工作</div>
-    <div class="item sel"><div class="av dark"></div><div><b>Grok Bot</b><span>我会自己开 Claude Code 了</span></div></div>
+    <div class="item sel" id="gbitem"><div class="av dark"></div><div><b>Grok Bot</b><span>我会自己开 Claude Code 了</span></div></div>
+    <div class="item" id="ccitem" style="max-height:0;opacity:0;overflow:hidden;padding-top:0;padding-bottom:0"><div class="av ccav"></div><div><b>Claude Code 助手</b><span>Grok Bot 的子 agent</span></div></div>
     <div class="item"><div class="av" style="background:#A18BFF"></div><div><b>代码助手</b><span>PR 已经合并，测试全过</span></div></div>
     <div class="item"><div class="av" style="background:#FFC24D"></div><div><b>资料整理</b><span>整理好了 12 篇文章</span></div></div>
     <div class="group">生活</div>
@@ -62,38 +64,21 @@
     <svg class="d" data-f="8" style="left:820px;top:810px;width:18px;height:18px;color:#FFB38A"><use href="#i-star" fill="currentColor"/></svg>
   </div>
 
-  <!-- 1 封号 -->
+  <!-- 1 需要一个稳定方便的方式 -->
   <section class="scene" data-scene="ban">
-    <div class="glow" style="left:240px;top:60px;width:640px;height:420px;background:#FFD0DC"></div>
-    <div class="glow" style="left:620px;top:300px;width:420px;height:360px;background:#DCD5FF"></div>
-    <div class="row" style="top:70px" data-out="c1-0.15"><span class="chip red toon" data-in="s0" data-anim="pop" style="font-size:26px"> 2026 年上半年</span></div>
-    <div class="row" style="top:140px" data-in="s1" data-anim="pop" data-out="c1-0.15">
-      <div class="col" data-emph="s1+2.3">
-        <div class="cute" style="font-size:150px;font-weight:600;line-height:1.05">约 <span style="color:var(--red)" data-count="s1+0.1" data-to="1140" data-dur="2.2">0</span><span style="font-size:96px"> 万</span></div>
-        <div class="cute" style="font-size:40px;font-weight:600;margin-top:4px"><span style="color:var(--claude)">Claude</span> 全平台<span class="mk" data-mk="s1+0.8" style="--mkc:#FECACA">封禁账号</span></div>
-      </div>
-    </div>
-    <div class="row" style="top:450px;gap:16px" data-out="c1-0.15">
-      <div class="card acct" data-in="s2+0.0" data-anim="pop"></div><div class="card acct" data-in="s2+0.12" data-anim="pop"></div><div class="card acct" data-in="s2+0.24" data-anim="pop"></div>
-      <div class="card acct" data-in="s2+0.36" data-anim="pop"></div><div class="card acct" data-in="s2+0.48" data-anim="pop"></div><div class="card acct" data-in="s2+0.6" data-anim="pop"></div>
-      <div class="card acct" data-in="s2+0.72" data-anim="pop"></div><div class="card acct" data-in="s2+0.84" data-anim="pop"></div>
-    </div>
-    <div class="row" style="top:60px" data-in="c1" data-anim="pop"><div class="h2">需要一个这样的方式 </div></div>
+    <div class="glow" style="left:240px;top:60px;width:640px;height:420px"></div>
+    <div class="glow" style="left:620px;top:300px;width:420px;height:360px"></div>
+    <div class="row" style="top:60px" data-in="s0" data-anim="pop"><div class="h2">需要一个这样的方式</div></div>
     <div class="row" style="top:160px;gap:18px">
-      <span class="chip green toon" style="font-size:30px" data-in="s3+0.2" data-anim="pop"> 稳定</span>
-      <span class="chip green toon" style="font-size:30px" data-in="s3+0.5" data-anim="pop"> 方便</span>
-      <span class="chip green toon" style="font-size:30px" data-in="s3+0.8" data-anim="pop"> 性价比高</span>
+      <span class="chip green toon" style="font-size:30px" data-in="s0+0.4" data-anim="pop">稳定</span>
+      <span class="chip green toon" style="font-size:30px" data-in="s0+0.7" data-anim="pop">方便</span>
+      <span class="chip green toon" style="font-size:30px" data-in="s0+1.0" data-anim="pop">性价比高</span>
     </div>
     <div class="row" style="top:270px;gap:90px;align-items:flex-start">
-      <div class="col" style="gap:12px" data-in="s4" data-anim="pop"><div class="tile codex">&gt;_</div><b style="font-size:26px">Codex</b></div>
-      <div class="col" style="gap:12px" data-in="s4+0.3" data-anim="pop"><div class="spark" style="width:110px;height:110px;border-radius:34px"><svg><use href="#i-spark"/></svg></div><b style="font-size:26px">Claude Code</b><span class="chip claude" style="font-size:19px;padding:3px 14px">下面简称 CC</span></div>
+      <div class="col" style="gap:12px" data-in="s1" data-anim="pop"><div class="tile codex">&gt;_</div><b style="font-size:26px">Codex</b></div>
+      <div class="col" style="gap:12px" data-in="s1+0.3" data-anim="pop"><div class="spark" style="width:110px;height:110px;border-radius:26px"></div><b style="font-size:26px">Claude Code</b><span class="chip claude" style="font-size:19px;padding:3px 14px">下面简称 CC</span></div>
     </div>
-    <div class="row" style="top:540px" data-in="s5" data-anim="pop" data-emph="s5+0.4"><span class="chip dark toon cute" style="font-size:30px"> 尤为重要</span></div>
-    <style>
-      .acct{width:96px;height:120px;border-radius:24px;position:relative;display:flex;flex-direction:column;align-items:center;padding-top:18px;gap:10px}
-      .acct::before{content:"";width:44px;height:44px;border-radius:50%;background:#EAE5F7}
-      .acct::after{content:"封禁";position:absolute;bottom:14px;font-size:18px;font-weight:900;color:var(--red);border:2.5px solid var(--red);border-radius:8px;padding:0 6px;transform:rotate(-12deg)}
-    </style>
+    <div class="row" style="top:540px" data-in="s2" data-anim="pop" data-emph="s2+0.4"><span class="chip dark toon cute" style="font-size:30px">尤为重要</span></div>
   </section>
 
   <!-- 2 两种方案 -->
@@ -263,162 +248,187 @@
 
   <!-- 10 第一步 -->
   <section class="scene" data-scene="step1">
-    <div class="glow" style="left:100px;top:180px;width:900px;height:400px;background:#E2E8FF"></div>
-    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#4F8BFF">1</div><div class="t">下载并登录 Grok Bot</div></div>
-    <div class="abs" style="left:40px;top:110px" data-in="c1" data-anim="left"><span class="chip amber" style="font-size:22px"> 前提：网络能正常访问官方下载页和登录页</span></div>
-    <div class="abs" style="left:40px;top:210px;display:flex;align-items:center;gap:16px">
-      <div class="card" style="width:310px;height:330px;overflow:hidden" data-in="s3" data-anim="pop">
-        <div style="height:40px;background:#F5F2FC;display:flex;align-items:center;gap:7px;padding:0 14px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span style="margin-left:8px;font-size:15px;color:var(--mute);font-weight:700">官方下载页</span></div>
-        <div class="col" style="padding:30px 20px;gap:18px">
-          <div class="minibot" style="width:80px;height:80px"></div>
-          <b class="cute" style="font-size:26px;font-weight:600">Grok Bot 桌面版</b>
-          <div style="background:var(--ink);color:#fff;border-radius:16px;padding:10px 22px;font-size:20px;font-weight:800;display:flex;gap:8px;align-items:center"><svg class="ic"><use href="#i-down"/></svg>下载</div>
-          <div style="width:220px;height:12px;border-radius:6px;background:#F0ECFA;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--bot),var(--pink));width:0" data-bar="s3+0.6:s4"></div></div>
+    <div class="glow" style="left:100px;top:180px;width:900px;height:400px"></div>
+    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#2563EB">1</div><div class="t">下载并登录 Grok Bot</div></div>
+    <div class="abs" style="left:40px;top:100px" data-in="c1" data-out="c4-0.1" data-anim="left"><span class="chip amber" style="font-size:22px"><svg class="ic"><use href="#i-globe"/></svg>前提：网络能正常访问官方下载页和登录页</span></div>
+    <div class="abs" style="left:150px;top:200px;display:flex;align-items:center;gap:30px" data-out="c4-0.1">
+      <div class="card" style="width:400px;height:380px;overflow:hidden" data-in="s3" data-anim="pop">
+        <div style="height:46px;background:#F1F5F9;display:flex;align-items:center;gap:8px;padding:0 14px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span class="urlbar">x.ai/bot</span></div>
+        <div class="col" style="padding:34px 20px;gap:20px">
+          <div class="tile logo logo-grok" style="width:84px;height:84px;border-radius:22px"></div>
+          <b style="font-size:26px">Grok Bot 桌面版</b>
+          <div style="background:var(--ink);color:#fff;border-radius:12px;padding:10px 24px;font-size:20px;font-weight:800;display:flex;gap:8px;align-items:center"><svg class="ic"><use href="#i-down"/></svg>下载</div>
+          <div style="width:260px;height:10px;border-radius:5px;background:#E2E8F0;overflow:hidden"><div style="height:100%;background:#4F46E5;width:0" data-bar="s3+0.6:s4"></div></div>
         </div>
       </div>
-      <div style="width:40px" data-in="s4-0.2" data-anim="grow"><div class="arrow"></div></div>
-      <div class="card" style="width:310px;height:330px;padding:28px 24px" data-in="s4" data-anim="pop">
-        <b class="cute" style="font-size:28px;font-weight:600">登录</b>
-        <div style="margin-top:20px;height:50px;border-radius:14px;border:2px solid #EAE5F7;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--mute);font-size:19px;font-weight:700"><svg class="ic" style="font-size:24px"><use href="#i-user"/></svg>Cursor 账户</div>
-        <div style="margin-top:14px;height:50px;border-radius:14px;border:2px solid #EAE5F7;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--mute);font-size:19px"><svg class="ic" style="font-size:24px"><use href="#i-lock"/></svg>••••••••</div>
-        <div style="margin-top:22px;height:54px;border-radius:16px;background:var(--bot);color:#fff;display:grid;place-items:center;font-size:21px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.14)">用 Cursor 账户登录</div>
+      <div style="width:60px" data-in="s4-0.2" data-anim="grow"><div class="arrow"></div></div>
+      <div class="card" style="width:340px;height:380px;padding:30px 26px" data-in="s4" data-anim="pop">
+        <b style="font-size:28px">登录 Grok Bot</b>
+        <div style="margin-top:24px;height:52px;border-radius:12px;border:1px solid #E2E8F0;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--mute);font-size:19px;font-weight:700"><svg class="ic" style="font-size:24px"><use href="#i-user"/></svg>你的账户</div>
+        <div style="margin-top:14px;height:52px;border-radius:12px;border:1px solid #E2E8F0;display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--mute);font-size:19px"><svg class="ic" style="font-size:24px"><use href="#i-lock"/></svg>••••••••</div>
+        <div style="margin-top:26px;height:56px;border-radius:14px;background:#4F46E5;color:#fff;display:grid;place-items:center;font-size:21px;font-weight:800" data-on="s4+1.2" data-cls="pressed">登录</div>
       </div>
-      <div style="width:40px" data-in="s5-0.2" data-anim="grow"><div class="arrow"></div></div>
-      <div class="card" style="width:250px;height:330px;padding:28px 22px" data-in="s5" data-anim="pop" data-burst="s5+1.1">
-        <b class="cute" style="font-size:26px;font-weight:600">订阅套餐</b>
-        <div style="margin-top:24px;display:flex;flex-direction:column;gap:18px;font-size:21px;font-weight:700">
-          <div style="display:flex;align-items:center;gap:12px" data-on="s5+0.5"><div class="check"><svg class="ic" style="font-size:20px"><use href="#i-check"/></svg></div>账户已登录</div>
-          <div style="display:flex;align-items:center;gap:12px;font-weight:900" data-on="s5+1.0"><div class="check"><svg class="ic" style="font-size:20px"><use href="#i-check"/></svg></div>包含 Grok Bot</div>
-        </div>
-        <div style="margin-top:26px" data-in="c3" data-anim="pop" data-emph="s7+0.3">
-          <div style="font-size:16px;color:var(--mute);font-weight:800;margin-bottom:8px">还没订阅？</div>
-          <div style="height:52px;border-radius:16px;background:#1677FF;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;font-size:20px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.14)"><svg class="ic" style="font-size:24px"><use href="#i-wallet"/></svg>支付宝付款开通</div>
-        </div>
-      </div>
+    </div>
+    <!-- 四种套餐 -->
+    <div class="abs" style="left:46px;top:96px;display:grid;grid-template-columns:500px 500px;gap:20px">
+      <div class="plan" data-in="s6" data-anim="pop" data-on="s7+0.3" data-cls="no"><img src="assets/plan-plus.png"><span class="pbadge no" data-in="s7+0.3" data-anim="pop" data-sfx="nope">✕ 不含 Grok Bot</span></div>
+      <div class="plan" data-in="s6+0.15" data-anim="pop"><img src="assets/plan-premium.png"><span class="pbadge ok" data-in="s9" data-anim="pop" data-sfx="ding">✓ 含 Grok Bot 额度</span></div>
+      <div class="plan" data-in="s6+0.3" data-anim="pop"><img src="assets/plan-super.png"><span class="pbadge ok" data-in="s9+0.2" data-anim="pop">✓ 含 Grok Bot 额度</span></div>
+      <div class="plan" data-in="s6+0.45" data-anim="pop"><img src="assets/plan-ultra.png"><span class="pbadge ok" data-in="s9+0.4" data-anim="pop">✓ 含 Grok Bot 额度</span></div>
+    </div>
+    <div class="row" style="top:690px;gap:16px">
+      <span class="chip bot toon" style="font-size:24px" data-in="s11" data-anim="pop">按自己的用量，按需充值</span>
+      <span class="chip alipay" style="font-size:24px" data-in="s13" data-anim="pop" data-emph="s13+0.4" data-burst="s13+0.2"><svg class="ic"><use href="#i-wallet"/></svg>支持支付宝支付</span>
     </div>
   </section>
 
   <!-- 11 第二步 -->
   <section class="scene" data-scene="step2">
-    <div class="glow" style="left:500px;top:60px;width:560px;height:340px;background:#E6E9FF"></div>
-    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#6C63FF">2</div><div class="t">让 Grok Bot 安装 Claude Code</div></div>
-    <div class="bubble" style="top:96px;width:800px" data-in="c1+1.9" data-anim="pop" data-sfx="msg">
-      <div class="ln" data-hl="c2:c3">请只在你的<b>云端 Linux 电脑</b>上安装 Claude Code，不要操作我的本机。</div>
-      <div class="ln" data-hl="c3:c4">先检查是否已经安装，并运行 <code>claude --version</code>。</div>
-      <div class="ln" data-hl="c3+0.4:c4">如果已安装，告诉我版本号，不要重复安装。</div>
-      <div class="ln" data-hl="c4:c5">如果未安装，按 Claude Code 官方文档的 Linux 推荐方式安装，完成后验证版本。</div>
-      <div class="ln" data-hl="c4+0.5:c5">如果遇到找不到命令或其他错误，按官方文档排查，把结果告诉我。</div>
+    <div class="glow" style="left:500px;top:60px;width:560px;height:340px"></div>
+    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#4F46E5">2</div><div class="t">让 Grok Bot 安装 Claude Code</div></div>
+    <!-- 新建子 agent -->
+    <div class="abs card" style="left:246px;top:130px;width:620px;padding:30px 34px" data-in="s3" data-out="c2-0.1" data-anim="pop">
+      <div style="font-size:26px;font-weight:800;display:flex;align-items:center;gap:12px"><svg class="ic" style="color:#4F46E5"><use href="#i-team"/></svg>新建子 Agent</div>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:24px">
+        <div class="spark" style="width:72px;height:72px;border-radius:18px"></div>
+        <div style="flex:1;border:1px solid #CBD5E1;border-radius:12px;padding:10px 16px"><div style="font-size:15px;color:var(--mute);font-weight:700">名称</div><div style="font-size:28px;font-weight:800;min-height:38px" data-type="s4+0.2" data-cps="9">Claude Code 助手</div></div>
+      </div>
+      <div style="font-size:18px;color:var(--ink2);font-weight:600;margin-top:16px">隶属于 Grok Bot · 专门负责 Claude Code 相关任务</div>
+      <div class="sa-btn" data-on="s4+1.6" data-cls="pressed">创建</div>
     </div>
-    <div class="who" style="left:40px;top:446px" data-in="c5-0.2"><div class="minibot"></div>Grok Bot · 正在使用终端</div>
-    <div class="term abs" style="left:40px;top:504px;width:780px" data-in="c5-0.1" data-anim="up" data-burst="c5+2.7">
-      <div class="bar"><i></i><i></i><i></i><span> 云端 Linux 电脑 — bash</span></div>
-      <div class="body"><span class="p">$ </span><span data-type="c5+0.4" data-cps="34">curl -fsSL https://claude.ai/install.sh | bash</span>
-<span class="o" data-in="c5+2.0" data-anim="none">  正在安装 Claude Code …</span>
-<span class="ok" data-in="c5+2.6" data-anim="none" data-sfx="ding">  ✔ 安装完成</span>
-<span class="p" data-in="c6" data-anim="none">$ </span><span data-type="c6+0.6" data-cps="20">claude --version</span>
-<span class="o" data-in="c6+1.6" data-anim="none" data-sfx="soft">  &lt;版本号&gt; (Claude Code)</span></div>
+    <!-- 术业有专攻 -->
+    <div class="abs" style="left:120px;top:170px;display:flex;align-items:center;gap:40px" data-in="c2" data-out="c3-0.1">
+      <div class="col" style="gap:14px;align-items:flex-start">
+        <span class="chip" style="font-size:24px" data-in="s6" data-anim="left">安装 / 升级 CC</span>
+        <span class="chip" style="font-size:24px" data-in="s6+0.15" data-anim="left">写代码、改页面</span>
+        <span class="chip" style="font-size:24px" data-in="s6+0.3" data-anim="left">排查报错</span>
+        <span class="chip" style="font-size:24px" data-in="s6+0.45" data-anim="left">跑测试</span>
+      </div>
+      <div style="width:160px" data-in="s7-0.2" data-anim="grow"><div class="arrow solid"></div></div>
+      <div class="card col" style="padding:30px 40px;gap:12px" data-in="s7" data-anim="pop" data-emph="s7+0.4"><div class="spark" style="width:96px;height:96px;border-radius:24px"></div><b style="font-size:28px">Claude Code 助手</b><span class="mute" style="font-size:18px;font-weight:700">术业有专攻</span></div>
     </div>
-    <div class="abs col" style="left:840px;top:530px;gap:14px;align-items:flex-start" data-out="c8">
-      <span class="chip green toon" style="font-size:22px" data-in="s16" data-anim="pop" data-emph="s16+0.4"> Bot 的云端电脑 ✓</span>
-      <span class="chip red" style="font-size:22px" data-in="s17" data-anim="pop" data-sfx="nope"><svg class="ic"><use href="#i-x"/></svg>不是你的电脑</span>
+    <!-- 聊天 -->
+    <div class="bubble" style="top:96px;width:820px" data-in="s9+0.7" data-anim="pop" data-sfx="msg">
+      <div class="ln">请只在 <b>Claude Code 助手</b>的云端 Linux 电脑上安装 Claude Code，不要操作我的本机。</div>
+      <div class="ln">先检查是否已经安装，并运行 <code>claude --version</code>。</div>
+      <div class="ln">如果已安装，告诉我版本号，不要重复安装。</div>
+      <div class="ln">如果未安装，按 Claude Code 官方文档的 Linux 推荐方式安装，完成后验证版本。</div>
+      <div class="ln">如果遇到找不到命令或其他错误，按官方文档排查，把结果告诉我。</div>
     </div>
-    <div class="abs col" style="left:840px;top:530px;gap:14px;align-items:flex-start" data-in="c8" data-anim="up">
-      <span class="chip green" style="font-size:22px" data-in="s19" data-anim="pop" data-sfx="ding">✓ 程序已装好</span>
-      <span class="chip amber toon" style="font-size:22px" data-in="s20" data-anim="pop" data-emph="s20+0.4">… 还没登录</span>
+    <div class="who" style="left:40px;top:446px" data-in="c5-0.2"><div class="spark" style="width:40px;height:40px;border-radius:10px"></div>Claude Code 助手 · 正在使用终端</div>
+    <div class="term abs" style="left:40px;top:504px;width:780px" data-in="c5-0.1" data-anim="up">
+      <div class="bar"><i></i><i></i><i></i><span>Claude Code 助手的云端 Linux 电脑 — bash</span></div>
+      <div class="body"><span class="p">$ </span><span data-type="c5+0.1" data-cps="52">curl -fsSL https://claude.ai/install.sh | bash</span>
+<span class="o" data-in="c5+1.0" data-anim="none">  正在安装 Claude Code …</span>
+<span class="ok" data-in="c5+1.6" data-anim="none" data-sfx="ding">  ✔ 安装完成</span>
+<span class="p" data-in="c5+1.9" data-anim="none">$ </span><span data-type="c5+2.0" data-cps="26">claude --version</span>
+<span class="o" data-in="c5+2.8" data-anim="none" data-sfx="soft">  &lt;版本号&gt; (Claude Code)</span></div>
+    </div>
+    <div class="abs col" style="left:840px;top:530px;gap:14px;align-items:flex-start">
+      <span class="chip green" style="font-size:22px" data-in="s13" data-anim="pop" data-sfx="ding">✓ 程序已装好</span>
+      <span class="chip amber toon" style="font-size:22px" data-in="s14" data-anim="pop" data-emph="s14+0.4">… 还没登录</span>
     </div>
   </section>
 
   <!-- 12 第三步 -->
   <section class="scene" data-scene="step3">
-    <div class="glow" style="left:600px;top:60px;width:460px;height:300px;background:#E6E9FF"></div>
-    <div class="glow" style="left:620px;top:340px;width:420px;height:360px;background:#FFE3D8"></div>
-    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#E8795A">3</div><div class="t">登录并授权 Claude Code</div></div>
-    <div class="bubble" style="top:96px;width:800px" data-in="c1+1.4" data-anim="pop" data-sfx="msg">
-      <div class="ln" data-hl="s3:c2">请启动 Claude Code，进入登录流程。</div>
-      <div class="ln" data-hl="c2:c3">需要我在浏览器里完成授权时，停下来让我接管，不要读取或输出我的密码、验证码和登录凭据。</div>
+    <div class="glow" style="left:600px;top:60px;width:460px;height:300px"></div>
+    <div class="glow" style="left:620px;top:340px;width:420px;height:360px"></div>
+    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#D97757">3</div><div class="t">登录并授权 Claude Code</div></div>
+    <!-- 注册 Claude 账号 -->
+    <div class="abs card" style="left:306px;top:120px;width:500px;padding:34px" data-in="c1" data-out="c2-0.1" data-anim="pop">
+      <div class="col" style="gap:12px"><div class="spark" style="width:76px;height:76px;border-radius:20px"></div><b style="font-size:30px">注册 Claude 账号</b><span class="mute" style="font-size:18px;font-weight:700">claude.ai</span></div>
+      <div class="gbtn" data-in="s3" data-anim="pop" data-emph="s3+0.4"><svg class="ic"><use href="#i-mail"/></svg>使用 Gmail 继续</div>
+      <div class="gfield">you@gmail.com</div>
     </div>
-    <div class="term abs" style="left:40px;top:280px;width:620px" data-in="c3-0.2">
-      <div class="bar"><i></i><i></i><i></i><span> 云端 Linux 电脑 — bash</span></div>
-      <div class="body" style="font-size:20px"><span class="p">$ </span><span data-type="c3+0.2" data-cps="12">claude</span>
-<span class="o" data-in="c3+1.2" data-anim="none" data-sfx="soft">  请在浏览器中完成登录…</span>
+    <div class="bubble" style="top:96px;width:800px" data-in="s5+0.6" data-anim="pop" data-sfx="msg">
+      <div class="ln">请启动 <b>CC 助手</b>的 Claude Code，进入登录流程。</div>
+      <div class="ln">需要我在浏览器里完成授权时，停下来让我接管，不要读取或输出我的密码、验证码和登录凭据。</div>
+    </div>
+    <div class="term abs" style="left:40px;top:280px;width:620px" data-in="c4-0.2">
+      <div class="bar"><i></i><i></i><i></i><span>Claude Code 助手的云端 Linux 电脑 — bash</span></div>
+      <div class="body" style="font-size:20px"><span class="p">$ </span><span data-type="c4+0.1" data-cps="12">claude</span>
+<span class="o" data-in="c4+0.8" data-anim="none" data-sfx="soft">  请在浏览器中完成登录…</span>
 <span class="u" data-in="c5" data-anim="none" data-sfx="soft">  https://claude.ai/oauth/…</span>
-<span class="o" data-in="c6" data-anim="none" data-sfx="soft">  粘贴登录码 &gt; </span><span data-type="c6+1.4" data-cps="8" data-caret="no">••••-••••</span>
-<span class="ok" data-in="c7" data-anim="none" data-sfx="ding">  Login successful.</span>
-<span class="p" data-in="c8" data-anim="none">$ </span><span data-type="c8+0.2" data-cps="18">claude auth status</span>
-<span class="ok" data-in="c8+1.4" data-anim="none" data-sfx="ding">  ✔ 已登录</span></div>
+<span class="o" data-in="c6" data-anim="none" data-sfx="soft">  粘贴登录码 &gt; </span><span data-type="s12+0.2" data-cps="8" data-caret="no">••••-••••</span>
+<span class="ok" data-in="c8" data-anim="none" data-sfx="ding">  Login successful.</span></div>
     </div>
-    <div class="abs" style="left:250px;top:540px" data-in="c7" data-anim="pop" data-burst="c7+0.1"><span class="chip green toon" style="font-size:24px"> 登录成功</span></div>
+    <div class="abs" style="left:250px;top:500px" data-in="c8" data-anim="pop" data-burst="c8+0.1"><span class="chip green toon" style="font-size:24px">登录成功</span></div>
     <!-- 浏览器授权（你来接管） -->
     <div class="abs card" style="left:690px;top:300px;width:380px;padding:0;overflow:hidden" data-in="c4" data-out="c6-0.1" data-anim="pop">
-      <div style="height:40px;background:#F5F2FC;display:flex;align-items:center;gap:7px;padding:0 14px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span style="margin-left:8px;font-size:15px;color:var(--mute);font-weight:700">浏览器 · 授权页面</span></div>
+      <div style="height:40px;background:#F1F5F9;display:flex;align-items:center;gap:7px;padding:0 14px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span style="margin-left:8px;font-size:15px;color:var(--mute);font-weight:700">浏览器 · 授权页面</span></div>
       <div class="col" style="padding:22px;gap:14px">
-        <div class="spark" style="width:56px;height:56px"><svg><use href="#i-spark"/></svg></div>
-        <b class="cute" style="font-size:26px;font-weight:600">授权 Claude Code</b>
-        <div style="font-size:18px;color:var(--mute);font-weight:700">使用有 Claude Code 权限的账户</div>
-        <div style="height:50px;width:100%;border-radius:16px;background:var(--claude);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:800;box-shadow:0 10px 24px rgba(15,23,42,.14)">授权</div>
+        <div class="spark" style="width:56px;height:56px"></div>
+        <b style="font-size:24px">授权 Claude Code</b>
+        <div style="font-size:18px;color:var(--mute);font-weight:700">使用你的 Claude 账号</div>
+        <div style="height:50px;width:100%;border-radius:12px;background:var(--claude);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:800">授权</div>
       </div>
-      <div class="chip dark" style="position:absolute;right:14px;top:52px;font-size:18px;padding:6px 14px"> 你来接管</div>
+      <div class="chip dark" style="position:absolute;right:14px;top:52px;font-size:18px;padding:6px 14px">你来接管</div>
     </div>
     <div class="abs" style="left:690px;top:250px" data-in="c5" data-out="c6-0.1" data-anim="pop"><span class="chip amber" style="font-size:20px"><svg class="ic"><use href="#i-link"/></svg>没自动打开？复制终端里的链接</span></div>
     <!-- 登录码 -->
-    <div class="abs card" style="left:700px;top:310px;width:360px;padding:24px" data-in="c6" data-out="c7" data-anim="pop">
+    <div class="abs card" style="left:700px;top:290px;width:360px;padding:24px" data-in="c6" data-out="c8-0.05" data-anim="pop">
       <div style="font-size:19px;color:var(--mute);font-weight:700">授权页面给出的登录码</div>
       <div style="font-size:40px;font-weight:700;font-family:var(--mono);letter-spacing:4px;margin-top:8px">ABCD-1234</div>
       <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
-        <span class="chip green" style="font-size:20px" data-in="s16" data-anim="pop">✓ 粘回终端提示处</span>
-        <span class="chip red toon" style="font-size:20px" data-in="s17" data-anim="pop" data-emph="s17+0.3" data-sfx="nope"> 不要发进聊天</span>
+        <span class="chip green" style="font-size:20px" data-in="s12" data-anim="pop">✓ 粘回终端提示处</span>
+        <span class="chip red toon" style="font-size:20px" data-in="s13" data-anim="pop" data-emph="s13+0.3" data-sfx="nope">✕ 不要发进聊天</span>
       </div>
     </div>
-    <div class="abs" style="left:710px;top:470px" data-in="s19" data-anim="pop" data-emph="s19+0.4"><span class="chip bot toon" style="font-size:24px">交还给 Bot →</span></div>
+    <div class="abs" style="left:700px;top:590px;display:flex;flex-direction:column;gap:10px;align-items:flex-start" data-in="c7" data-out="c8-0.05">
+      <span class="chip red toon x-over" style="font-size:22px" data-in="c7" data-anim="pop" data-on="s14+0.8"><svg class="ic"><use href="#i-chat"/></svg>在聊天框输入登录码</span>
+      <span class="chip green toon" style="font-size:22px" data-in="s15" data-anim="pop" data-emph="s15+0.3"><svg class="ic"><use href="#i-lock"/></svg>保证账号安全</span>
+    </div>
+    <div class="abs" style="left:710px;top:470px" data-in="s17" data-anim="pop" data-emph="s17+0.4"><span class="chip bot toon" style="font-size:24px">交还给 Bot →</span></div>
     <div class="abs" style="left:40px;top:690px;display:flex;gap:14px" data-in="c9" data-anim="up">
-      <span class="chip green" style="font-size:22px" data-in="s21" data-anim="pop" data-sfx="ding">✓ 程序装好</span>
-      <span class="chip green" style="font-size:22px" data-in="s22" data-anim="pop" data-sfx="ding">✓ 账户已授权</span>
-      <span class="chip bot toon" style="font-size:22px" data-in="s23" data-anim="pop" data-emph="s24"> 能不能实际干活</span>
+      <span class="chip green" style="font-size:22px" data-in="s18" data-anim="pop" data-sfx="ding">✓ 程序装好</span>
+      <span class="chip green" style="font-size:22px" data-in="s19" data-anim="pop" data-sfx="ding">✓ 账户已授权</span>
+      <span class="chip bot toon" style="font-size:22px" data-in="s20" data-anim="pop" data-emph="s21">能不能实际干活？</span>
     </div>
   </section>
 
   <!-- 13 第四步 -->
   <section class="scene" data-scene="step4">
-    <div class="glow" style="left:400px;top:60px;width:660px;height:380px;background:#E6E9FF"></div>
-    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#22B884">4</div><div class="t">第一次调用</div></div>
-    <div class="bubble" style="top:96px;width:900px;font-size:20.5px" data-in="c0+2.2" data-anim="pop" data-sfx="msg">
-      <div class="ln" data-hl="c1:c2">请<b>通过终端调用 Claude Code</b> 完成一个测试，不要由你直接代写代码。</div>
-      <div class="ln" data-hl="c2:c3">在 <code>/workspace/cc-demo</code> 新建一个独立项目。如果目录已有内容，换一个新的空目录，不要覆盖。</div>
-      <div class="ln" data-hl="c3:c4">让 Claude Code 创建一个简单的 HTML 页面，包含标题和按钮，点击按钮后改变标题文字。</div>
-      <div class="ln" data-hl="c4:c5">只允许修改这个项目目录，不使用跳过权限检查的参数。</div>
-      <div class="ln" data-hl="c5:c6">完成后打开页面，测试按钮，发截图，并告诉我 Claude Code 实际修改了哪些文件。</div>
+    <div class="glow" style="left:400px;top:60px;width:660px;height:380px"></div>
+    <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#10B981">4</div><div class="t">第一次调用</div></div>
+    <div class="bubble" style="top:96px;width:900px;font-size:20.5px" data-in="s1+0.5" data-anim="pop" data-sfx="msg">
+      <div class="ln">请<b>通过终端调用 CC 助手的 Claude Code</b> 完成一个测试，不要由你直接代写代码。</div>
+      <div class="ln">在 <code>/workspace/cc-demo</code> 新建一个独立项目。如果目录已有内容，换一个新的空目录，不要覆盖。</div>
+      <div class="ln">让 Claude Code 创建一个简单的 HTML 页面，包含标题和按钮，点击按钮后改变标题文字。</div>
+      <div class="ln">只允许修改这个项目目录，不使用跳过权限检查的参数。</div>
+      <div class="ln">完成后打开页面，测试按钮，发截图，并告诉我 Claude Code 实际修改了哪些文件。</div>
     </div>
-    <div class="who" style="left:40px;top:462px" data-in="c6-0.3"><div class="minibot"></div>Grok Bot · 已调用 Claude Code 完成</div>
+    <div class="who" style="left:40px;top:462px" data-in="c2-0.3"><div class="spark" style="width:40px;height:40px;border-radius:10px"></div>Claude Code 助手 · 已完成</div>
     <div class="abs" style="left:40px;top:520px;display:flex;gap:18px">
-      <div class="card" style="width:310px;height:220px;overflow:hidden;position:relative" data-in="s18" data-anim="pop">
-        <div style="height:34px;background:#F5F2FC;display:flex;align-items:center;gap:6px;padding:0 12px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span style="margin-left:6px;font-size:14px;color:var(--mute);font-weight:700">页面截图 · index.html</span></div>
+      <div class="card" style="width:310px;height:220px;overflow:hidden;position:relative" data-in="s3" data-anim="pop">
+        <div style="height:34px;background:#F1F5F9;display:flex;align-items:center;gap:6px;padding:0 12px"><i class="tl" style="background:#FF6B81"></i><i class="tl" style="background:#FFC94D"></i><i class="tl" style="background:#4FD69C"></i><span style="margin-left:6px;font-size:14px;color:var(--mute);font-weight:700">页面截图 · index.html</span></div>
         <div class="col" style="padding-top:34px;gap:22px">
-          <div class="cute" style="font-size:32px;font-weight:600" data-swap="s19" data-to="&lt;span style=&quot;color:var(--bot)&quot;&gt;标题变了！&lt;/span&gt;">Hello, CC</div>
-          <div style="background:var(--ink);color:#fff;border-radius:14px;padding:10px 26px;font-size:19px;font-weight:800">点我</div>
+          <div class="cute" style="font-size:32px;font-weight:600" data-swap="s4" data-to="&lt;span style=&quot;color:var(--bot)&quot;&gt;标题变了！&lt;/span&gt;">Hello, CC</div>
+          <div style="background:var(--ink);color:#fff;border-radius:12px;padding:10px 26px;font-size:19px;font-weight:800">点我</div>
         </div>
         <svg class="ic cursor" style="position:absolute;width:34px;height:34px;left:200px;top:180px"><use href="#i-cursor"/></svg>
       </div>
-      <div class="card" style="width:220px;height:220px;padding:22px" data-in="s19" data-anim="pop">
+      <div class="card" style="width:220px;height:220px;padding:22px" data-in="s4" data-anim="pop">
         <div style="font-size:19px;color:var(--mute);font-weight:700">按钮测试</div>
-        <div style="margin-top:22px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:800" data-on="s19+0.8"><div class="check"><svg class="ic" style="font-size:20px"><use href="#i-check"/></svg></div>点击后<br>标题已改变</div>
+        <div style="margin-top:22px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:800" data-on="s4+0.8"><div class="check"><svg class="ic" style="font-size:20px"><use href="#i-check"/></svg></div>点击后<br>标题已改变</div>
       </div>
-      <div class="card" style="width:290px;height:220px;padding:22px" data-in="s20" data-anim="pop">
+      <div class="card" style="width:290px;height:220px;padding:22px" data-in="s5" data-anim="pop">
         <div style="font-size:19px;color:var(--mute);font-weight:700">文件改动清单</div>
         <div style="margin-top:20px;display:flex;align-items:center;gap:10px;font-size:19px;font-family:var(--mono)"><svg class="ic" style="font-size:26px;color:var(--bot)"><use href="#i-file"/></svg>cc-demo/index.html</div>
         <div style="margin-top:12px"><span class="chip green" style="font-size:17px;padding:4px 12px">+ 新建</span></div>
         <div style="margin-top:12px;font-size:16px;color:var(--mute);font-weight:700">仅改动项目目录内文件</div>
       </div>
     </div>
-    <div class="abs" style="left:660px;top:448px" data-in="s21" data-anim="pop" data-burst="s21+0.1" data-emph="s21+0.5"><span class="chip dark toon" style="font-size:26px"> 整条流程跑通</span></div>
+    <div class="abs" style="left:660px;top:448px" data-in="s6" data-anim="pop" data-burst="s6+0.1" data-emph="s6+0.5"><span class="chip dark toon" style="font-size:26px">整条流程跑通</span></div>
   </section>
 
   <!-- 14 日常使用 -->
   <section class="scene" data-scene="daily">
     <div class="glow" style="left:400px;top:60px;width:660px;height:380px;background:#E6E9FF"></div>
     <div class="stepchip" data-in="s0" data-anim="left"><div class="n" style="background:#0EA5E9"><svg class="ic" style="font-size:26px"><use href="#i-chat"/></svg></div><div class="t">以后，直接在聊天里提需求</div></div>
-    <div class="bubble" style="top:110px;width:640px" data-in="c1-0.2" data-anim="pop" data-sfx="msg">让 Claude Code 把这个页面的按钮改成蓝色。</div>
-    <div class="bubble" style="top:200px;width:700px" data-in="s3" data-anim="pop" data-sfx="msg">先让 Claude Code 检查问题、给出修改方案，<b>我确认后再动手</b>。</div>
-    <div class="who" style="left:40px;top:320px" data-in="s4"><div class="minibot"></div>Grok Bot</div>
+    <div class="bubble" style="top:110px;width:640px" data-in="c1-0.2" data-anim="pop" data-sfx="msg">让 CC 助手把这个页面的按钮改成蓝色。</div>
+    <div class="bubble" style="top:200px;width:700px" data-in="s3" data-anim="pop" data-sfx="msg">先让 CC 助手检查问题、给出修改方案，<b>我确认后再动手</b>。</div>
+    <div class="who" style="left:40px;top:320px" data-in="s4"><div class="spark" style="width:40px;height:40px;border-radius:10px"></div>Claude Code 助手</div>
     <div class="abs card" style="left:40px;top:375px;width:640px;padding:20px 24px;font-size:21px;line-height:1.6;border-radius:8px 30px 30px 30px;font-weight:700" data-in="s4" data-anim="pop" data-sfx="msg">已调用 Claude Code 给出 2 个修改方案，<b>等你确认</b>后再修改。</div>
     <div class="abs card" style="left:40px;top:520px;width:880px;padding:26px 30px;background:var(--ink);color:#fff;border:none;box-shadow:0 10px 24px rgba(15,23,42,.14)" data-in="c2" data-anim="pop">
       <div style="font-size:22px;color:#BDB6D6;font-weight:800"> 重点：说清楚两件事</div>
@@ -510,32 +520,36 @@
 <section class="scene full" data-scene="rant" id="rant" data-nosub="1">
   <div class="rgrid"></div><div class="rglow"></div>
   <div class="rwrap">
-    <div class="rb" style="top:350px" data-in="s0" data-out="s1-0.04" data-anim="slam" data-sfx="slam"><span class="big w" style="font-size:180px">澡尔冯了个福的</span></div>
-    <div class="rb" style="top:200px;gap:40px" data-in="s1" data-out="s2-0.04" data-anim="slam" data-sfx="slam"><img class="rlogo" src="assets/logo-openai.png"><span class="big w" style="font-size:190px">OpenAI</span></div>
-    <div class="rb" style="top:500px;gap:36px" data-in="s1+0.42" data-out="s2-0.04" data-anim="slam" data-sfx="slam"><span class="big o" style="font-size:150px">&amp;</span><img class="rlogo" src="assets/logo-claude.png"><span class="big o" style="font-size:150px">Anthropic</span></div>
-    <div class="rb" style="top:130px" data-in="s2" data-out="c1-0.04" data-anim="slam" data-sfx="boom"><span class="big r" style="font-size:200px">太不是人了！！</span></div>
-    <div class="abs shk" style="left:150px;top:480px" data-in="s2+0.12" data-out="c1-0.04" data-anim="rise" data-sfx="pop"><img class="cut" src="assets/cutout-a.png" style="height:600px"><span class="ban-bubble" style="left:380px;top:20px">封号！</span></div>
-    <div class="abs shk" style="left:1290px;top:470px" data-in="s2+0.28" data-out="c1-0.04" data-anim="rise" data-sfx="pop"><img class="cut" src="assets/cutout-b.png" style="height:610px"><span class="ban-bubble" style="left:-150px;top:30px">封号！</span></div>
-    <div class="rb" style="top:190px;right:460px;gap:30px;align-items:flex-end" data-in="s3" data-out="c2-0.04" data-anim="slam" data-sfx="slam"><span class="big w" style="font-size:110px;margin-bottom:24px">扔扔的</span><span class="big w cat" style="font-size:230px">猫吴<i class="ear l"></i><i class="ear r"></i></span></div>
-    <div class="abs shk" style="left:1330px;top:400px" data-in="s3+0.25" data-out="c2-0.04" data-anim="rise" data-sfx="pop"><img class="cut" src="assets/cutout-c.png" style="height:600px"></div>
-    <div class="rb" style="top:560px;right:460px" data-in="s4" data-out="c2-0.04" data-anim="slam" data-sfx="boom"><span class="big r" style="font-size:170px">也不是人类！</span></div>
-    <!-- 事实一：人事动态（中性呈现） -->
-    <div class="rb" style="top:80px" data-in="s5" data-out="c3-0.04" data-anim="down" data-sfx="whoosh"><span class="breaking blue"><b>NEWS</b>人事动态</span></div>
-    <div class="abs" style="left:190px;top:290px" data-in="s6" data-out="c3-0.04" data-anim="slam" data-sfx="slam"><img class="cut" src="assets/cutout-c.png" style="height:460px"><span class="nametag">猫吴</span></div>
-    <div class="abs mvs" style="left:760px;top:440px;display:flex;align-items:center;gap:22px" data-in="s6+0.3" data-out="c3-0.04" data-anim="slam" data-sfx="slam">
-      <span class="mv"><img src="assets/logo-claude.png">Anthropic</span><span class="mvsep">→</span><span class="mv blue" data-in="s7" data-anim="pop"><img src="assets/logo-openai.png">OpenAI</span>
+    <!-- Fable 5.2 -->
+    <div class="rb" style="top:80px" data-in="s0" data-out="c2-0.04" data-anim="down" data-sfx="alert"><span class="breaking blue"><b>NEW</b>就在今天</span></div>
+    <div class="rb" style="top:220px;gap:40px" data-in="s1" data-out="c2-0.04" data-anim="slam" data-sfx="boom"><img class="rlogo" src="assets/logo-claude.png"><span class="big w" style="font-size:180px">Fable 5.2</span><span class="newchip" style="transform:rotate(8deg)">推出了！</span></div>
+    <div class="abs chart" style="left:330px;top:510px;width:1260px" data-in="c1" data-out="c2-0.04" data-anim="up">
+      <div class="ch-t">代码能力（示意）</div>
+      <div class="ch-row"><span class="ch-l">Fable 5.2</span><div class="ch-bar"><i class="f1" style="width:0" data-bar="s2+0.1:s2+0.9" data-to="100"></i></div></div>
+      <div class="ch-row"><span class="ch-l">Opus 5.5</span><div class="ch-bar"><i class="f2" style="width:0" data-bar="s2+0.3:s2+1.0" data-to="34"></i></div></div>
+      <span class="gapstamp" style="transform:rotate(-8deg)" data-in="s3+0.15" data-anim="slam" data-sfx="boom">断档！</span>
     </div>
-    <!-- 事实二：OpenAI 昨天开始大规模封号（独立一拍） -->
-    <div class="rb" style="top:70px" data-in="c3" data-anim="down" data-sfx="alert"><span class="breaking"><b>BREAKING</b>昨天</span></div>
-    <div class="rb" style="top:205px;gap:30px" data-in="s8" data-anim="slam" data-sfx="slam"><img class="rlogo" src="assets/logo-openai.png" style="width:130px;height:130px;border-radius:32px"><span class="big w" style="font-size:130px">OpenAI</span></div>
-    <div class="abs case" style="left:70px;top:560px;width:330px;transform:rotate(-7deg)" data-in="s8+0.3" data-anim="slam" data-sfx="slam"><img src="assets/case-claude.jpg"></div>
-    <div class="abs case" style="left:1500px;top:540px;width:380px;transform:rotate(6deg)" data-in="s8+0.55" data-anim="slam" data-sfx="slam"><img src="assets/case-tweets.jpg"></div>
-    <div class="abs case" style="left:470px;top:770px;width:360px;transform:rotate(4deg)" data-in="s8+0.8" data-anim="slam" data-sfx="slam"><img src="assets/case-openai.jpg"></div>
-    <div class="rb" style="top:430px" data-in="s9" data-anim="slam" data-sfx="boom" data-burst="s9+0.1"><span class="stampbig" style="transform:rotate(-6deg)">大规模封号！</span></div>
+    <!-- 吐槽 -->
+    <div class="rb" style="top:360px" data-in="s4" data-out="s5-0.04" data-anim="slam" data-sfx="slam"><span class="big w" style="font-size:150px">可是我澡尔冯了个福的</span></div>
+    <div class="rb" style="top:330px;gap:30px" data-in="s5" data-out="s6-0.04" data-anim="slam" data-sfx="slam"><img class="rlogo" src="assets/logo-claude.png" style="width:140px;height:140px"><span class="big o" style="font-size:140px">Anthropic</span><span class="big w" style="font-size:110px">&amp;</span><img class="rlogo" src="assets/logo-openai.png" style="width:140px;height:140px"><span class="big w" style="font-size:140px">OpenAI</span></div>
+    <div class="rb" style="top:130px" data-in="s6" data-out="c3-0.04" data-anim="slam" data-sfx="boom"><span class="big r" style="font-size:210px">都不是人！！</span></div>
+    <div class="abs shk" style="left:150px;top:480px" data-in="s6+0.12" data-out="c3-0.04" data-anim="rise" data-sfx="pop"><img class="cut" src="assets/cutout-a.png" style="height:600px"><span class="ban-bubble" style="left:380px;top:20px">封号！</span></div>
+    <div class="abs shk" style="left:1290px;top:470px" data-in="s6+0.28" data-out="c3-0.04" data-anim="rise" data-sfx="pop"><img class="cut" src="assets/cutout-b.png" style="height:610px"><span class="ban-bubble" style="left:-150px;top:30px">封号！</span></div>
+    <!-- Claude 封号数据 -->
+    <div class="rb" style="top:90px" data-in="s7" data-out="c4-0.04" data-anim="down"><span class="yearchip">2026 年上半年</span></div>
+    <div class="rb" style="top:200px;gap:28px" data-in="s8" data-out="c4-0.04" data-anim="slam" data-sfx="slam"><img class="rlogo" src="assets/logo-claude.png" style="width:110px;height:110px;border-radius:28px"><span class="big w" style="font-size:100px">Claude 全平台封禁</span></div>
+    <div class="rb" style="top:370px" data-in="s9" data-out="c4-0.04" data-anim="slam" data-sfx="boom"><span class="big r" style="font-size:200px">约 <span data-count="s9+0.05" data-to="1140" data-dur="1.3">0</span> 万</span></div>
+    <div class="abs case" style="left:70px;top:640px;width:330px;transform:rotate(-7deg)" data-in="s8+0.35" data-anim="slam" data-sfx="slam"><img src="assets/case-claude.jpg"></div>
+    <div class="abs case" style="left:1500px;top:620px;width:380px;transform:rotate(6deg)" data-in="s9+0.45" data-anim="slam" data-sfx="slam"><img src="assets/case-tweets.jpg"></div>
+    <!-- OpenAI 也开始封号 -->
+    <div class="rb" style="top:150px;gap:30px" data-in="s10" data-anim="slam" data-sfx="slam"><img class="rlogo" src="assets/logo-openai.png" style="width:130px;height:130px;border-radius:32px"><span class="big w" style="font-size:130px">OpenAI 最近也…</span></div>
+    <div class="abs case" style="left:470px;top:780px;width:360px;transform:rotate(4deg)" data-in="s10+0.4" data-anim="slam" data-sfx="slam"><img src="assets/case-openai.jpg"></div>
+    <div class="rb" style="top:410px" data-in="s11" data-anim="slam" data-sfx="boom" data-burst="s11+0.1"><span class="stampbig" style="transform:rotate(-6deg)">大规模封号！</span></div>
     <div class="abot"><div class="b"></div><i class="e l"></i><i class="e r"></i><i class="w l"></i><i class="w r"></i><i class="h l"></i><i class="h r"></i><span class="v">💢</span></div>
   </div>
   <div class="rflash"></div>
 </section>
+
 
 <!-- 操作总览（全屏，停留 3 秒供截图） -->
 <section class="scene full" data-scene="summary" id="summary">
@@ -543,26 +557,27 @@
   <div class="sm-head">
     <div class="minibot" style="width:84px;height:84px" data-in="c0" data-anim="pop"></div>
     <div class="t" data-in="c0+0.1" data-anim="left">Grok Bot × <span style="color:var(--claude)">Claude Code</span> 操作总览</div>
-    <span class="chip toon cute" style="margin-left:auto;font-size:30px;background:#FFE58A;color:var(--ink)" data-in="s1" data-anim="pop" data-emph="s1+0.3"> 截图保存</span>
+    <span class="chip toon" style="margin-left:auto;font-size:30px;background:#FDE68A;color:var(--ink);font-weight:900" data-in="c0+0.6" data-anim="pop" data-emph="c0+0.9">截图保存</span>
   </div>
   <div class="sm-grid">
-    <div class="sm-card" style="--c:#4F8BFF" data-in="c0+0.3" data-anim="pop"><div class="n" style="background:#4F8BFF">1</div><h4>下载并登录</h4>
-      <ul><li>官方下载页 → 下载桌面版</li><li>用 <b>Cursor 账户</b>登录</li><li>确认套餐包含 Grok Bot</li><li>还没订阅：可直接用 <b style="color:#1677FF">支付宝</b> 付款</li><li style="color:var(--mute)">前提：能正常访问官方下载页和登录页</li></ul></div>
-    <div class="sm-card" style="--c:#6C63FF" data-in="c0+0.45" data-anim="pop"><div class="n" style="background:#6C63FF">2</div><h4>让 Bot 安装 CC</h4>
-      <ul><li>只在 Bot 的<b>云端 Linux 电脑</b>上装，不碰本机</li><li>先检查：<br><code>claude --version</code></li><li>未安装就按官方文档：<br><code>curl -fsSL https://claude.ai/install.sh | bash</code></li><li>显示版本号 = 已装好（≠ 已登录）</li></ul></div>
-    <div class="sm-card" style="--c:#E8795A" data-in="c0+0.6" data-anim="pop"><div class="n" style="background:#E8795A">3</div><h4>登录并授权</h4>
-      <ul><li>启动：<code>claude</code></li><li>浏览器授权时<b>你来接管</b>，Bot 不碰密码</li><li>登录码粘回终端，<b>不发进聊天</b></li><li>看到 <b>Login successful</b> 交还 Bot</li><li>查状态：<code>claude auth status</code></li></ul></div>
-    <div class="sm-card" style="--c:#22B884" data-in="c0+0.75" data-anim="pop"><div class="n" style="background:#22B884">4</div><h4>第一次调用</h4>
-      <ul><li>让 Bot <b>通过终端调用 Claude Code</b>，不要代写</li><li>在空目录 <code>/workspace/cc-demo</code> 建测试页</li><li>只改项目目录，不跳过权限检查</li><li>收到 截图 + 按钮测试 + 文件清单 <span class="ok">= 跑通 </span></li></ul></div>
+    <div class="sm-card" style="--c:#2563EB" data-in="c0+0.3" data-anim="pop"><div class="n" style="background:#2563EB">1</div><h4>下载并登录</h4>
+      <ul><li>官方下载页 <code>x.ai/bot</code> 下载桌面版并登录</li><li>套餐：<b>Premium / Super / Ultra</b> 含 Grok Bot 额度（Plus 不含）</li><li>按用量按需充值，可用 <b style="color:#1677FF">支付宝</b></li><li style="color:var(--mute)">前提：能正常访问官方下载页和登录页</li></ul></div>
+    <div class="sm-card" style="--c:#4F46E5" data-in="c0+0.45" data-anim="pop"><div class="n" style="background:#4F46E5">2</div><h4>建子 agent 装 CC</h4>
+      <ul><li>新建子 agent「<b>Claude Code 助手</b>」，CC 相关任务都交给它</li><li>发安装指令：只在它的云端 Linux 电脑上装，先 <code>claude --version</code> 检查</li><li>显示版本号 = 已装好（≠ 已登录）</li></ul></div>
+    <div class="sm-card" style="--c:#D97757" data-in="c0+0.6" data-anim="pop"><div class="n" style="background:#D97757">3</div><h4>登录并授权</h4>
+      <ul><li>先用 <b>Gmail</b> 注册 Claude 账号</li><li>让 CC 助手启动 Claude Code 登录流程</li><li>浏览器授权<b>你来接管</b>，登录码粘回终端，<b>不发进聊天</b></li><li>看到 <b>Login successful</b> 交还 Bot</li></ul></div>
+    <div class="sm-card" style="--c:#10B981" data-in="c0+0.75" data-anim="pop"><div class="n" style="background:#10B981">4</div><h4>第一次调用</h4>
+      <ul><li>让 Bot <b>通过终端调用 CC 助手的 Claude Code</b>，不要代写</li><li>在空目录 <code>/workspace/cc-demo</code> 建测试页</li><li>只改项目目录，不跳过权限检查</li><li>收到 截图 + 按钮测试 + 文件清单 <span class="ok">= 跑通</span></li></ul></div>
   </div>
   <div class="sm-row">
-    <div class="sm-box" data-in="c0+0.9" data-anim="up"><b class="h"> 日常使用</b>说清楚：<b>调用 Claude Code</b><br>+ 这次<b>允许改哪些文件</b></div>
-    <div class="sm-box" data-in="c0+1.0" data-anim="up"><b class="h"> 排错</b>登录提示 → <code>claude auth status</code><br>额度用完 → 分清 Grok Bot / CC 两套额度<br>别一报错就重复安装</div>
-    <div class="sm-box" style="background:#FFF8E6" data-in="c0+1.1" data-anim="up"><b class="h"> 注意</b>云端运行 ≠ 账号免封<br>Claude 账户与地区规则仍适用</div>
+    <div class="sm-box" data-in="c0+0.9" data-anim="up"><b class="h">日常使用</b>说清楚：<b>调用 Claude Code</b><br>+ 这次<b>允许改哪些文件</b></div>
+    <div class="sm-box" data-in="c0+1.0" data-anim="up"><b class="h">排错</b>登录提示 → 先查授权状态 <code>claude auth status</code><br>额度用完 → 分清 Grok Bot / CC 两套额度<br>别一报错就重复安装</div>
+    <div class="sm-box" style="background:#FFFBEB" data-in="c0+1.1" data-anim="up"><b class="h">注意</b>云端运行 ≠ 账号免封<br>Claude 账户与地区规则仍适用</div>
   </div>
-  <div class="sm-foot" data-in="c0+1.2" data-anim="fade"> 以上命令都在 Bot 的云端电脑上运行，不在你自己的电脑上</div>
+  <div class="sm-foot" data-in="c0+1.2" data-anim="fade">以上命令都在 Bot 的云端电脑上运行，不在你自己的电脑上</div>
   <div class="sm-flash" style="position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none"></div>
 </section>
+
 
 <!-- 求关注片尾 -->
 <section class="scene full" data-scene="follow" id="follow">
@@ -580,6 +595,7 @@
 </section>
 
 
+<div id="hold"><div class="hold-card"><div class="hold-tag"></div><div class="hold-body"></div></div></div>
 <div class="sub" id="sub"><div class="subbot"></div><span id="subtxt"></span></div>
 </div>
 <div id="preload"></div>
@@ -588,7 +604,7 @@
 // 吉祥物关键帧：[时间, 状态]；x/y 为舞台坐标，s 为缩放
 window.POSES = {
   rant: [['b', {x:556,y:700,s:.85,mood:'worried',look:[0,-1],o:1}]],
-  ban: [['b', {x:556,y:700,s:.85,mood:'worried',look:[0,-1]}], ['c1', {x:556,y:745,s:.7,mood:'think'}], ['s5', {mood:'happy'}]],
+  ban: [['b', {x:556,y:745,s:.7,mood:'think',look:[0,-1]}], ['s2', {mood:'happy'}]],
   two: [['b', {x:556,y:690,s:.75,mood:'think',look:[0,-1]}]],
   cons: [['b', {x:556,y:700,s:.75,mood:'worried',look:[0,-1]}], ['c2', {mood:'shake'}]],
   new: [['b', {x:210,y:600,s:1.05,mood:'normal',look:[1,-1]}], ['s3', {mood:'jump'}], ['x0', {mood:'happy'}]],
@@ -596,10 +612,10 @@ window.POSES = {
   stable: [['b', {x:1000,y:780,s:.5,mood:'normal',look:[-1,-1]}], ['s7', {mood:'happy'}]],
   value: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s4', {mood:'happy'}], ['c3', {mood:'jump'}]],
   overview: [['b', {x:556,y:735,s:.72,mood:'jump',look:[0,-1]}], ['s3', {mood:'happy'}]],
-  step1: [['b', {x:1000,y:780,s:.5,mood:'normal',look:[-1,-1]}], ['s5+1', {mood:'happy'}]],
-  step2: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['c5+2.6', {mood:'happy'}], ['c6', {mood:'normal'}], ['c8', {mood:'think'}]],
-  step3: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['c2', {mood:'cover'}], ['c3', {mood:'normal'}], ['c4', {mood:'cover'}], ['c7', {mood:'jump'}], ['c8', {mood:'happy'}], ['c9', {mood:'normal'}]],
-  step4: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s21', {mood:'jump'}]],
+  step1: [['b', {x:1000,y:780,s:.5,mood:'normal',look:[-1,-1]}], ['s13', {mood:'happy'}]],
+  step2: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s7', {mood:'happy'}], ['c3', {mood:'normal'}], ['s13', {mood:'happy'}], ['s14', {mood:'think'}]],
+  step3: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['c4', {mood:'cover'}], ['c6', {mood:'normal'}], ['c7', {mood:'worried'}], ['c8', {mood:'jump'}], ['c9', {mood:'normal'}]],
+  step4: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}], ['s6', {mood:'jump'}]],
   daily: [['b', {x:1000,y:790,s:.5,mood:'normal',look:[-1,-1]}]],
   trouble: [['b', {x:556,y:760,s:.55,mood:'worried',look:[0,-1]}], ['c2', {mood:'normal'}]],
   outro: [['b', {x:556,y:720,s:.7,mood:'normal',look:[0,-1]}], ['c1', {x:556,y:560,s:1.15,mood:'jump',look:[0,0]}]],
@@ -607,26 +623,29 @@ window.POSES = {
 // 镜头关键帧：[时间, 缩放, 焦点x, 焦点y]（舞台坐标）；每个场景开始时自动回到全景
 window.CAMS = {
   // 规则：只在“单一焦点”（一个数字 / 一个气泡 / 一个终端）时推镜；并列排布的卡片、步骤、对比一律保持全景，保证整排完整可见
-  ban: [['s1',1.18,556,250], ['s2',1,556,440]],
   new: [['s1',1.12,655,300], ['s2',1,556,440]],
-  step2: [['c1+1.9',1.12,672,230], ['c2',1.3,672,150], ['c3',1.3,672,200], ['c4',1.3,672,270], ['c5',1.2,430,630], ['c7',1,556,440]],
-  step3: [['c1+1.4',1.25,672,180], ['c3',1.18,350,450], ['c4-0.8',1,556,440], ['c7',1.15,350,480], ['s19-0.8',1,556,440]],
-  step4: [['c0+2.2',1.1,622,230], ['c1',1.2,622,140], ['c2',1.2,622,195], ['c3',1.2,622,250], ['c4',1.2,622,290], ['c5',1.2,622,325], ['c6-0.6',1.08,480,600], ['s21',1,556,440]],
   daily: [['c1',1.12,700,200], ['s4-0.6',1,556,440], ['c2',1.12,480,600], ['x2',1,556,440]],
   outro: [['c0',1.1,556,180], ['c1',1,556,440]],
 };
+// 悬停展示：放大 + 背景虚化 3 秒，给观众复制链接 / 截图指令（不做讲解）
+window.HOLDS = [
+  {scene:'step1', at:'x3+0.05', dur:3.1, kind:'link', tag:'复制链接 · 下载 Grok Bot', html:'<div class="hold-sub">Grok Bot 官方下载页</div><div class="hold-link">https://x.ai/bot</div>'},
+  {scene:'step2', at:'x4+0.05', dur:3.1, kind:'prompt', tag:'截图保存 · 第二步指令（发给 Grok Bot）', html:'<div class="hl-ln">请只在 claude code 助手的云端 Linux 电脑上安装 Claude Code，不要操作我的本机。</div><div class="hl-ln">先检查是否已经安装，并运行 <code>claude --version</code>。</div><div class="hl-ln">如果已安装，告诉我版本号，不要重复安装。</div><div class="hl-ln">如果未安装，按 Claude Code 官方文档的 Linux 推荐方式安装，完成后验证版本。</div><div class="hl-ln">如果遇到找不到命令或其他错误，按官方文档排查，把结果告诉我。</div>'},
+  {scene:'step3', at:'x3+0.05', dur:3.1, kind:'prompt', tag:'截图保存 · 第三步指令（发给 Grok Bot）', html:'<div class="hl-ln">请启动 cc 助手的 Claude Code，进入登录流程。</div><div class="hl-ln">需要我在浏览器里完成授权时，停下来让我接管，不要读取或输出我的密码、验证码和登录凭据。</div>'},
+  {scene:'step4', at:'x1+0.05', dur:3.1, kind:'prompt', tag:'截图保存 · 第四步指令（发给 Grok Bot）', html:'<div class="hl-ln">请通过终端调用 cc 助手的 Claude Code 完成一个测试，不要由你直接代写代码。</div><div class="hl-ln">在 <code>/workspace/cc-demo</code> 新建一个独立项目。如果目录已有内容，换一个新的空目录，不要覆盖。</div><div class="hl-ln">让 Claude Code 创建一个简单的 HTML 页面，包含标题和按钮，点击按钮后改变标题文字。</div><div class="hl-ln">只允许修改这个项目目录，不使用跳过权限检查的参数。</div><div class="hl-ln">完成后打开页面，测试按钮，发截图，并告诉我 Claude Code 实际修改了哪些文件。</div>'},
+];
 // 输入框打字：在 at~send 时间内打字，然后发出
 window.INPUTS = [
-  {scene:'step2', at:'c1+0.2', send:'c1+1.9', text:'请只在你的云端 Linux 电脑上安装 Claude Code，不要操作我的本机。'},
-  {scene:'step3', at:'c1+0.0', send:'c1+1.4', text:'请启动 Claude Code，进入登录流程。'},
-  {scene:'step4', at:'c0+0.6', send:'c0+2.2', text:'请通过终端调用 Claude Code 完成一个测试，不要由你直接代写代码。'},
-  {scene:'daily', at:'b+0.3', send:'c1-0.2', text:'让 Claude Code 把这个页面的按钮改成蓝色。'},
+  {scene:'step2', at:'c3+0.2', send:'s9+0.6', text:'请只在 Claude Code 助手的云端 Linux 电脑上安装 Claude Code，不要操作我的本机。'},
+  {scene:'step3', at:'c2+0.2', send:'s5+0.5', text:'请启动 CC 助手的 Claude Code，进入登录流程。'},
+  {scene:'step4', at:'c0+0.6', send:'s1+0.4', text:'请通过终端调用 CC 助手的 Claude Code 完成一个测试，不要由你直接代写代码。'},
+  {scene:'daily', at:'b+0.3', send:'c1-0.2', text:'让 CC 助手把这个页面的按钮改成蓝色。'},
 ];
 window.HOOKS = {
   // 第四步：光标移动并点击按钮
   step4(t, s) {
     const c = s.el.querySelector('.cursor'); if (!c) return;
-    const a = at('step4', 's18+0.3'), b = at('step4', 's19');
+    const a = at('step4', 's3+0.3'), b = at('step4', 's4');
     const p = Math.max(0, Math.min(1, (t - a) / (b - a)));
     const e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p+2, 2)/2;
     const click = t > b - .15 && t < b + .1 ? .8 : 1;
@@ -670,7 +689,7 @@ window.HOOKS = {
   },
   // 操作总览：旁白结束后闪一下“快门”
   summary(t, s) {
-    const f = s.el.querySelector('.sm-flash'), a = at('summary', 'x0+0.15');
+    const f = s.el.querySelector('.sm-flash'), a = at('summary', 'c0+1.4');
     f.style.opacity = t >= a ? Math.max(0, .75 * (1 - (t - a) / .3)).toFixed(3) : 0;
   },
 };

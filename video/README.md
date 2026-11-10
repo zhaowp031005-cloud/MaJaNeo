@@ -8,6 +8,7 @@
 - `index.html` / `style.css` / `engine.js`：动画页面。元素用 `data-in="c2+0.3"`（第 2 句开始后 0.3 秒）或 `data-in="s5"`（本场第 5 条字幕）声明出场时间，`window.seek(t)` 逐帧确定性渲染。
   - 镜头：`window.CAMS` 里按场景写 `[时间, 缩放, 焦点x, 焦点y]`，场景切换时自动回到全景。只在单一焦点时推镜，并列排布（多张卡片、步骤、对比）保持全景，保证整排完整可见。
   - 强调：`data-emph`（弹一下 + 光圈）、`data-mk`（荧光笔划线）、`data-burst`（星星彩屑）、`data-hl`（逐行高亮）。
+  - 悬停展示：`window.HOLDS` 配置放大卡片 + 背景虚化（链接 / 指令截图，默认 3 秒），期间隐藏字幕；script.py 里对应句子加 `pause=` 留出时长，`silent=` 表示无旁白静默段。
   - 开场全屏场景加 `data-nosub` 隐藏底部字幕；`data-anim="slam"` 为大字砸下动画。
   - 音效：`window.collectSfx()` 从时间轴自动生成音效事件，`data-sfx="ding|nope|none…"` 可覆盖。
 - `sfx.py`：用 numpy 合成全部音效（弹出、打字、发送、成功叮、否定、嗖、弹簧、闪光、快门…），输出 `mix.wav`（旁白 + 音效）。默认不加背景音乐；需要时 `BGM=1` 可叠加八音盒 BGM（说话时自动压低）。
@@ -34,3 +35,4 @@ npm i @fontsource/noto-sans-sc @fontsource/inter @fontsource/jetbrains-mono
 - `logo-claude.png` `logo-openai.png` `logo-grok.png` `logo-x.png` `logo-cursor.png`：256×256 圆角图标
 - `cutout-a.png` `cutout-b.png` `cutout-c.png`：开场弹出的人物抠图（可用 rembg 的 u2net_human_seg 抠）
 - `case-claude.jpg` `case-tweets.jpg` `case-openai.jpg`：开场弹出的封号案例截图
+- `plan-plus.png` `plan-premium.png` `plan-super.png` `plan-ultra.png`：第一步展示的四种套餐（官网截图裁切）
